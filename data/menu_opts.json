@@ -1,0 +1,45 @@
+{
+    "nombreApp" : "Componentes",
+    
+    "universidades" : [
+        {
+            "nombre"         : "Unco",
+            "nombreCompleto" : "Universidad Nacional Del Comahue",
+            "lugar"          : "Neuquen",
+            "icon"           : "unco",
+            "url"            :""  
+        },
+
+        {
+            "nombre"         : "Unrn",
+            "nombreCompleto" : "Universidad Nacional De Rio Negro",
+            "lugar"          : "Rio Negro",
+            "icon"           : "unrn",
+            "url"            :  ""
+            
+            
+        },
+        {
+            "nombre"         : "Utn",
+            "nombreCompleto" : "Universidad Tecnologica Nacional",
+            "lugar"          : "Neuquen",
+            "icon"           : "utn",
+            "url"            : ""
+            
+        },{
+            "nombre"         : "Ucasal",
+            "nombreCompleto" : "Universidad Católica de Salta",
+            "lugar"          : "Neuquen",
+            "icon"           : "ucasal",
+            "url"            : ""
+            
+        }
+        
+        
+
+
+
+
+     
+    ]
+}
