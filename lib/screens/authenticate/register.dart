@@ -1,8 +1,10 @@
 
+
 import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
+import 'package:guiae/screens/authenticate/sign_in_facebook.dart';
 
 class Register extends StatefulWidget {
   
@@ -132,10 +134,7 @@ class _RegisterState extends State<Register> {
                     onTap:() => Navigator.pushNamed(context, 'ingresar')
                     ),
 
-                    SizedBox(height: 10.0),
-
-                
-                
+                SizedBox(height: 10.0),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
@@ -150,10 +149,12 @@ class _RegisterState extends State<Register> {
                         onPressed: () async {
                       if(_formKey.currentState.validate()){
                         dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                        Navigator.pushNamed(context, '/');
                         if(result == null) {
                           setState(() {
                             error = 'Ingrese un email valido';
-                          });
+                            }
+                          );
                         }
                       }
                     }
@@ -175,7 +176,10 @@ class _RegisterState extends State<Register> {
 
                       child: Image.asset('Asset/Facebook.png')),
                     label: Text('   Registrarse con Facebook   ',style:TextStyle(fontSize: 15),),
-                    onPressed: (){},
+                    onPressed: (){
+                    loginWithFacebook(context);
+                      }
+                    
                     ),
 
                     RaisedButton.icon(
@@ -203,3 +207,4 @@ class _RegisterState extends State<Register> {
     );
   }
 }
+

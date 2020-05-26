@@ -129,6 +129,9 @@ class _SignInState extends State<SignIn> {
                           if (_formKey.currentState.validate()) {
                             dynamic result = await _auth.signInWithEmailAndPassword(
                                 email, password);
+                                Navigator.pushNamed(context, '/');
+                                
+                                
                             if (result == null) {
                               setState(() {
                                 error = 'No pudo ingresar con esas Credenciales';
@@ -169,7 +172,11 @@ class _SignInState extends State<SignIn> {
 
                       child: Image.asset('Asset/Facebook.png')),
                     label: Text('Continuar con Facebook ',style:TextStyle(fontSize: 15),),
-                    onPressed: (){},
+                    onPressed: (){
+                     
+                        
+
+                    },
                     ),
 
                     RaisedButton.icon(

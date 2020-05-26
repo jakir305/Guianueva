@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guiae/screens/authenticate/sign_in_facebook.dart';
 import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
 
@@ -21,12 +22,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    
     if (name == null) {
       name = '';
       email = '';
       imageUrl = '';
     }
+
+
     
       
     
@@ -52,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                
                   _auth.signOut();
                   signOutGoogle();
+                  signOutFacebook();
                   
                   
                   
@@ -111,125 +115,127 @@ class _HomePageState extends State<HomePage> {
 
           
           child: Expanded(
-                      child: Column(
-              
-              children: <Widget>[
-                
-                Row(
+                      child: Center(
+              child: Column(
+                  
                   children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.blue,
-                          iconSize: 100,
-                          icon: Icon(Icons.account_balance),
-                          onPressed: (){
-                            Navigator.pushNamed(context, 'universidades');
-                          }
-                          ),
+                    
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.blue,
+                  iconSize: 100,
+                  icon: Icon(Icons.account_balance),
+                  onPressed: (){
+                    Navigator.pushNamed(context, 'universidades');
+                  }
+                  ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: Column(
+                children: <Widget>[
+                  IconButton(
+                      color: Colors.grey,
+                      iconSize: 100,
+                      icon: Icon(Icons.directions_bus),
+                      onPressed: (){
+                      }
+                  ),
+                  SizedBox(
+                    height: 70,
+                  ),
+                ],
+              ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.grey,
+                  iconSize: 100,
+                  icon: Icon(Icons.book),
+                  onPressed: (){
+                  }
+              ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: <Widget>[
-                          IconButton(
-                              color: Colors.grey,
-                              iconSize: 100,
-                              icon: Icon(Icons.directions_bus),
-                              onPressed: (){
-                              }
-                          ),
-                          SizedBox(
-                            height: 70,
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.grey,
+                  iconSize: 100,
+                  icon: Icon(Icons.event_available),
+                  onPressed: (){
+                  }
+              ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: Image.asset('Asset/Logo1.png',
+                scale: 1,
+              ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.grey,
+                  iconSize: 100,
+                  icon: Icon(Icons.healing),
+                  onPressed: (){
+                  }
+              ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.book),
-                          onPressed: (){
-                          }
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.event_available),
-                          onPressed: (){
-                          }
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Image.asset('Asset/Logo1.png',
-                        scale: 1,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.healing),
-                          onPressed: (){
-                          }
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.directions_run),
-                          onPressed: (){
-                          }
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 70,
-                          ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.grey,
+                  iconSize: 100,
+                  icon: Icon(Icons.directions_run),
+                  onPressed: (){
+                  }
+              ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 70,
+                  ),
 
-                          IconButton(
-                              color: Colors.grey,
-                              iconSize: 100,
-                              icon: Icon(Icons.explore),
-                              onPressed: (){
-                              }
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.search),
-                          onPressed: (){
-                          }
-                      ),
+                  IconButton(
+                      color: Colors.grey,
+                      iconSize: 100,
+                      icon: Icon(Icons.explore),
+                      onPressed: (){
+                      }
+                  ),
+                ],
+              ),
+                        ),
+                        Expanded(
+              flex: 1,
+              child: IconButton(
+                  color: Colors.grey,
+                  iconSize: 100,
+                  icon: Icon(Icons.search),
+                  onPressed: (){
+                  }
+              ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
             ),
           ),
         ),

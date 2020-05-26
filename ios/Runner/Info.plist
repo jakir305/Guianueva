@@ -28,12 +28,16 @@
 	<string>Main</string>
 	
 	<key>CFBundleURLTypes</key>
-	 <array> <dict> 
-	 <key>CFBundleURLSchemes</key> 
-	 <array> <string>fb701483787279023</string> 
-	 </array> </dict> </array> <key>FacebookAppID</key> 
-	 <string>701483787279023</string> <key>FacebookDisplayName</key>
-	  <string>Guía estudiantil</string>
+	<array> 
+	<dict> 
+	<key>CFBundleURLSchemes</key> 
+	<array> <string>fb701483787279023</string> 
+	</array> </dict> </array> 
+	<key>FacebookAppID</key> 
+	<string>701483787279023</string> 
+	<key>FacebookDisplayName</key>
+	<string>Guía estudiantil</string>
+	  
 	  
 	<key>LSApplicationQueriesSchemes</key> <array> <string>fbapi</string> 
 	<string>fbapi20130214</string> <string>fbapi20130410</string> 
@@ -49,6 +53,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
