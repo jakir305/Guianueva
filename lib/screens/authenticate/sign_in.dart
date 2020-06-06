@@ -3,6 +3,8 @@ import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
 
+import 'sign_in_facebook.dart';
+
 class SignIn extends StatefulWidget {
   final Function toggleView;
   SignIn({this.toggleView});
@@ -89,7 +91,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       SizedBox(height: 25.0),
 
-                      TextFormField(
+                       TextFormField(
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20.0,
@@ -104,6 +106,7 @@ class _SignInState extends State<SignIn> {
                             hintText: 'contraseña'),
                         obscureText: true,
                         validator: (val) => val.length < 6
+                          
                             ? 'Contraseña menor a 6 caracteres'
                             : null,
                         onChanged: (val) {
@@ -129,7 +132,7 @@ class _SignInState extends State<SignIn> {
                           if (_formKey.currentState.validate()) {
                             dynamic result = await _auth.signInWithEmailAndPassword(
                                 email, password);
-                                Navigator.pushNamed(context, '/');
+                                
                                 
                                 
                             if (result == null) {
@@ -151,7 +154,8 @@ class _SignInState extends State<SignIn> {
                           '  Registrarse  ',
                           style: TextStyle(color: Colors.black),
                         ),
-                        onPressed: () => Navigator.pushNamed(context, 'registrarse'),
+                        onPressed: ()  => widget.toggleView(),
+                      
                         ),
                   ],
                 ),
@@ -172,10 +176,8 @@ class _SignInState extends State<SignIn> {
 
                       child: Image.asset('Asset/Facebook.png')),
                     label: Text('Continuar con Facebook ',style:TextStyle(fontSize: 15),),
-                    onPressed: (){
-                     
-                        
-
+                    onPressed: () async{
+                       await loginWithFacebook();
                     },
                     ),
 
@@ -190,10 +192,8 @@ class _SignInState extends State<SignIn> {
 
                       child: Image.asset('Asset/Google.png')),
                     label: Text('   Continuar con Google   ',style:TextStyle(fontSize: 15),),
-                    onPressed: () {
-                        signInWithGoogle().whenComplete(() {
-                        Navigator.pushNamed(context, "/");
-                       });
+                    onPressed: () async{
+                        await signInWithGoogle();
                      }
                    )
 

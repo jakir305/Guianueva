@@ -1,58 +1,21 @@
 {
   "project_info": {
-    "project_number": "666498960366",
-    "firebase_url": "https://guiaestudiantil-6131c.firebaseio.com",
-    "project_id": "guiaestudiantil-6131c",
-    "storage_bucket": "guiaestudiantil-6131c.appspot.com"
+    "project_number": "851831265847",
+    "firebase_url": "https://guiaestudiantilnaj.firebaseio.com",
+    "project_id": "guiaestudiantilnaj",
+    "storage_bucket": "guiaestudiantilnaj.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:666498960366:android:eb352646d4706833a9dcff",
-        "android_client_info": {
-          "package_name": "a305.guiaestudiatil5005"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "666498960366-aq00pq4pfqgfue71bq3demcrc0sov776.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "a305.guiaestudiatil5005",
-            "certificate_hash": "67da768fc19127d62557d073df5b3bb4feba8da9"
-          }
-        },
-        {
-          "client_id": "666498960366-75165a49km4erao5ir5f0n69jncnbpct.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBW6GYF2F207JAskBlaoeOsRIBwcxAvzIM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "666498960366-75165a49km4erao5ir5f0n69jncnbpct.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:666498960366:android:e927e2ccb41fc509a9dcff",
+        "mobilesdk_app_id": "1:851831265847:android:9b2b10243dc11228b47db2",
         "android_client_info": {
           "package_name": "com.lihuel305.guiae"
         }
       },
       "oauth_client": [
         {
-          "client_id": "666498960366-fkhvagkl85jbpfvbahfhtvjo0anshnka.apps.googleusercontent.com",
+          "client_id": "851831265847-0j049r8rrori3ktcr0d5ougjoriaf1jo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.lihuel305.guiae",
@@ -60,21 +23,28 @@
           }
         },
         {
-          "client_id": "666498960366-75165a49km4erao5ir5f0n69jncnbpct.apps.googleusercontent.com",
+          "client_id": "851831265847-r6qjn71ij65ng6bocirt60qcq4d4uc0l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBW6GYF2F207JAskBlaoeOsRIBwcxAvzIM"
+          "current_key": "AIzaSyAcd7DplQdxyNeqR753Cs8fDaD0ygYDCr4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "666498960366-75165a49km4erao5ir5f0n69jncnbpct.apps.googleusercontent.com",
+              "client_id": "851831265847-r6qjn71ij65ng6bocirt60qcq4d4uc0l.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "851831265847-dh0sfp8bnqbr49l3ktv9ge5hdse1u9p2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lihuel305.guiae"
+              }
             }
           ]
         }

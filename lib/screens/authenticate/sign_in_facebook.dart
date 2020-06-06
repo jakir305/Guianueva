@@ -1,20 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 bool isLogged = false;
 final facebookLogin = FacebookLogin();
-Future<FirebaseUser> loginWithFacebook(BuildContext context) async{
+Future<FirebaseUser> loginWithFacebook() async{
 
 
 final result = await facebookLogin.logIn(['email']);
 
 if (result.status != FacebookLoginStatus.loggedIn){
   return null;
-}
-else{
-  Navigator.pushNamed(context, "/");
 }
 
 
@@ -33,7 +29,8 @@ else{
 }
 
 Future<void> signOutFacebook() async {
-    await _auth.signOut();
+     
+     print('user facebook logout');
     
   }
 

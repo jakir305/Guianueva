@@ -1,10 +1,7 @@
-
-
-import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
-import 'package:guiae/screens/authenticate/sign_in_facebook.dart';
+
 
 class Register extends StatefulWidget {
   
@@ -131,7 +128,7 @@ class _RegisterState extends State<Register> {
 
                   InkWell(
                     child: Text("Ya tenes cuenta? Ingresa aca",style: TextStyle(fontSize: 15),),
-                    onTap:() => Navigator.pushNamed(context, 'ingresar')
+                    onTap:() => widget.toggleView(),
                     ),
 
                 SizedBox(height: 10.0),
@@ -149,7 +146,6 @@ class _RegisterState extends State<Register> {
                         onPressed: () async {
                       if(_formKey.currentState.validate()){
                         dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                        Navigator.pushNamed(context, '/');
                         if(result == null) {
                           setState(() {
                             error = 'Ingrese un email valido';
@@ -165,40 +161,7 @@ class _RegisterState extends State<Register> {
 
                 SizedBox(height: 20.0),
               
-                  RaisedButton.icon(
-                    highlightColor: Colors.tealAccent[700],
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                    elevation: 15.0,
-                    color: Colors.white,
-                    icon: Container(
-                      width: 25.0,
-                      height:25.0,
-
-                      child: Image.asset('Asset/Facebook.png')),
-                    label: Text('   Registrarse con Facebook   ',style:TextStyle(fontSize: 15),),
-                    onPressed: (){
-                    loginWithFacebook(context);
-                      }
-                    
-                    ),
-
-                    RaisedButton.icon(
-                    highlightColor: Colors.tealAccent[700],
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                    elevation: 15.0,
-                    color: Colors.white,
-                    icon: Container(
-                      width: 25.0,
-                      height:25.0,
-
-                      child: Image.asset('Asset/Google.png')),
-                    label: Text('      Registrarse con Google     ',style:TextStyle(fontSize: 15),),
-                    onPressed: () {
-                        signInWithGoogle().whenComplete(() {
-                        Navigator.pushNamed(context, "/");
-                      });
-                     },
-                  )
+                  
               ],
             ),
           ),

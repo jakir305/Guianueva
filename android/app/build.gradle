@@ -22,7 +22,7 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
@@ -37,6 +37,7 @@ android {
         applicationId "com.lihuel305.guiae"
         minSdkVersion 23
         targetSdkVersion 23
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -63,3 +64,5 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[5,6)'
     
 }
+
+apply plugin: 'com.google.gms.google-services'

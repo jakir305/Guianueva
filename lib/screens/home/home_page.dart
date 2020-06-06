@@ -8,11 +8,6 @@ import 'package:guiae/services/auth.dart';
 
 class HomePage extends StatefulWidget {
 
- 
-
-
-  
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -29,11 +24,6 @@ class _HomePageState extends State<HomePage> {
       imageUrl = '';
     }
 
-
-    
-      
-    
-    
     var scaffold = Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -52,15 +42,10 @@ class _HomePageState extends State<HomePage> {
                  borderRadius: BorderRadius.circular(30.0)),
                  color: Colors.white,
                 onPressed: () async {
-               
+                  signOutFacebook();
                   _auth.signOut();
                   signOutGoogle();
-                  signOutFacebook();
-                  
-                  
-                  
-
-                  
+   
                 },
               ),
             ),
@@ -112,18 +97,13 @@ class _HomePageState extends State<HomePage> {
   
       body: SingleChildScrollView(
         child: Container(
-
-          
-          child: Expanded(
-                      child: Center(
+          child: Center(
               child: Column(
-                  
                   children: <Widget>[
-                    
                     Row(
-                      children: <Widget>[
-                        Expanded(
-              flex: 1,
+          children: <Widget>[
+            Expanded(
+              
               child: IconButton(
                   color: Colors.blue,
                   iconSize: 100,
@@ -132,26 +112,26 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pushNamed(context, 'universidades');
                   }
                   ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
+              
               child: Column(
                 children: <Widget>[
                   IconButton(
-                      color: Colors.grey,
-                      iconSize: 100,
-                      icon: Icon(Icons.directions_bus),
-                      onPressed: (){
-                      }
+          color: Colors.grey,
+          iconSize: 100,
+          icon: Icon(Icons.directions_bus),
+          onPressed: (){
+          }
                   ),
                   SizedBox(
                     height: 70,
                   ),
                 ],
               ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
+              
               child: IconButton(
                   color: Colors.grey,
                   iconSize: 100,
@@ -159,13 +139,13 @@ class _HomePageState extends State<HomePage> {
                   onPressed: (){
                   }
               ),
-                        ),
-                      ],
+            ),
+          ],
                     ),
                     Row(
-                      children: <Widget>[
-                        Expanded(
-              flex: 1,
+          children: <Widget>[
+            Expanded(
+              
               child: IconButton(
                   color: Colors.grey,
                   iconSize: 100,
@@ -173,15 +153,15 @@ class _HomePageState extends State<HomePage> {
                   onPressed: (){
                   }
               ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
+              
               child: Image.asset('Asset/Logo1.png',
                 scale: 1,
               ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
+              
               child: IconButton(
                   color: Colors.grey,
                   iconSize: 100,
@@ -189,13 +169,13 @@ class _HomePageState extends State<HomePage> {
                   onPressed: (){
                   }
               ),
-                        ),
-                      ],
+            ),
+          ],
                     ),
                     Row(
-                      children: <Widget>[
-                        Expanded(
-              flex: 1,
+          children: <Widget>[
+            Expanded(
+              
               child: IconButton(
                   color: Colors.grey,
                   iconSize: 100,
@@ -203,9 +183,9 @@ class _HomePageState extends State<HomePage> {
                   onPressed: (){
                   }
               ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
+              
               child: Column(
                 children: <Widget>[
                   SizedBox(
@@ -213,31 +193,29 @@ class _HomePageState extends State<HomePage> {
                   ),
 
                   IconButton(
-                      color: Colors.grey,
-                      iconSize: 100,
-                      icon: Icon(Icons.explore),
-                      onPressed: (){
-                      }
+          color: Colors.grey,
+          iconSize: 100,
+          icon: Icon(Icons.explore),
+          onPressed: (){
+          }
                   ),
                 ],
               ),
-                        ),
-                        Expanded(
-              flex: 1,
+            ),
+            Expanded(
               child: IconButton(
-                  color: Colors.grey,
+                  color: Colors.blue,
                   iconSize: 100,
                   icon: Icon(Icons.search),
                   onPressed: (){
                   }
               ),
-                        ),
-                      ],
+            ),
+          ],
                     ),
                   ],
                 ),
             ),
-          ),
         ),
       ),
     );

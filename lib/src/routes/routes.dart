@@ -14,7 +14,7 @@ Map<String, WidgetBuilder> getApplicationRoutes(){
       'facultades'   : ( BuildContext context ) => ListaFacultadesPage(),
       'universidades': ( BuildContext context ) => UniversidadesPage(),
       'carreras'     : ( BuildContext context ) => ListaDeCarreras(),
-      'registrarse'  : ( BuildContext context ) => Register(),
+      'registrar'  : ( BuildContext context ) => Register(),
       'ingresar'     : ( BuildContext context ) => SignIn(), 
 
       };

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guiae/src/Utils/icono_string_util.dart';
-import 'package:guiae/src/Utils/text_style.dart';
-import 'package:guiae/src/providers/menu_provider.dart';
+import 'package:guiae/src/widgets/cards_universidades.dart';
+
 
 
 class UniversidadesPage extends StatelessWidget {
@@ -25,73 +24,64 @@ class UniversidadesPage extends StatelessWidget {
   }
 
     Widget _cards() {
+      return ListView(
+        children: <Widget>[
+
+          ListCardsUniversidades(
+            nombre: 'Unco',
+            nombreCompleto: 'Universidad Del Comahue',
+            icon: AssetImage('Asset/unco.png'),
+            
+            ),
+            ListCardsUniversidades(
+            nombre: 'Unrn',
+            nombreCompleto: 'Universidad De Rio Negro',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Utn',
+            nombreCompleto: 'Universidad Tecnologica Nacional',
+            icon: AssetImage('Asset/utn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Cpe',
+            nombreCompleto: 'Cpe',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+             
+             ListCardsUniversidades(
+            nombre: 'Itp',
+            nombreCompleto: 'Instituto Tecnológico de la Patagonia',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+             ListCardsUniversidades(
+            nombre: 'Uflo',
+            nombreCompleto: 'Universidad de Flores',
+            icon: AssetImage('Asset/unco.png'),
+            ),
+
+             ListCardsUniversidades(
+            nombre: 'Escuela de la Policia',
+            nombreCompleto: 'Escuela de la policia Neuquen',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
 
 
-      return FutureBuilder(
-      future: menuProvider.cargarData(),
-      initialData: [],
-      builder: ( context, AsyncSnapshot<List<dynamic>> snapshot){
-        
+          
+
+
+        ],
+      );
+
 
       
-         return ListView(
-          children: _listaItems(snapshot.data,context),
-      ); 
-
-
-      },
-    );
 
   }
 
-  List<Widget> _listaItems(List<dynamic> data,BuildContext context) {
-    
-    final List <Widget> opciones = [];
-     
-    
-    data.forEach( (opt) {
-    
-      final widget = 
-      Card(
-        color: Colors.white,
-        elevation: 10,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-        child: InkWell(
-                onTap:  () {
-                  Navigator.pushNamed( context, 'facultades' );
-                
-                  },
-                  child: Row(
-          
-          children: <Widget>[
-            
-            getIconImage( opt['icon'] ),
-            SizedBox(width: 10,),
-            Column(
-              children: <Widget>[
-                Text(opt['nombre'],style:styleUnivesidades,),
-                Text(opt['nombreCompleto']),
-                
-              ],
-            ),
-            
-            
-            ],),
-        ),
- 
-      );
-      
-      opciones..add (widget)
-              ..add(SizedBox(height: 10,));
-
-
-    });
-
-    return opciones;
-
-    
   
-    }
 
     
 

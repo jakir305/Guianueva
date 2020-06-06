@@ -1,5 +1,6 @@
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:guiae/src/providers/universidades_info.dart';
 import 'package:guiae/src/routes/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:guiae/models/user.dart';
@@ -15,14 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
       value: AuthService().user,
-      child: MaterialApp(
-      
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: getApplicationRoutes(),
-
+      child: ChangeNotifierProvider(
+        create: (context) =>UniversidadInfo(),
+              child: MaterialApp(
         
-      
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: getApplicationRoutes(),
+
+          
+        
+        ),
       ),
     );
   }
