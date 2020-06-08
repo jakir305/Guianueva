@@ -39,9 +39,7 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   Future<List<Facultades>> cargarCarreras(BuildContext context) async {
   final String _url = 'https://guiaestudiantilnaj.firebaseio.com/';
   
-  final universidadInfo = Provider.of<UniversidadInfo>(context);
-  nombreUniversidad = universidadInfo.universidad;
-  final url = '$_url/$nombreUniversidad/Facultad%20de%20Economía.json';
+  final url = '$_url/$nombreUniversidad/Facultad%20de%20Ingeniería%20.json';
   final resp = await http.get(url);
   final List<Facultades> universidades = new List();
   

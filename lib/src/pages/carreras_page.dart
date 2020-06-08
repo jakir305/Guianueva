@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/models.dart';
 import 'package:guiae/src/providers/provider.dart';
+import 'package:guiae/src/widgets/showdialog.dart';
 
 class ListaDeCarreras extends StatefulWidget {
  
@@ -80,18 +81,9 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
         elevation: 10.0,
         child: InkWell(child:
         Text(universidad.carrera,style: TextStyle(fontSize: 30),),
-        onTap: () {
-
-          showDialog(
-    context: context,
-    builder: (BuildContext context){
-        return AlertDialog(
-          title: Text("Detalles"),
-          content: Text("Hola"),
-        );
-    }
-  );
-        }
+        onTap: () => ShowDialog(
+          nombre: 'Hola',
+        ),
         ),
 
       );

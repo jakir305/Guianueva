@@ -11,25 +11,8 @@ class UniversidadInfo with ChangeNotifier {
 
   set universidad (String nombre){
     this._universidad = nombre;
-
     notifyListeners();
   }
 
 }
 
-class FacultadInfo with ChangeNotifier {
-
-  String _facultad = '';
-
-  
-  get facultad {
-    return _facultad;
-  }
-
-  set facultad (String nombre){
-    this._facultad = nombre;
-
-    notifyListeners();
-  }
-
-}

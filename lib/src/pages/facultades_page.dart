@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:guiae/src/providers/carreras_info.dart';
 import 'package:guiae/src/providers/models.dart';
 import 'package:guiae/src/providers/provider.dart';
+import 'package:provider/provider.dart';
 
 class ListaFacultadesPage extends StatefulWidget {
   @override
@@ -74,12 +76,16 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
 
 
   Widget _crearItem(Universidad universidad,){
+    final facultadInfo = Provider.of<FacultadInfo>(context); 
+    
 
       return Card(
         elevation: 10.0,
         child: InkWell(child:
         Text(universidad.facultad,style: TextStyle(fontSize: 30),),
         onTap: (){
+          facultadInfo.facultad = universidad.facultad;
+          print(facultadInfo.facultad);
           Navigator.pushNamed(context, 'carreras');
           
 
