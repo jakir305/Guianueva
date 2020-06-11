@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:guiae/screens/authenticate/sign_in_facebook.dart';
 import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/Utils/utils.dart';
 
 
 
@@ -77,7 +78,9 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.info),
               title: Text("Acerca de Nosotros"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, 'nosotros');
+              },
             ),
             ListTile(
               leading: Icon(Icons.share),
@@ -87,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.flag),
               title: Text("Politicas de Privacidad"),
-              onTap: () {},
+              onTap: () => launchURL('https://www.flexxus.com.ar/politica-privacidad-aplicaciones-moviles/'),
             ),
           ],
         ),

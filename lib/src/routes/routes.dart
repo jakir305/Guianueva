@@ -5,6 +5,7 @@ import 'package:guiae/screens/authenticate/sign_in.dart';
 import 'package:guiae/screens/home/wrapper.dart';
 import 'package:guiae/src/pages/carreras_page.dart';
 import 'package:guiae/src/pages/facultades_page.dart';
+import 'package:guiae/src/pages/nosotros.dart';
 import 'package:guiae/src/pages/universidades.page.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes(){
@@ -14,8 +15,9 @@ Map<String, WidgetBuilder> getApplicationRoutes(){
       'facultades'   : ( BuildContext context ) => ListaFacultadesPage(),
       'universidades': ( BuildContext context ) => UniversidadesPage(),
       'carreras'     : ( BuildContext context ) => ListaDeCarreras(),
-      'registrar'  : ( BuildContext context ) => Register(),
-      'ingresar'     : ( BuildContext context ) => SignIn(), 
+      'registrar'    : ( BuildContext context ) => Register(),
+      'ingresar'     : ( BuildContext context ) => SignIn(),
+      'nosotros'      : ( BuildContext context ) => Nosotros(),
 
       };
 
