@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Utils/text_style.dart';
-
 class Nosotros extends StatefulWidget {
   Nosotros({Key key}) : super(key: key);
 
@@ -36,7 +34,7 @@ class _NosotrosState extends State<Nosotros> {
           children: <Widget>[
             SizedBox(
               height: 20,
-            ),          
+            ),
             Text("Ministerio de Niñez, Juventud y Adolecencia",
             style: TextStyle(
               color: Colors.blueAccent
