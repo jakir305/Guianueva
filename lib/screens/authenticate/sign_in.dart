@@ -1,9 +1,6 @@
-import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
-
-import 'sign_in_facebook.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -177,7 +174,7 @@ class _SignInState extends State<SignIn> {
                       child: Image.asset('Asset/Facebook.png')),
                     label: Text('Continuar con Facebook ',style:TextStyle(fontSize: 15),),
                     onPressed: () async{
-                       await loginWithFacebook();
+                       await _auth.loginWithFacebook();
                     },
                     ),
 
@@ -193,7 +190,7 @@ class _SignInState extends State<SignIn> {
                       child: Image.asset('Asset/Google.png')),
                     label: Text('   Continuar con Google   ',style:TextStyle(fontSize: 15),),
                     onPressed: () async{
-                        await signInWithGoogle();
+                        await _auth.signInWithGoogle();
                      }
                    )
 

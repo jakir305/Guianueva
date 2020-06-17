@@ -1,4 +1,3 @@
-
 import 'package:guiae/models/user.dart';
 import 'package:guiae/screens/authenticate/authenticate.dart';
 import 'package:flutter/material.dart';

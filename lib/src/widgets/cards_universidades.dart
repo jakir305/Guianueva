@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
 import 'package:guiae/src/providers/universidades_info.dart';
@@ -26,7 +27,8 @@ class ListCardsUniversidades extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
         child: InkWell(
             onTap:  () { universidadInfo.universidad = nombre;
-
+              
+              
               Navigator.pushNamed(context, 'facultades');
             },
             child: Row(
@@ -57,4 +59,11 @@ class ListCardsUniversidades extends StatelessWidget {
       
    
   }
-}
+
+  
+    
+    
+
+
+    }
+  

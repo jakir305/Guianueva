@@ -19,11 +19,11 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.tealAccent[700],
-        title: Text('Universidades'), 
+        title: Text('Facultades'), 
         ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 10.0,),
           _imagenfacultad(),
           _crearlistado(),
         ],
@@ -32,9 +32,10 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
 } 
 
   Widget _imagenfacultad(){
-  
+    final _screenSize = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0 ),
+      height: _screenSize.height * 0.3 ,
+      width: double.infinity,
       child:
       Image(image: NetworkImage('https://www.neuqueninforma.gob.ar/wp-content/uploads/2019/06/WEB-Convenio-con-la-UNCo-5.jpg'))
       
@@ -44,6 +45,7 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
 
 
    Widget _crearlistado(){
+     final _screenSize = MediaQuery.of(context).size;
     
      return FutureBuilder(
        future: universidadesProvider.cargarFacultades(context),
@@ -53,9 +55,8 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
          if(snapshot.hasData){
            universidades = snapshot.data;
            return Container(
-             height: 200.0,
-             width: 350.0,
-             
+             height: _screenSize.height * 0.55 ,
+             width: double.infinity,
              child: ListView.builder(
                
                itemCount: universidades.length,
@@ -76,19 +77,14 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
 
 
   Widget _crearItem(Universidad universidad,){
-    final facultadInfo = Provider.of<FacultadInfo>(context); 
-    
-
+      final facultadInfo = Provider.of<CarreraInfo>(context); 
       return Card(
         elevation: 10.0,
         child: InkWell(child:
         Text(universidad.facultad,style: TextStyle(fontSize: 30),),
         onTap: (){
           facultadInfo.facultad = universidad.facultad;
-          print(facultadInfo.facultad);
           Navigator.pushNamed(context, 'carreras');
-          
-
 
         },
         ),

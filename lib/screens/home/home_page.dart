@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:guiae/screens/authenticate/sign_in_facebook.dart';
-import 'package:guiae/screens/authenticate/sign_in_google.dart';
 import 'package:guiae/services/auth.dart';
-import 'package:guiae/src/Utils/utils.dart';
 
 
 
@@ -19,11 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     
-    if (name == null) {
-      name = '';
-      email = '';
-      imageUrl = '';
-    }
+    
 
     var scaffold = Scaffold(
       backgroundColor: Colors.white,
@@ -43,9 +36,9 @@ class _HomePageState extends State<HomePage> {
                  borderRadius: BorderRadius.circular(30.0)),
                  color: Colors.white,
                 onPressed: () async {
-                  signOutFacebook();
+                  _auth.signOutFacebook();
                   _auth.signOut();
-                  signOutGoogle();
+                  _auth.signOutGoogle();
    
                 },
               ),
@@ -64,16 +57,16 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.tealAccent[700],
               ),
-              accountName: Text(name,
+              accountName: Text('name',
               style: TextStyle(
                 fontSize: 25,
               ),
               ),
-              accountEmail: Text(email),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.tealAccent[700],
-                backgroundImage: NetworkImage(imageUrl),
-              ),
+              accountEmail: Text('email'),
+              // currentAccountPicture: CircleAvatar(
+              //   backgroundColor: Colors.tealAccent[700],
+              //   backgroundImage: NetworkImage(imageUrl),
+              // ),
             ),
             ListTile(
               leading: Icon(Icons.info),
@@ -90,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.flag),
               title: Text("Politicas de Privacidad"),
-              onTap: () => launchURL('https://www.flexxus.com.ar/politica-privacidad-aplicaciones-moviles/'),
+              onTap: () {},
             ),
           ],
         ),
@@ -121,7 +114,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: <Widget>[
                   IconButton(
-          color: Colors.grey,
+          color: Colors.blue,
           iconSize: 100,
           icon: Icon(Icons.directions_bus),
           onPressed: (){

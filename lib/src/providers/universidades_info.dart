@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UniversidadInfo with ChangeNotifier {
 
-  String _universidad = 'Unco';
+  String _universidad = '';
 
   
   get universidad {

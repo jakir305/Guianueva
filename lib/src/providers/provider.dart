@@ -1,30 +1,32 @@
-import 'dart:convert';
-
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:guiae/src/providers/carreras_info.dart';
+import 'package:guiae/src/providers/detalles_info.dart';
 import 'package:guiae/src/providers/universidades_info.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-
 import 'models.dart';
 
 
 class UniversidadesProvider {
+final dbRef = FirebaseDatabase.instance.reference();
 
 String nombreUniversidad = '';
+String nombreFacultad = '';
+String detalleInfo = '';
+
 
 Future<List<Universidad>> cargarFacultades(BuildContext context) async {
-  final String _url = 'https://guiaestudiantilnaj.firebaseio.com/';
-  
+  Map _resp;
   final universidadInfo = Provider.of<UniversidadInfo>(context);
   nombreUniversidad = universidadInfo.universidad;
-  final url = '$_url/$nombreUniversidad.json';
-  final resp = await http.get(url);
+  await dbRef.child(nombreUniversidad).once().then((DataSnapshot data){
+   _resp = (data.value);
+  });
+  
   final List<Universidad> universidades = new List();
   
-
+  final Map decodedData = _resp;
   
-  final Map<String,dynamic> decodedData = json.decode(resp.body);
-
     if (decodedData == null ) return [];
 
     decodedData.forEach((nombre , facultad) { 
@@ -37,31 +39,71 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   }
 
   Future<List<Facultades>> cargarCarreras(BuildContext context) async {
-  final String _url = 'https://guiaestudiantilnaj.firebaseio.com/';
-  
-  final url = '$_url/$nombreUniversidad/Facultad%20de%20Ingeniería%20.json';
-  final resp = await http.get(url);
-  final List<Facultades> universidades = new List();
+  var _resp;
+  final universidadInfo = Provider.of<UniversidadInfo>(context);
+  final carreraInfo     = Provider.of<CarreraInfo>(context);
+  nombreUniversidad     = universidadInfo.universidad;
+  nombreFacultad        = carreraInfo.facultad;
+  final List<Facultades> carreras = new List();
+  await dbRef.child(nombreUniversidad).child(nombreFacultad).once().then((DataSnapshot data){
+  _resp = (data.value);
+  });
   
 
-  
-  final Map<String,dynamic> decodedData = json.decode(resp.body);
+
+  final  decodedData = _resp;
 
     if (decodedData == null ) return [];
 
-    decodedData.forEach((nombre , facultad) { 
-      
-     Facultades facultad1 = new Facultades(carrera:nombre);
-      universidades.add(facultad1);
+    decodedData.forEach((nombre , facultad,) { 
+    Facultades facultad1 = new Facultades(carrera:nombre,duracion: facultad['Años']);
+    
+     print(facultad);
+  
+  
+       
+    
+      carreras.add(facultad1);
+
     });
-    print(universidades);
-  return universidades;
+  
+  return carreras;
   }
+
+
+  Future<List<Carreras>> cargarDetalles(BuildContext context) async {
+  var _resp;
+  final universidadInfo = Provider.of<UniversidadInfo>(context, listen: false);
+  final carreraInfo     = Provider.of<CarreraInfo>(context, listen: false);
+  final detallesInfo    = Provider.of<DetallesInfo>(context, listen: false);
+  detalleInfo           = detallesInfo.carrera;
+  nombreUniversidad     = universidadInfo.universidad;
+  nombreFacultad        = carreraInfo.facultad;
+  final List<Carreras> carreras = new List();
+  await dbRef.child(nombreUniversidad).child(nombreFacultad).child(detalleInfo).once().then((DataSnapshot data){
+  _resp = (data.value);
   
+  });
   
+
+
+  final  decodedData = _resp;
   
-  
-  
+
+    if (decodedData == null ) return null;
+
+    decodedData.forEach((dato1,dato2) { 
+      
+     Carreras carrera = new Carreras(
+       duracion:dato2.toString(),
+     );
+     carreras.add(carrera);
+     
+      
+    });
+  return carreras;
+  }
+
   
   
   }

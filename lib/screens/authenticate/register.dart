@@ -64,7 +64,6 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     children: <Widget>[
-                      //Email
                       TextFormField(
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.emailAddress,
@@ -72,14 +71,21 @@ class _RegisterState extends State<Register> {
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration:
+                        decoration: 
+                      
+                        
                         InputDecoration.collapsed(
                           fillColor: Colors.white,
                           filled: true,
+                          
+                          
+
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(style:BorderStyle.solid,color: Colors.black,),
                                 borderRadius: BorderRadius.circular(20)),
-                            hintText: 'Email'),
+                                
+
+                            hintText: 'usuario'),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese Email valido' : null,
                         onChanged: (val) {
@@ -93,8 +99,6 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: 10.0),
 
-
-                      //contraseña
                       TextFormField(
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -107,7 +111,7 @@ class _RegisterState extends State<Register> {
 
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                            hintText: 'Contraseña'),
+                            hintText: 'contraseña'),
                         obscureText: true,
                         validator: (val) => val.length < 6
                           
@@ -117,30 +121,6 @@ class _RegisterState extends State<Register> {
                           setState(() => password = val);
                         },
                       ),
-                      SizedBox(height: 20.0,),
-
-                      TextFormField(
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                        maxLines: 1,
-                        decoration: InputDecoration.collapsed(
-                          fillColor: Colors.white,
-                          filled: true,
-                            border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                            hintText: 'Repita Contraseña'),
-                            obscureText: true,
-                            validator: (val) => val.length < 6
-                          
-                            ? 'Contraseña menor a 6 caracteres'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                        },
-                      ),
-                    
                     ],
                   ),
                 ),

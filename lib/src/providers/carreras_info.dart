@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FacultadInfo with ChangeNotifier {
+class CarreraInfo with ChangeNotifier {
 
   String _facultad = '';
 
