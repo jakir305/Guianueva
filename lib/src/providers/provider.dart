@@ -1,7 +1,11 @@
+
+
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:guiae/src/providers/carreras_info.dart';
-import 'package:guiae/src/providers/detalles_info.dart';
+import 'package:guiae/src/providers/models.dart';
 import 'package:guiae/src/providers/universidades_info.dart';
 import 'package:provider/provider.dart';
 import 'models.dart';
@@ -13,6 +17,7 @@ final dbRef = FirebaseDatabase.instance.reference();
 String nombreUniversidad = '';
 String nombreFacultad = '';
 String detalleInfo = '';
+List temp;
 
 
 Future<List<Universidad>> cargarFacultades(BuildContext context) async {
@@ -25,11 +30,11 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   
   final List<Universidad> universidades = new List();
   
-  final Map decodedData = _resp;
   
-    if (decodedData == null ) return [];
+  
+    if (_resp == null ) return [];
 
-    decodedData.forEach((nombre , facultad) { 
+    _resp.forEach((nombre , facultad) { 
       
       Universidad universidad = new Universidad(facultad:nombre);
       universidades.add(universidad);
@@ -50,59 +55,25 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   });
   
 
+    if (_resp == null ) return [];
 
-  final  decodedData = _resp;
-
-    if (decodedData == null ) return [];
-
-    decodedData.forEach((nombre , facultad,) { 
-    Facultades facultad1 = new Facultades(carrera:nombre,duracion: facultad['Años']);
-    
-     print(facultad);
-  
-  
-       
-    
-      carreras.add(facultad1);
-
-    });
-  
-  return carreras;
-  }
-
-
-  Future<List<Carreras>> cargarDetalles(BuildContext context) async {
-  var _resp;
-  final universidadInfo = Provider.of<UniversidadInfo>(context, listen: false);
-  final carreraInfo     = Provider.of<CarreraInfo>(context, listen: false);
-  final detallesInfo    = Provider.of<DetallesInfo>(context, listen: false);
-  detalleInfo           = detallesInfo.carrera;
-  nombreUniversidad     = universidadInfo.universidad;
-  nombreFacultad        = carreraInfo.facultad;
-  final List<Carreras> carreras = new List();
-  await dbRef.child(nombreUniversidad).child(nombreFacultad).child(detalleInfo).once().then((DataSnapshot data){
-  _resp = (data.value);
-  
-  });
-  
-
-
-  final  decodedData = _resp;
-  
-
-    if (decodedData == null ) return null;
-
-    decodedData.forEach((dato1,dato2) { 
-      
-     Carreras carrera = new Carreras(
-       duracion:dato2.toString(),
-     );
-     carreras.add(carrera);
+    _resp.forEach((uno , dos) {
+    Facultades facultad1 = new Facultades(carrera:uno,duracion:dos['Años'],);
      
-      
+
+
+    carreras.add(facultad1);
+    
     });
+
+
+  
+  
   return carreras;
   }
+
+
+  
 
   
   

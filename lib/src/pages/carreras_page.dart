@@ -17,7 +17,6 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
    List carreras;
    String facultadCarrera;
    List carrerasDetalles;
-   Carreras detalle;
    
 
   final universidadesProvider = new UniversidadesProvider();

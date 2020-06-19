@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -52,6 +53,8 @@ class ShowDialog  {
           CupertinoDialogAction(
             child: Text('Ir al link'),
             onPressed: () {
+              _launchURL();
+              
               
             },
           ),
@@ -59,6 +62,14 @@ class ShowDialog  {
       );
     },
   );
+}
+
+_launchURL() async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'No se pudo ingresar al link $url';
+  }
 }
 
 

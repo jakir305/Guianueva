@@ -11,12 +11,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AuthService _auth = AuthService();
+   
+  
+  final AuthService auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+   
     
-    
+
 
     var scaffold = Scaffold(
       backgroundColor: Colors.white,
@@ -36,9 +39,9 @@ class _HomePageState extends State<HomePage> {
                  borderRadius: BorderRadius.circular(30.0)),
                  color: Colors.white,
                 onPressed: () async {
-                  _auth.signOutFacebook();
-                  _auth.signOut();
-                  _auth.signOutGoogle();
+                  auth.signOutFacebook();
+                  auth.signOut();
+                  auth.signOutGoogle();
    
                 },
               ),
@@ -47,6 +50,7 @@ class _HomePageState extends State<HomePage> {
 
       ),
 
+    
     
     
       drawer: Drawer(
@@ -63,10 +67,10 @@ class _HomePageState extends State<HomePage> {
               ),
               ),
               accountEmail: Text('email'),
-              // currentAccountPicture: CircleAvatar(
-              //   backgroundColor: Colors.tealAccent[700],
-              //   backgroundImage: NetworkImage(imageUrl),
-              // ),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.tealAccent[700],
+                backgroundImage: NetworkImage(imageUrl.toString()),
+              ),
             ),
             ListTile(
               leading: Icon(Icons.info),
@@ -217,4 +221,9 @@ class _HomePageState extends State<HomePage> {
     );
     return scaffold;
   }
+  
+    
+
+  
 }
+
