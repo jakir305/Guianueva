@@ -102,6 +102,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
             nombre  : facultad.carrera,
             icon    : AssetImage('Asset/unco.png'),
             duracion:'Duracion de la carrera: ${facultad.duracion} años',
+            lugar: 'Lugares: ${facultad.lugar}',
             url     : facultad.url, 
           ).alerta(context);
         }

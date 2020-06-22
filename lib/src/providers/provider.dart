@@ -1,7 +1,5 @@
 
 
-import 'dart:convert';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:guiae/src/providers/carreras_info.dart';
@@ -17,7 +15,7 @@ final dbRef = FirebaseDatabase.instance.reference();
 String nombreUniversidad = '';
 String nombreFacultad = '';
 String detalleInfo = '';
-List temp;
+Map<dynamic,dynamic> temp;
 
 
 Future<List<Universidad>> cargarFacultades(BuildContext context) async {
@@ -50,6 +48,7 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   nombreUniversidad     = universidadInfo.universidad;
   nombreFacultad        = carreraInfo.facultad;
   final List<Facultades> carreras = new List();
+  Facultades facultad1;
   await dbRef.child(nombreUniversidad).child(nombreFacultad).once().then((DataSnapshot data){
   _resp = (data.value);
   });
@@ -58,17 +57,15 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
     if (_resp == null ) return [];
 
     _resp.forEach((uno , dos) {
-    Facultades facultad1 = new Facultades(carrera:uno,duracion:dos['Años'],);
+    facultad1 = Facultades(carrera:uno,duracion: dos['Años'],url: dos['Url'],lugar: dos['Lugar']);
+    print(facultad1.url);
+    
      
-
-
     carreras.add(facultad1);
     
     });
 
 
-  
-  
   return carreras;
   }
 

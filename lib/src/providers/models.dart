@@ -24,18 +24,23 @@ class Facultades {
     var carrera;
     var duracion;
     var url;
+    var lugar;
 
     Facultades({
         this.carrera,
         this.duracion,
         this.url,
+        this.lugar
+        
         
     });
 
     factory Facultades.fromJson(Map<String, dynamic> parsedjson) => Facultades(
         carrera: parsedjson[""],
-        duracion: parsedjson[""],
+        duracion: parsedjson["Años"],
         url: parsedjson["Url"],
+        lugar: parsedjson["lugar"],
+        
         
     );
 

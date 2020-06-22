@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               accountEmail: Text('email'),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.tealAccent[700],
-                backgroundImage: NetworkImage(imageUrl.toString()),
+                backgroundImage: NetworkImage('imageUrl'),
               ),
             ),
             ListTile(

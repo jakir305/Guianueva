@@ -8,11 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
   String imageUrl;  
 
 class AuthService {
-  String name;
-  String email;
-  String imageUrl; 
 
-  
 
   final FirebaseAuth _auth = FirebaseAuth.instance; 
   bool isLogged = false;

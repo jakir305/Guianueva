@@ -11,12 +11,15 @@ class ShowDialog  {
   final AssetImage icon;
   final String url;
   final String duracion;
+  final String lugar;
 
   ShowDialog({
     @required this.nombre,
     @required this.icon,
     @required this.url,
     @required this.duracion,
+    @required this.lugar,
+
     
     });
 
@@ -34,6 +37,8 @@ class ShowDialog  {
             Text(nombre),
             SizedBox(height: 10.0,),
             Text(duracion),
+            SizedBox(height: 10.0,),
+            Text(lugar),
             SizedBox(height: 10.0,),
             Container(
               width: 50.0,
