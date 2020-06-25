@@ -2,6 +2,7 @@ import 'package:guiae/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
   
   String name;
   String email;
@@ -23,13 +24,15 @@ class AuthService {
   // auth change user stream
   Stream<User> get user {
     return _auth.onAuthStateChanged
-      //.map((FirebaseUser user) => _userFromFirebaseUser(user));
+      
       .map(_userFromFirebaseUser);
   }
 
 
   // Login with Facebook
  Future<FirebaseUser> loginWithFacebook() async{
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+
 
 
 final result = await facebookLogin.logIn(['email']);
@@ -55,6 +58,10 @@ if (result.status != FacebookLoginStatus.loggedIn){
   email = user.email;
   imageUrl = user.photoUrl;
 
+    prefs.setString('name', name);
+    prefs.setString('email', email);
+    prefs.setString('imageUrl', imageUrl);
+
    if (name.contains(" ")) {
     name = name.substring(0, name.indexOf(" "));
   }
@@ -69,6 +76,7 @@ if (result.status != FacebookLoginStatus.loggedIn){
 
 // Login with Google
   Future<String> signInWithGoogle() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
   
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
@@ -91,6 +99,12 @@ if (result.status != FacebookLoginStatus.loggedIn){
   email = user.email;
   imageUrl = user.photoUrl;
 
+    prefs.setString('name', name);
+    prefs.setString('email', email);
+    prefs.setString('imageUrl', imageUrl);
+  
+
+
   // Only taking the first part of the name, i.e., First Name
   if (name.contains(" ")) {
     name = name.substring(0, name.indexOf(" "));
@@ -112,12 +126,18 @@ if (result.status != FacebookLoginStatus.loggedIn){
   // sign in with email and password
   Future signInWithEmailAndPassword(String _email, String _password) async {
     try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       AuthResult result = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
       FirebaseUser user = result.user;
       name = '';
       email = _email;
       imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
-      
+       
+    prefs.setString('name', name);
+    prefs.setString('email', email);
+    prefs.setString('imageUrl', imageUrl);
+
 
       return user;
     } catch (error) {
@@ -129,11 +149,18 @@ if (result.status != FacebookLoginStatus.loggedIn){
   // register with email and password
   Future registerWithEmailAndPassword(String _email, String password) async {
     try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: _email, password: password);
       FirebaseUser user = result.user;
       name = '';
       email = _email;
       imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
+
+    prefs.setString('name', name);
+    prefs.setString('email', email);
+    prefs.setString('imageUrl', imageUrl);
+
 
       return _userFromFirebaseUser(user);
     } catch (error) {

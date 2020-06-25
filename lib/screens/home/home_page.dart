@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 
 
 
@@ -18,8 +19,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
    
-    
 
+    final prefs = new PreferenciasUsuario();
+   
+    
+  
 
     var scaffold = Scaffold(
       backgroundColor: Colors.white,
@@ -42,16 +46,16 @@ class _HomePageState extends State<HomePage> {
                   auth.signOutFacebook();
                   auth.signOut();
                   auth.signOutGoogle();
+                  
    
                 },
               ),
             ),
-          ]
+            
+            ]
 
       ),
 
-    
-    
     
       drawer: Drawer(
         child: ListView(
@@ -61,15 +65,15 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.tealAccent[700],
               ),
-              accountName: Text('name',
+              accountName: Text(prefs.name,
               style: TextStyle(
                 fontSize: 25,
               ),
               ),
-              accountEmail: Text('email'),
+              accountEmail: Text(prefs.email),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.tealAccent[700],
-                backgroundImage: NetworkImage('imageUrl'),
+                backgroundImage: NetworkImage(prefs.imageUrl),
               ),
             ),
             ListTile(
