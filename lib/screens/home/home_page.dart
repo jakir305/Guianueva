@@ -118,7 +118,6 @@ class _HomePageState extends State<HomePage> {
                   ),
             ),
             Expanded(
-              
               child: Column(
                 children: <Widget>[
                   IconButton(
@@ -126,6 +125,7 @@ class _HomePageState extends State<HomePage> {
           iconSize: 100,
           icon: Icon(Icons.directions_bus),
           onPressed: (){
+            Navigator.pushNamed(context, 'colectivos');
           }
                   ),
                   SizedBox(

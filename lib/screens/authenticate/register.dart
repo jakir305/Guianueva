@@ -85,7 +85,7 @@ class _RegisterState extends State<Register> {
                                 borderRadius: BorderRadius.circular(20)),
                                 
 
-                            hintText: 'usuario'),
+                            hintText: 'correo'),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese Email valido' : null,
                         onChanged: (val) {
