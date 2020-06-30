@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 
 
@@ -137,7 +138,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               
               child: IconButton(
-                  color: Colors.grey,
+                  color: Colors.blue,
                   iconSize: 100,
                   icon: Icon(Icons.book),
                   onPressed: (){
@@ -212,6 +213,12 @@ class _HomePageState extends State<HomePage> {
                   iconSize: 100,
                   icon: Icon(Icons.search),
                   onPressed: (){
+                    showSearch(context: context,
+                     delegate: Datacarreras(),
+                     
+                    
+                    );
+                   
                   }
               ),
             ),

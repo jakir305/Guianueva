@@ -36,9 +36,9 @@ class ShowDialog  {
           children: <Widget>[
             Text(nombre),
             SizedBox(height: 10.0,),
-            Text(duracion),
-            SizedBox(height: 10.0,),
             Text(lugar),
+            SizedBox(height: 10.0,),
+            Text(duracion),
             SizedBox(height: 10.0,),
             Container(
               width: 50.0,

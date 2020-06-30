@@ -13,16 +13,21 @@ class ColectivosPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          colectivosCard(),
+          colectivosCard(context),
           
         ],
       ),
     );
 }
   
-   Widget colectivosCard() {
-     return ListCardsColectivos(
-       lugar: 'Neuquen',
+   Widget colectivosCard(BuildContext context) {
+     final _screenSize = MediaQuery.of(context).size;
+     return Container(
+       width: double.infinity,
+       height: _screenSize.height * 0.2,
+       child: ListCardsColectivos(
+         lugar: 'Neuquen',
+       ),
      );
 
 

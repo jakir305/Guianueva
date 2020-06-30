@@ -58,7 +58,6 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
 
     _resp.forEach((uno , dos) {
     facultad1 = Facultades(carrera:uno,duracion: dos['Años'],url: dos['Url'],lugar: dos['Lugar']);
-    print(facultad1.url);
     
      
     carreras.add(facultad1);

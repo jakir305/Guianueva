@@ -22,37 +22,19 @@ class ListCardsColectivos extends StatelessWidget {
         elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
         child: InkWell(
-            onTap:  () { },
+            onTap:  () { Navigator.pushNamed(context, 'lineas'); },
             child: Row(
             children: <Widget>[
-              Container(
-                width  :80,
-                height :80,
-                child: 
-                Icon(Icons.directions_bus),
-              ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(lugar,style: styleNombreUniver,textAlign:TextAlign.center,),
-                ],
-              ),
-            ),
+             Icon(Icons.directions_bus,size: 70.0,),
+             SizedBox(width: 10.0,),
+             Text(lugar,style: styleNombreUniver,textAlign:TextAlign.center,),
             
             ],),
         ),
  
       );
 
-      
-   
   }
-
-  
-    
-    
 
 
     }

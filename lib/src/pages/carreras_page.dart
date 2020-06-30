@@ -86,7 +86,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
   
 
   Widget _crearItem(Facultades facultad,){
-
+    String _duracion;
     
      
      
@@ -97,11 +97,17 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
         child: InkWell(child:
         Text(facultad.carrera,style: TextStyle(fontSize: 30),),
         onTap: ()  {
+          if(facultad.duracion == null){
+            _duracion = '';
+          }
+          else {
+            _duracion = 'Duracion de la carrera: ${facultad.duracion} años';
+          }
           
           ShowDialog(
             nombre  : facultad.carrera,
             icon    : AssetImage('Asset/unco.png'),
-            duracion:'Duracion de la carrera: ${facultad.duracion} años',
+            duracion: _duracion,
             lugar: 'Lugares: ${facultad.lugar}',
             url     : facultad.url, 
           ).alerta(context);
