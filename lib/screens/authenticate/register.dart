@@ -19,10 +19,6 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   String error = '';
 
-  // final GlobalKey<FormState> _form = GlobalKey<FormState>();            //Comandos Agregados
-  // final TextEditingController _pass = TextEditingController();          //Comandos Agregados
-  // final TextEditingController _confirmPass = TextEditingController();   //Comandos Agregados
-
   // text field state
   String email = '';
   String password = '';
@@ -104,44 +100,27 @@ class _RegisterState extends State<Register> {
                       SizedBox(height: 10.0),
 
                       TextFormField(
-                        controller: _pass,//Comando Agregado
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20.0,),
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
                         maxLines: 1,
                         decoration: InputDecoration.collapsed(
                           fillColor: Colors.white,
                           filled: true,
-                          hintText: 'Contraseña'
-                          border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                          ),
-                          obscureText: true,
-                          validator: (val) => val.length < 6                          
+
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            hintText: 'contraseña'),
+                        obscureText: true,
+                        validator: (val) => val.length < 6
+                          
                             ? 'Contraseña menor a 6 caracteres'
                             : null,
-
-                            // (val){
-                            //   if(val.isEmpty)
-                            //        return 'vacio';
-                            //   return null;
-                            //   }
                         onChanged: (val) {
                           setState(() => password = val);
                         },
                       ),
-
-                    //   TextFormField(                      //Comandos Agregados
-                    //        controller: _confirmPass,
-                    //        validator: (val){
-                    //           if(val.isEmpty)
-                    //                return 'vacio';
-                    //           if(val != _pass.text)
-                    //                return 'Not Match'
-                    //           return null;
-                    //           }
-                    //  ),
-
-
                     ],
                   ),
                 ),
@@ -187,7 +166,6 @@ class _RegisterState extends State<Register> {
             ),
           ),
         ),
-        //  _form.currentState.validate() //esto sirve para verificar si esta bien
       ),
     );
   }
