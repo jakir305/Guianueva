@@ -1,3 +1,6 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guiae/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -124,21 +127,30 @@ if (result.status != FacebookLoginStatus.loggedIn){
 
 
   // sign in with email and password
-  Future signInWithEmailAndPassword(String _email, String _password) async {
+  Future signInWithEmailAndPassword(String _email, String _password , ) async {
+    //Busca la instancia de usuario en flutter y asigna el nombre 
+    Firestore.instance
+        .collection('usuarios')
+        .where("correo", isEqualTo:_email)
+        .snapshots()
+        .listen((data) =>
+          data.documents.forEach((doc) => name = (doc["nombre"])));
     try {
-
+      
+   
       SharedPreferences prefs = await SharedPreferences.getInstance();
       AuthResult result = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
       FirebaseUser user = result.user;
-      name = '';
+      
       email = _email;
       imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
-       
-    prefs.setString('name', name);
+   
+    prefs.setString('name', name);   
     prefs.setString('email', email);
     prefs.setString('imageUrl', imageUrl);
 
-
+    
+      
       return user;
     } catch (error) {
       print(error.toString());
@@ -147,17 +159,18 @@ if (result.status != FacebookLoginStatus.loggedIn){
   }
 
   // register with email and password
-  Future registerWithEmailAndPassword(String _email, String password) async {
+  Future registerWithEmailAndPassword(String _email, String password,String _nombre) async {
     try {
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: _email, password: password);
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: _email, password: password,);
       FirebaseUser user = result.user;
+
       name = '';
       email = _email;
       imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
 
-    prefs.setString('name', name);
+    
     prefs.setString('email', email);
     prefs.setString('imageUrl', imageUrl);
 

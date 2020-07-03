@@ -17,6 +17,9 @@ final styleGuia = new TextStyle(
     fontWeight: FontWeight.w100,
     letterSpacing: 1,
     color: Colors.tealAccent[700],);
+
+
+ 
                     
 
 

@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Register extends StatefulWidget {
@@ -14,32 +16,30 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-
+  
+  String valTemp;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String error = '';
 
   // text field state
+  String nombre='';
   String email = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Colors.white,
-      
       body: Container(
         height: double.infinity,
-        
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.center,
             end: Alignment.bottomCenter,
-            
             colors: [Colors.white,Colors.tealAccent[700]])
-
         ),
+
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -64,6 +64,34 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     children: <Widget>[
+                      
+                      // nombre y apellido
+                    TextFormField(
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                        maxLines: 1,
+                        decoration:InputDecoration.collapsed(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(style:BorderStyle.solid,
+                              color: Colors.black,),
+                              borderRadius: BorderRadius.circular(20)),
+                                hintText:'nombre y apellido'),
+                                 
+                                onChanged: (val) {
+                                setState(() => nombre = val);
+                                
+                            },
+                          ),
+
+                          SizedBox(height: 15.0,),
+
+                        
+                      // Caja de correo
                       TextFormField(
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.emailAddress,
@@ -71,34 +99,56 @@ class _RegisterState extends State<Register> {
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: 
-                      
-                        
-                        InputDecoration.collapsed(
+                        decoration:InputDecoration.collapsed(
                           fillColor: Colors.white,
                           filled: true,
-                          
-                          
-
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(style:BorderStyle.solid,color: Colors.black,),
-                                borderRadius: BorderRadius.circular(20)),
-                                
-
-                            hintText: 'correo'),
-                        validator: (val) =>
-                            val.isEmpty ? 'Ingrese Email valido' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        },
-                      ),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(style:BorderStyle.solid,
+                              color: Colors.black,),
+                              borderRadius: BorderRadius.circular(20)),
+                                hintText:'correo'),
+                                validator: (val) => val.isEmpty ? 'Ingrese Email valido' : null,
+                                onChanged: (val) {
+                                setState(() => email = val);
+                            },
+                          ),
 
                       Text(
                         error,
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                       ),
-                      SizedBox(height: 10.0),
 
+                      
+
+                      // Caja de contraseña
+                      TextFormField(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                        maxLines: 1,
+                        decoration: InputDecoration.collapsed(
+                          fillColor: Colors.white,
+                          filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                              hintText: 'contraseña'),
+                        obscureText: true,
+                        validator: (val) => val.length < 6
+                            ? 'Contraseña menor a 6 caracteres'
+                            : null,
+                        onChanged: (val) {
+                           
+                           setState(() {
+                             password = val;
+                             valTemp = val;
+                           });
+                        },
+                      ),
+
+                      SizedBox(height: 15.0,),
+
+                      // Caja de contraseña validacion
                       TextFormField(
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -111,16 +161,21 @@ class _RegisterState extends State<Register> {
 
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                            hintText: 'contraseña'),
-                        obscureText: true,
-                        validator: (val) => val.length < 6
+                            hintText: 'repita la contraseña'),
+                            obscureText: true,
+                            validator: (val) {
                           
-                            ? 'Contraseña menor a 6 caracteres'
-                            : null,
+                          if(val != valTemp){
+                            return 'Las contraseñas no coinciden';
+                          }
+                          return null;
+            
+                        },
                         onChanged: (val) {
                           setState(() => password = val);
                         },
                       ),
+
                     ],
                   ),
                 ),
@@ -143,16 +198,28 @@ class _RegisterState extends State<Register> {
                           '  Registrarse e ingresar  ',
                           style: TextStyle(color: Colors.black),
                         ),
+                        
                         onPressed: () async {
-                      if(_formKey.currentState.validate()){
-                        dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                          
+                      if(_formKey.currentState.validate()) {
+                        dynamic result = await _auth.registerWithEmailAndPassword(email, password,nombre);
+                   
                         if(result == null) {
                           setState(() {
                             error = 'Ingrese un email valido';
                             }
                           );
                         }
+                        //crea instancia de usuario en firebase
+                        Firestore.instance.collection('usuarios').document()
+                        .setData({ 'correo': email, 'nombre': nombre });
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.setString('name', nombre);
+
                       }
+                      
+                      
+                    
                     }
                         ),
                          ],
@@ -160,8 +227,7 @@ class _RegisterState extends State<Register> {
                 ),
 
                 SizedBox(height: 20.0),
-              
-                  
+
               ],
             ),
           ),

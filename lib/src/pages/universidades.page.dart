@@ -69,6 +69,30 @@ class UniversidadesPage extends StatelessWidget {
             icon: AssetImage('Asset/unrn.png'),
             ),
 
+            ListCardsUniversidades(
+            nombre: 'Balseiro',
+            nombreCompleto: 'Instituto Balseiro',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Ucasal',
+            nombreCompleto: 'Universidad Católolica de Salta',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Enerc',
+            nombreCompleto: 'Escuela Nacional de Experimentación y Realización Cinematográfica',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Potenciar',
+            nombreCompleto: 'Fundación Potenciar',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
 
           
 

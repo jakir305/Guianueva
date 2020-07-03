@@ -2,8 +2,10 @@ import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
 
+
 class SignIn extends StatefulWidget {
   final Function toggleView;
+  
   SignIn({this.toggleView});
 
   @override
@@ -14,8 +16,10 @@ class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String error = '';
+  String temp;
 
   // text field state
+  String nombre ='';
   String email = '';
   String password = '';
 
@@ -126,17 +130,19 @@ class _SignInState extends State<SignIn> {
                           style: TextStyle(color: Colors.black),
                         ),
                         onPressed: () async {
+            
                           if (_formKey.currentState.validate()) {
+                            print(nombre);
+                            
                             dynamic result = await _auth.signInWithEmailAndPassword(
-                                email, password);
-                                
-                                
-                                
+                                email, password,);
                             if (result == null) {
                               setState(() {
                                 error = 'No pudo ingresar con esas Credenciales';
                               });
                             }
+                             
+                          
                           }
                         }),
 
