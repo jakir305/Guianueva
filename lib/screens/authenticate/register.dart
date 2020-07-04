@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Register extends StatefulWidget {
@@ -211,10 +209,7 @@ class _RegisterState extends State<Register> {
                           );
                         }
                         //crea instancia de usuario en firebase
-                        Firestore.instance.collection('usuarios').document()
-                        .setData({ 'correo': email, 'nombre': nombre });
-                        SharedPreferences prefs = await SharedPreferences.getInstance();
-                        prefs.setString('name', nombre);
+                        
 
                       }
                       
