@@ -14,7 +14,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  
+  String avatar;
   String valTemp;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -174,6 +174,45 @@ class _RegisterState extends State<Register> {
                         },
                       ),
 
+                        
+                        SizedBox(height: 10.0,),
+
+                        //Seleccion de icono
+                        
+                        DropdownButton<String>(
+                          itemHeight: 100.0,
+                          hint: Text('Icono'),
+                          value: avatar,
+                    
+                         items: <String>['Asset/unco1.png','Asset/balseiro.png','Asset/utn.png'].map((String value) {
+                         return  DropdownMenuItem<String>(
+                           value: value,
+            
+                           child: Center(
+                             child: Container(
+                               padding: const EdgeInsets.only(bottom: 10.0),
+                               height: 80.0,
+                               width: 80.0,
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 
+                                 children: <Widget>[
+                                   Image(image:AssetImage(value)
+                                   ),
+                                   
+                                 ],
+                               ),
+                             ),
+                           ),
+                         );
+                       }).toList(),
+                       onChanged: (newvalue) {
+                         setState(() {
+                         avatar = newvalue;
+                         });
+                       },
+                     )
+
                     ],
                   ),
                 ),
@@ -208,7 +247,7 @@ class _RegisterState extends State<Register> {
                             }
                           );
                         }
-                        //crea instancia de usuario en firebase
+                      
                         
 
                       }
@@ -222,6 +261,7 @@ class _RegisterState extends State<Register> {
                 ),
 
                 SizedBox(height: 20.0),
+                
 
               ],
             ),

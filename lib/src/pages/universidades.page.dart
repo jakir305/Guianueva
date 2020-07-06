@@ -93,6 +93,24 @@ class UniversidadesPage extends StatelessWidget {
             icon: AssetImage('Asset/unrn.png'),
             ),
 
+            ListCardsUniversidades(
+            nombre: 'Iupa',
+            nombreCompleto: 'Instituto Universitario Patagónico de Artes',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Issa',
+            nombreCompleto: 'Instituto Superior San Agustin',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
+            ListCardsUniversidades(
+            nombre: 'Cetec',
+            nombreCompleto: 'Centro de Estudios Terciarios del Comahue',
+            icon: AssetImage('Asset/unrn.png'),
+            ),
+
 
           
 
