@@ -15,6 +15,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   String avatar;
+  AssetImage avatarAsset;
   String valTemp;
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -79,7 +80,7 @@ class _RegisterState extends State<Register> {
                               color: Colors.black,),
                               borderRadius: BorderRadius.circular(20)),
                                 hintText:'nombre y apellido'),
-                                 
+                                validator: (val) => val.isEmpty ? 'Ingrese su nombre y apellido' : null,
                                 onChanged: (val) {
                                 setState(() => nombre = val);
                                 
@@ -111,12 +112,8 @@ class _RegisterState extends State<Register> {
                             },
                           ),
 
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
+                          SizedBox(height: 15.0,),
 
-                      
 
                       // Caja de contraseña
                       TextFormField(
@@ -174,18 +171,21 @@ class _RegisterState extends State<Register> {
                         },
                       ),
 
-                        
-                        SizedBox(height: 10.0,),
 
                         //Seleccion de icono
-                        
+
+
+                     
+                        SizedBox(height: 15.0,),
                         DropdownButton<String>(
+                        
                           itemHeight: 100.0,
                           hint: Text('Icono'),
                           value: avatar,
                     
                          items: <String>['Asset/unco1.png','Asset/balseiro.png','Asset/utn.png'].map((String value) {
                          return  DropdownMenuItem<String>(
+                           
                            value: value,
             
                            child: Center(
@@ -209,6 +209,8 @@ class _RegisterState extends State<Register> {
                        onChanged: (newvalue) {
                          setState(() {
                          avatar = newvalue;
+                         avatarAsset = AssetImage(newvalue);
+
                          });
                        },
                      )
@@ -216,14 +218,21 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 15.0),
 
                   InkWell(
                     child: Text("Ya tenes cuenta? Ingresa aca",style: TextStyle(fontSize: 15),),
                     onTap:() => widget.toggleView(),
                     ),
 
-                SizedBox(height: 10.0),
+                  SizedBox(height: 15.0,),
+
+                    Text(
+                        error,
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      ),
+
+                SizedBox(height: 15.0),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
@@ -237,9 +246,16 @@ class _RegisterState extends State<Register> {
                         ),
                         
                         onPressed: () async {
-                          
-                      if(_formKey.currentState.validate()) {
-                        dynamic result = await _auth.registerWithEmailAndPassword(email, password,nombre);
+                          if(avatar == null) {
+                            setState(() {
+                              
+                              error = 'Seleccione un icono para su avatar';
+                            });
+                          }
+                          else{
+
+                            if(_formKey.currentState.validate()) {
+                        dynamic result = await _auth.registerWithEmailAndPassword(email, password,nombre,avatar);
                    
                         if(result == null) {
                           setState(() {
@@ -251,16 +267,25 @@ class _RegisterState extends State<Register> {
                         
 
                       }
+
+
+
+                          }
+                          
+                          
+                      
                       
                       
                     
                     }
                         ),
+                          
+                         
                          ],
                 
                 ),
 
-                SizedBox(height: 20.0),
+               
                 
 
               ],

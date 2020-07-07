@@ -24,8 +24,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     
    
-
+    Image _avatar;
     final prefs = new PreferenciasUsuario();
+    print(prefs.imageAsset);
+    print(prefs.imageUrl);
+    if (prefs.imageUrl == '') {
+      
+      _avatar = Image(image: AssetImage(prefs.imageAsset),);
+      
+    }
+    else{
+      
+      
+      _avatar = Image(image: NetworkImage(prefs.imageUrl),
+    fit: BoxFit.cover,
+    height: 65,
+    width: 65,
+    alignment: Alignment.center,);
+    }
    
     
   
@@ -45,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.person),
                 label: Text('Salir'),
                 shape: RoundedRectangleBorder(
-                 borderRadius: BorderRadius.circular(30.0)),
+                 borderRadius: BorderRadius.circular(50.0)),
                  color: Colors.white,
                 onPressed: () async {
                   auth.signOutFacebook();
@@ -78,9 +94,13 @@ class _HomePageState extends State<HomePage> {
               accountEmail: Text(prefs.email),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.tealAccent[700],
-                backgroundImage: NetworkImage(prefs.imageUrl),
-              ),
+                
+                child: ClipRRect(child: _avatar,
+                borderRadius: BorderRadius.circular(30.0),),
+                
+                )
             ),
+
             ListTile(
               leading: Icon(Icons.info),
               title: Text("Acerca de Nosotros"),

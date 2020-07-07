@@ -159,7 +159,7 @@ if (result.status != FacebookLoginStatus.loggedIn){
   }
 
   // register with email and password
-  Future registerWithEmailAndPassword(String _email, String password,String _nombre) async {
+  Future registerWithEmailAndPassword(String _email, String password,String _nombre, String _avatar) async {
     try {
      SharedPreferences prefs = await SharedPreferences.getInstance();
                         
@@ -170,14 +170,14 @@ if (result.status != FacebookLoginStatus.loggedIn){
 
       name = '';
       email = _email;
-      imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
+      imageUrl = _avatar;
     
     Firestore.instance.collection('usuarios').document()
                         .setData({ 'correo': _email, 'nombre': _nombre });
 
     
     prefs.setString('email', email);
-    prefs.setString('imageUrl', imageUrl);
+    prefs.setString('imageAsset', imageUrl);
     prefs.setString('name', _nombre);
 
 
@@ -190,7 +190,12 @@ if (result.status != FacebookLoginStatus.loggedIn){
 
   // sign out
   Future signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('imageUrl', '');
+    
     try {
+      
+      
       return await _auth.signOut();
     } catch (error) {
       print(error.toString());

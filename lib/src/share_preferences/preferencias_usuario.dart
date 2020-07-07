@@ -45,6 +45,15 @@ class PreferenciasUsuario{
   set imageUrl ( String valor){
     _prefs.setString('imageUrl', valor);
   }
+  
+  //imagen de perfil Asset
+  get imageAsset {
+    return _prefs.getString('imageAsset') ?? '';
+  }
+
+  set imageAsset ( String valor){
+    _prefs.setString('imageAsset', valor);
+  }
 
    
 

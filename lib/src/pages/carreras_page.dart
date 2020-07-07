@@ -101,7 +101,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
             _duracion = '';
           }
           else {
-            _duracion = 'Duracion de la carrera: ${facultad.duracion} años';
+            _duracion = 'Duracion de la carrera: ${facultad.duracion}';
           }
           
           ShowDialog(
@@ -111,7 +111,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
             lugar: 'Lugares: ${facultad.lugar}',
             url     : facultad.url, 
           ).alerta(context);
-        }
+      }
         ),
 
       );
