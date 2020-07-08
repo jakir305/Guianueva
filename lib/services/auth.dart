@@ -9,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
   
   String name;
   String email;
-  String imageUrl;  
+  String imageUrl;
+  String avatar;
 
 class AuthService {
 
@@ -135,6 +136,14 @@ if (result.status != FacebookLoginStatus.loggedIn){
         .snapshots()
         .listen((data) =>
           data.documents.forEach((doc) => name = (doc["nombre"])));
+
+    Firestore.instance
+        .collection('usuarios')
+        .where("correo", isEqualTo:_email)
+        .snapshots()
+        .listen((data) =>
+          data.documents.forEach((doc) => avatar = (doc["avatar"])));
+          
     try {
       
    
@@ -143,11 +152,11 @@ if (result.status != FacebookLoginStatus.loggedIn){
       FirebaseUser user = result.user;
       
       email = _email;
-      imageUrl = 'https://www.learning.uclg.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-';
+      imageUrl = avatar;
    
     prefs.setString('name', name);   
     prefs.setString('email', email);
-    prefs.setString('imageUrl', imageUrl);
+    prefs.setString('imageAsset', imageUrl);
 
     
       
@@ -173,7 +182,7 @@ if (result.status != FacebookLoginStatus.loggedIn){
       imageUrl = _avatar;
     
     Firestore.instance.collection('usuarios').document()
-                        .setData({ 'correo': _email, 'nombre': _nombre });
+                        .setData({ 'correo': _email, 'nombre': _nombre, 'avatar': _avatar });
 
     
     prefs.setString('email', email);
@@ -191,7 +200,13 @@ if (result.status != FacebookLoginStatus.loggedIn){
   // sign out
   Future signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  //Limpio variables de sharedPreferences
     prefs.setString('imageUrl', '');
+    prefs.setString('email', '');
+    prefs.setString('imageAsset', '');
+    prefs.setString('name', '');
+    
     
     try {
       

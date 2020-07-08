@@ -26,8 +26,6 @@ class _HomePageState extends State<HomePage> {
    
     Image _avatar;
     final prefs = new PreferenciasUsuario();
-    print(prefs.imageAsset);
-    print(prefs.imageUrl);
     if (prefs.imageUrl == '') {
       
       _avatar = Image(image: AssetImage(prefs.imageAsset),);
@@ -92,13 +90,12 @@ class _HomePageState extends State<HomePage> {
               ),
               ),
               accountEmail: Text(prefs.email),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.tealAccent[700],
-                
-                child: ClipRRect(child: _avatar,
-                borderRadius: BorderRadius.circular(30.0),),
-                
-                )
+              currentAccountPicture: Container(
+                child: ClipRRect(
+                child: _avatar,
+                borderRadius: BorderRadius.circular(50.0),
+                ),
+              )
             ),
 
             ListTile(

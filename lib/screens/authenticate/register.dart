@@ -210,6 +210,7 @@ class _RegisterState extends State<Register> {
                          setState(() {
                          avatar = newvalue;
                          avatarAsset = AssetImage(newvalue);
+                         
 
                          });
                        },
