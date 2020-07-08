@@ -118,8 +118,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
-      
   
       body: SingleChildScrollView(
         child: Container(
@@ -163,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                   iconSize: 100,
                   icon: Icon(Icons.book),
                   onPressed: (){
+                    Navigator.pushNamed(context, 'becas');
                   }
               ),
             ),
