@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
 class ListCardsBecas extends StatelessWidget {
   
+
   final String institucion;
   final String nombre;
   final AssetImage icon;
@@ -27,8 +30,8 @@ class ListCardsBecas extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
         child: InkWell(
             onTap: () async{
-       launch(url);
-       },
+            launch(url);
+            },
             child: Row(
             children: <Widget>[
               
@@ -36,30 +39,34 @@ class ListCardsBecas extends StatelessWidget {
                 duration: Duration(seconds: 1),
                 width  :100,
                 height :100,
-                child: 
+                child:
                 Image(image: icon),
               ),
-                SizedBox(width: 20.0,),
-             Column(
-               children: <Widget>[
-                 
-                 SizedBox(height: 20,),
-                 Text(nombre,
-                 style: TextStyle(
-                   fontSize: 20.0,
-                   color: color,
-                 ),
-                 ),
-
-                 SizedBox(height: 20,),
-                 Text(institucion,
-                 style:TextStyle(
-                  fontSize:15,
-                  color:Colors.black,),
-
-                 textAlign:TextAlign.center,),
-               ],
-             ),
+              SizedBox(width: 20.0,),
+              
+              Column(
+                children: <Widget>[
+                SizedBox(height: 1,),
+                  Text(nombre,
+                  style: TextStyle(
+                  fontSize: 20.0,
+                  color: color,
+                  ),
+                ),
+              SizedBox(height: 20,),
+                Container(
+                  child: Text(institucion,
+                    overflow: TextOverflow.clip,
+                
+                    style:TextStyle(
+                    fontSize:10,
+                    color:Colors.black,),
+                    textAlign:TextAlign.center,
+                    
+                    ),
+                ),
+              ],
+              ),
             ],),
         ),
       );

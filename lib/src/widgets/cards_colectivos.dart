@@ -25,17 +25,13 @@ class ListCardsColectivos extends StatelessWidget {
             onTap:  () { Navigator.pushNamed(context, 'lineas'); },
             child: Row(
             children: <Widget>[
-             Icon(Icons.directions_bus,size: 70.0,),
-             SizedBox(width: 10.0,),
-             Text(lugar,style: styleNombreUniver,textAlign:TextAlign.center,),
+              Icon(Icons.directions_bus,size: 70.0,),
+              SizedBox(width: 10.0,),
+              Text(lugar,style: styleNombreUniver,textAlign:TextAlign.center,),
             
             ],),
         ),
- 
       );
-
   }
-
-
     }
   

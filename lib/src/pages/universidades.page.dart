@@ -38,97 +38,70 @@ class UniversidadesPage extends StatelessWidget {
             nombreCompleto: 'Universidad De Rio Negro',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Utn',
             nombreCompleto: 'Universidad Tecnologica Nacional',
             icon: AssetImage('Asset/utn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Cpe',
             nombreCompleto: 'Cpe',
             icon: AssetImage('Asset/unrn.png'),
-            ),
-             
-             ListCardsUniversidades(
+            ),  
+            ListCardsUniversidades(
             nombre: 'Itp',
             nombreCompleto: 'Instituto Tecnológico de la Patagonia',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
-             ListCardsUniversidades(
+            ListCardsUniversidades(
             nombre: 'Uflo',
             nombreCompleto: 'Universidad de Flores',
             icon: AssetImage('Asset/unco.png'),
             ),
-
-             ListCardsUniversidades(
+            ListCardsUniversidades(
             nombre: 'Escuela de la Policia',
             nombreCompleto: 'Escuela de la policia Neuquen',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Balseiro',
             nombreCompleto: 'Instituto Balseiro',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Ucasal',
             nombreCompleto: 'Universidad Católolica de Salta',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Enerc',
             nombreCompleto: 'Escuela Nacional de Experimentación y Realización Cinematográfica',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Potenciar',
             nombreCompleto: 'Fundación Potenciar',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Iupa',
             nombreCompleto: 'Instituto Universitario Patagónico de Artes',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Issa',
             nombreCompleto: 'Instituto Superior San Agustin',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
             ListCardsUniversidades(
             nombre: 'Cetec',
             nombreCompleto: 'Centro de Estudios Terciarios del Comahue',
             icon: AssetImage('Asset/unrn.png'),
             ),
-
-
           
-
-
         ],
       );
-
-
-      
-
   }
-
-  
-
-    
-
-  
-
 }
 
 

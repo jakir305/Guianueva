@@ -18,32 +18,29 @@ class ColectivosLineasPage extends StatelessWidget {
           ],
         ),
     );
-  
- }
+}
 
 Widget cardPrueba(BuildContext context){
-   final _screenSize = MediaQuery.of(context).size;
-     return InkWell(
+  final _screenSize = MediaQuery.of(context).size;
+    return InkWell(
             child: Container(
               width: double.infinity,
               height: _screenSize.height * 0.2,
               child: Card(
-         elevation: 10.0,
-         child: Row(
-           children: <Widget>[
-               Icon(Icons.directions_car,size: 60,),
-               SizedBox(width: 10.0,),
-               Text('Linea 1',style:styleNombreUniver,),
-           ],
-         ),
-       ),
+        elevation: 10.0,
+        child: Row(
+          children: <Widget>[
+              Icon(Icons.directions_car,size: 60,),
+              SizedBox(width: 10.0,),
+              Text('Linea 1',style:styleNombreUniver,),
+          ],
+        ),
+      ),
             ),
-     onTap: () async{
-       launch('https://www.neuquencapital.gov.ar/wp-content/uploads/horarios-colectivos/linea-1-emergencia-2020.pdf');
-       },
-     );
-
-
+    onTap: () async{
+      launch('https://www.neuquencapital.gov.ar/wp-content/uploads/horarios-colectivos/linea-1-emergencia-2020.pdf');
+      },
+    );
   }
 }
 

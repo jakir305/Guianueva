@@ -16,8 +16,6 @@ class ListCardsUniversidades extends StatelessWidget {
     @required this.nombreCompleto,
     @required this.icon,
     });
-
-
   @override
   Widget build(BuildContext context) {
     final universidadInfo = Provider.of<UniversidadInfo>(context);
@@ -53,17 +51,6 @@ class ListCardsUniversidades extends StatelessWidget {
             
             ],),
         ),
- 
       );
-
-      
-   
   }
-
-  
-    
-    
-
-
-    }
-  
+} 
