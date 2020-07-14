@@ -50,7 +50,7 @@ class Becasvarias extends StatelessWidget {
                 
                 ListCardsBecas(
                   institucion: 'Universidad Nacional de Cuyo',
-                  nombre: "Becas",
+                  nombre: "Becas Internacionales",
                   icon: AssetImage('Asset/unco.png'),
                   color: Colors.blueAccent,
                   url: "http://www.uncuyo.edu.ar/bienestar/oferta-de-becas",  
