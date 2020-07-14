@@ -37,35 +37,41 @@ class ListCardsBecas extends StatelessWidget {
               
               AnimatedContainer(
                 duration: Duration(seconds: 1),
-                width  :100,
-                height :100,
+                width  :80,
+                height :80,
                 child:
                 Image(image: icon),
               ),
-              SizedBox(width: 20.0,),
-              
-              Column(
-                children: <Widget>[
-                SizedBox(height: 1,),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                  SizedBox(height: 1,),
                   Text(nombre,
-                  style: TextStyle(
-                  fontSize: 20.0,
-                  color: color,
-                  ),
-                ),
-              SizedBox(height: 20,),
-                Container(
-                  child: Text(institucion,
-                    overflow: TextOverflow.clip,
-                
-                    style:TextStyle(
-                    fontSize:10,
-                    color:Colors.black,),
-                    textAlign:TextAlign.center,
-                    
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    fontSize: 17.0,
+                    color: color,
                     ),
+                  ),
+                SizedBox(height: 20,),
+                  Container(
+                    child: Text(institucion,
+                      style:TextStyle(
+                      fontSize:10,
+                      color:Colors.black,),
+                      
+                      ),
+                  ),
+                ],
                 ),
-              ],
+              ),
+              SizedBox(
+                  width: 1.0,
               ),
             ],),
         ),
