@@ -23,13 +23,10 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   final universidadInfo = Provider.of<UniversidadInfo>(context);
   nombreUniversidad = universidadInfo.universidad;
   await dbRef.child(nombreUniversidad).once().then((DataSnapshot data){
-   _resp = (data.value);
+  _resp = (data.value);
   });
   
   final List<Universidad> universidades = new List();
-  
-  
-  
     if (_resp == null ) return [];
 
     _resp.forEach((nombre , facultad) { 
@@ -40,7 +37,6 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
     
   return universidades;
   }
-
   Future<List<Facultades>> cargarCarreras(BuildContext context) async {
   var _resp;
   final universidadInfo = Provider.of<UniversidadInfo>(context);
@@ -53,24 +49,15 @@ Future<List<Universidad>> cargarFacultades(BuildContext context) async {
   _resp = (data.value);
   });
   
-
     if (_resp == null ) return [];
-
     _resp.forEach((uno , dos) {
     facultad1 = Facultades(carrera:uno,duracion: dos['Años'],url: dos['Url'],lugar: dos['Lugar']);
     
-     
     carreras.add(facultad1);
     
     });
-
-
   return carreras;
   }
-
-
-  
-
   
   
   }

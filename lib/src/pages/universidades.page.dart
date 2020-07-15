@@ -13,12 +13,11 @@ class UniversidadesPage extends StatelessWidget {
           title: Text('Universidades'),
           backgroundColor: Colors.tealAccent[700],
           elevation: 0.0,
-          
         ),
         
-          body: Container(
-          padding: EdgeInsets.all(10),
-          child: _cards()),
+        body: Container(
+        padding: EdgeInsets.all(10),
+        child: _cards()),
       )
     );
   }

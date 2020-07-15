@@ -44,35 +44,29 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
   }
 
 
-   Widget _crearlistado(){
-     final _screenSize = MediaQuery.of(context).size;
+  Widget _crearlistado(){
+    final _screenSize = MediaQuery.of(context).size;
     
-     return FutureBuilder(
-       future: universidadesProvider.cargarFacultades(context),
-       builder: (BuildContext context, AsyncSnapshot<List<Universidad>> snapshot) {
-         
-
-         if(snapshot.hasData){
-           universidades = snapshot.data;
-           return Container(
+      return FutureBuilder(
+        future: universidadesProvider.cargarFacultades(context),
+        builder: (BuildContext context, AsyncSnapshot<List<Universidad>> snapshot) {
+          if(snapshot.hasData){
+            universidades = snapshot.data;
+            return Container(
              height: _screenSize.height * 0.55 ,
-             width: double.infinity,
-             child: ListView.builder(
-               
-               itemCount: universidades.length,
-               itemBuilder: (context,i) => _crearItem(universidades[i]),
+            width: double.infinity,
+            child: ListView.builder(
+              
+              itemCount: universidades.length,
+              itemBuilder: (context,i) => _crearItem(universidades[i]),
                 ),
-           );
-
-
-         }
-         else {
-           return Center(child: CircularProgressIndicator(),);
-
-
-         }
-       },
-     );
+          );
+          }
+          else {
+          return Center(child: CircularProgressIndicator(),);
+        }
+      },
+    );
   }
 
 

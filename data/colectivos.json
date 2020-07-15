@@ -1,0 +1,31 @@
+{
+    "nombreApp" : "Componentes",
+    
+    "Colectivos" : [
+        {
+            "Neuquén" :[
+                {
+                    "nombre"    : "1",
+                    "url"       : "url"
+                },
+                {
+                    "nombre"    :"2",
+                    "url"       :"url"
+                }
+            ]
+        },
+
+        {
+            "Cipolleti": [
+                {
+                    "nombre"    :"1",
+                    "url"       :"url"
+                }
+                {
+                    "nombre"    :"2",
+                    "url"       :"url"
+                }
+            ]
+        }
+    ]
+}

@@ -20,19 +20,27 @@ class ColectivosPage extends StatelessWidget {
     );
 }
   
-   Widget colectivosCard(BuildContext context) {
-     final _screenSize = MediaQuery.of(context).size;
-     return Container(
-       width: double.infinity,
+  Widget colectivosCard(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+    return Container(
+        width: double.infinity,
        height: _screenSize.height * 0.2,
-       child: ListCardsColectivos(
-         lugar: 'Neuquen',
-       ),
-     );
-
-
+        child: ListView(
+          children: <Widget>[
+            ListCardsColectivos(lugar: "Neuquén"),
+          ],
+        )
+      );
   }
   
-  
-  
+  // Widget _colectivos(BuildContext context) {
+  //   final _screenSize = MediaQuery.of(context).size;
+  //   return Container(
+  //       width: double.infinity,
+  //      height: _screenSize.height * 0.2,
+  //       child: ListCardsColectivos(
+  //         lugar: 'Neuquen',
+  //       ),
+  //    );
+  // }
   }

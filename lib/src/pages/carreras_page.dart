@@ -7,17 +7,17 @@ import 'package:guiae/src/widgets/showdialog_carreras.dart';
 
 class ListaDeCarreras extends StatefulWidget {
   
- 
+
   @override
   _ListaDeCarrerasState createState() => _ListaDeCarrerasState();
 }
 
 class _ListaDeCarrerasState extends State<ListaDeCarreras> {
   
-   List carreras;
-   String facultadCarrera;
-   List carrerasDetalles;
-   
+  List carreras;
+  String facultadCarrera;
+  List carrerasDetalles;
+
 
   final universidadesProvider = new UniversidadesProvider();
   @override
@@ -46,41 +46,31 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
       height: _screenSize.height * 0.3 ,
       width: double.infinity,
       child: Image(image: NetworkImage('https://www.neuqueninforma.gob.ar/wp-content/uploads/2019/06/WEB-Convenio-con-la-UNCo-5.jpg')));
-
   }
-
-
-   Widget _crearlistado(){
-     final _screenSize = MediaQuery.of(context).size;
+  Widget _crearlistado(){
+    final _screenSize = MediaQuery.of(context).size;
     
-     return FutureBuilder(
-       future: universidadesProvider.cargarCarreras(context),
-       builder: (BuildContext context, AsyncSnapshot<List<Facultades>> snapshot) {
-         
-         if(snapshot.hasData){
-           carreras = snapshot.data;
-           return Container(
-             height: _screenSize.height * 0.55 ,
-             width: double.infinity,
-             
-             child: ListView.builder(
-               
-               itemCount: carreras.length,
-               itemBuilder: (context,i) => _crearItem(carreras[i],),
+    return FutureBuilder(
+      future: universidadesProvider.cargarCarreras(context),
+      builder: (BuildContext context, AsyncSnapshot<List<Facultades>> snapshot) {
+
+      if(snapshot.hasData){
+          carreras = snapshot.data;
+          return Container(
+            height: _screenSize.height * 0.55 ,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: carreras.length,
+              itemBuilder: (context,i) => _crearItem(carreras[i],),
                 ),
-           );
+          );
           
-         }
-         else {
-           return Center(child: CircularProgressIndicator(),);
-
-
-         }
-       },
-     );
-
-     
-   
+        }
+        else {
+        return Center(child: CircularProgressIndicator(),);
+        }
+      },
+    );
   }
 
   
@@ -88,10 +78,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
   Widget _crearItem(Facultades facultad,){
     String _duracion;
     
-     
-     
       // carrerasDetalles = universidadesProvider.cargarDetalles(context);
-      
         return Card(
         elevation: 10.0,
         child: InkWell(child:
@@ -113,11 +100,6 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
           ).alerta(context);
       }
         ),
-
       );
-
     }
-
-
-
   }
