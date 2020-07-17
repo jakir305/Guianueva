@@ -6,12 +6,12 @@ class Datacarreras extends SearchDelegate {
     // acciones  de nuestro appbar
     return [
       IconButton(
-        icon:Icon(Icons.clear),
-        onPressed: (){
+        icon: Icon(Icons.clear),
+        onPressed: () {
           query = '';
-        }
-        ,)
-    ] ;
+        },
+      )
+    ];
   }
 
   @override
@@ -22,8 +22,8 @@ class Datacarreras extends SearchDelegate {
         icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
       ),
-      onPressed: (){
-        close(context,null);
+      onPressed: () {
+        close(context, null);
       },
     );
   }
@@ -36,13 +36,7 @@ class Datacarreras extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // Sugerencias 
+    // Sugerencias
     return Container();
-   
   }
-
-
-
-
-
 }

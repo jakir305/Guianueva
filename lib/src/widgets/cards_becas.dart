@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class ListCardsBecas extends StatelessWidget {
-  
-
   final String institucion;
   final String nombre;
   final AssetImage icon;
@@ -18,64 +14,66 @@ class ListCardsBecas extends StatelessWidget {
     this.icon,
     this.color,
     this.url,
-    });
-
+  });
 
   @override
   Widget build(BuildContext context) {
-
     return Card(
-        color: Colors.white,
-        elevation: 100.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-        child: InkWell(
-            onTap: () async{
-            launch(url);
-            },
-            child: Row(
-            children: <Widget>[
-              
-              AnimatedContainer(
-                duration: Duration(seconds: 1),
-                width  :80,
-                height :80,
-                child:
-                Image(image: icon),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                  SizedBox(height: 1,),
-                  Text(nombre,
+      color: Colors.white,
+      elevation: 100.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      child: InkWell(
+        onTap: () async {
+          launch(url);
+        },
+        child: Row(
+          children: <Widget>[
+            AnimatedContainer(
+              duration: Duration(seconds: 1),
+              width: 80,
+              height: 80,
+              child: Image(image: icon),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 1,
+                  ),
+                  Text(
+                    nombre,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                    fontSize: 17.0,
-                    color: color,
+                      fontSize: 17.0,
+                      color: color,
                     ),
                   ),
-                SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
-                    child: Text(institucion,
-                      style:TextStyle(
-                      fontSize:10,
-                      color:Colors.black,),
-                      
+                    child: Text(
+                      institucion,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.black,
                       ),
+                    ),
                   ),
                 ],
-                ),
               ),
-              SizedBox(
-                  width: 1.0,
-              ),
-            ],),
+            ),
+            SizedBox(
+              width: 1.0,
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }
-  

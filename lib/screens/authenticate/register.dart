@@ -2,12 +2,9 @@ import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
 
-
 class Register extends StatefulWidget {
-  
-
   final Function toggleView;
-  Register({ this.toggleView });
+  Register({this.toggleView});
 
   @override
   _RegisterState createState() => _RegisterState();
@@ -22,7 +19,7 @@ class _RegisterState extends State<Register> {
   String error = '';
 
   // text field state
-  String nombre='';
+  String nombre = '';
   String email = '';
   String password = '';
 
@@ -33,12 +30,10 @@ class _RegisterState extends State<Register> {
       body: Container(
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.center,
-            end: Alignment.bottomCenter,
-            colors: [Colors.white,Colors.tealAccent[700]])
-        ),
-
+            gradient: LinearGradient(
+                begin: Alignment.center,
+                end: Alignment.bottomCenter,
+                colors: [Colors.white, Colors.tealAccent[700]])),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -58,38 +53,39 @@ class _RegisterState extends State<Register> {
                   margin: EdgeInsets.all(10.0),
                   child: Text('Guia  Estudiantil', style: styleGuia),
                 ),
-                
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     children: <Widget>[
-                      
                       // nombre y apellido
-                    TextFormField(
+                      TextFormField(
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.text,
                         style: TextStyle(
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration:InputDecoration.collapsed(
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(style:BorderStyle.solid,
-                              color: Colors.black,),
-                              borderRadius: BorderRadius.circular(20)),
-                                hintText:'nombre y apellido'),
-                                validator: (val) => val.isEmpty ? 'Ingrese su nombre y apellido' : null,
-                                onChanged: (val) {
-                                setState(() => nombre = val);
-                                
-                            },
-                          ),
+                        decoration: InputDecoration.collapsed(
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(20)),
+                            hintText: 'nombre y apellido'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Ingrese su nombre y apellido' : null,
+                        onChanged: (val) {
+                          setState(() => nombre = val);
+                        },
+                      ),
 
-                          SizedBox(height: 15.0,),
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
-                        
                       // Caja de correo
                       TextFormField(
                         textAlign: TextAlign.center,
@@ -98,22 +94,26 @@ class _RegisterState extends State<Register> {
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration:InputDecoration.collapsed(
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(style:BorderStyle.solid,
-                              color: Colors.black,),
-                              borderRadius: BorderRadius.circular(20)),
-                                hintText:'correo'),
-                                validator: (val) => val.isEmpty ? 'Ingrese Email valido' : null,
-                                onChanged: (val) {
-                                setState(() => email = val);
-                            },
-                          ),
+                        decoration: InputDecoration.collapsed(
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: Colors.black,
+                                ),
+                                borderRadius: BorderRadius.circular(20)),
+                            hintText: 'correo'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Ingrese Email valido' : null,
+                        onChanged: (val) {
+                          setState(() => email = val);
+                        },
+                      ),
 
-                          SizedBox(height: 15.0,),
-
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
                       // Caja de contraseña
                       TextFormField(
@@ -123,25 +123,26 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration.collapsed(
-                          fillColor: Colors.white,
-                          filled: true,
+                            fillColor: Colors.white,
+                            filled: true,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                              hintText: 'contraseña'),
+                                borderRadius: BorderRadius.circular(20)),
+                            hintText: 'contraseña'),
                         obscureText: true,
                         validator: (val) => val.length < 6
                             ? 'Contraseña menor a 6 caracteres'
                             : null,
                         onChanged: (val) {
-                           
-                           setState(() {
-                             password = val;
-                             valTemp = val;
-                           });
+                          setState(() {
+                            password = val;
+                            valTemp = val;
+                          });
                         },
                       ),
 
-                      SizedBox(height: 15.0,),
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
                       // Caja de contraseña validacion
                       TextFormField(
@@ -151,144 +152,115 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration.collapsed(
-                          fillColor: Colors.white,
-                          filled: true,
-
+                            fillColor: Colors.white,
+                            filled: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             hintText: 'repita la contraseña'),
-                            obscureText: true,
-                            validator: (val) {
-                          
-                          if(val != valTemp){
+                        obscureText: true,
+                        validator: (val) {
+                          if (val != valTemp) {
                             return 'Las contraseñas no coinciden';
                           }
                           return null;
-            
                         },
                         onChanged: (val) {
                           setState(() => password = val);
                         },
                       ),
 
+                      //Seleccion de icono
 
-                        //Seleccion de icono
-
-
-                     
-                        SizedBox(height: 15.0,),
-                        DropdownButton<String>(
-                        
-                          itemHeight: 100.0,
-                          hint: Text('Icono'),
-                          value: avatar,
-                    
-                         items: <String>['Asset/unco1.png','Asset/balseiro.png','Asset/utn.png'].map((String value) {
-                         return  DropdownMenuItem<String>(
-                           
-                           value: value,
-            
-                           child: Center(
-                             child: Container(
-                               padding: const EdgeInsets.only(bottom: 10.0),
-                               height: 80.0,
-                               width: 80.0,
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                 
-                                 children: <Widget>[
-                                   Image(image:AssetImage(value)
-                                   ),
-                                   
-                                 ],
-                               ),
-                             ),
-                           ),
-                         );
-                       }).toList(),
-                       onChanged: (newvalue) {
-                         setState(() {
-                         avatar = newvalue;
-                         avatarAsset = AssetImage(newvalue);
-                         
-
-                         });
-                       },
-                     )
-
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      DropdownButton<String>(
+                        itemHeight: 100.0,
+                        hint: Text('Icono'),
+                        value: avatar,
+                        items: <String>[
+                          'Asset/unco1.png',
+                          'Asset/balseiro.png',
+                          'Asset/utn.png'
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                height: 80.0,
+                                width: 80.0,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Image(image: AssetImage(value)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (newvalue) {
+                          setState(() {
+                            avatar = newvalue;
+                            avatarAsset = AssetImage(newvalue);
+                          });
+                        },
+                      )
                     ],
                   ),
                 ),
                 SizedBox(height: 15.0),
-
-                  InkWell(
-                    child: Text("Ya tenes cuenta? Ingresa aca",style: TextStyle(fontSize: 15),),
-                    onTap:() => widget.toggleView(),
-                    ),
-
-                  SizedBox(height: 15.0,),
-
-                    Text(
-                        error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      ),
-
+                InkWell(
+                  child: Text(
+                    "Ya tenes cuenta? Ingresa aca",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  onTap: () => widget.toggleView(),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  error,
+                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                ),
                 SizedBox(height: 15.0),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
                         highlightColor: Colors.tealAccent[700],
-                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                         elevation: 15.0,
                         color: Colors.white,
                         child: Text(
                           '  Registrarse e ingresar  ',
                           style: TextStyle(color: Colors.black),
                         ),
-                        
                         onPressed: () async {
-                          if(avatar == null) {
+                          if (avatar == null) {
                             setState(() {
-                              
                               error = 'Seleccione un icono para su avatar';
                             });
-                          }
-                          else{
+                          } else {
+                            if (_formKey.currentState.validate()) {
+                              dynamic result =
+                                  await _auth.registerWithEmailAndPassword(
+                                      email, password, nombre, avatar);
 
-                            if(_formKey.currentState.validate()) {
-                        dynamic result = await _auth.registerWithEmailAndPassword(email, password,nombre,avatar);
-                   
-                        if(result == null) {
-                          setState(() {
-                            error = 'Ingrese un email valido';
+                              if (result == null) {
+                                setState(() {
+                                  error = 'Ingrese un email valido';
+                                });
+                              }
                             }
-                          );
-                        }
-                      
-                        
-
-                      }
-
-
-
                           }
-                          
-                          
-                      
-                      
-                      
-                    
-                    }
-                        ),
-                          
-                         
-                         ],
-                
+                        }),
+                  ],
                 ),
-
-               
-                
-
               ],
             ),
           ),
@@ -297,4 +269,3 @@ class _RegisterState extends State<Register> {
     );
   }
 }
-
