@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -105,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                       child: IconButton(
                           color: Colors.blue,
                           iconSize: 100,
-                          icon: Icon(Icons.account_balance),
+                          icon: Icon(LineAwesomeIcons.university),
                           onPressed: () {
                             Navigator.pushNamed(context, 'universidades');
                           }),
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           IconButton(
                               color: Colors.blue,
                               iconSize: 100,
-                              icon: Icon(Icons.directions_bus),
+                              icon: Icon(LineAwesomeIcons.bus),
                               onPressed: () {
                                 Navigator.pushNamed(context, 'colectivos');
                               }),
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                       child: IconButton(
                           color: Colors.blue,
                           iconSize: 100,
-                          icon: Icon(Icons.book),
+                          icon: Icon(LineAwesomeIcons.book),
                           onPressed: () {
                             Navigator.pushNamed(context, 'becas');
                           }),
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                       child: IconButton(
                           color: Colors.blue,
                           iconSize: 100,
-                          icon: Icon(Icons.search),
+                          icon: Icon(LineAwesomeIcons.search_plus),
                           onPressed: () {
                             showSearch(
                               context: context,

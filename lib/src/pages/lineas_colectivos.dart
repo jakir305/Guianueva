@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class ColectivosLineasPage extends StatelessWidget {
   @override
@@ -12,10 +13,37 @@ class ColectivosLineasPage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
+          _botones(context),
           cardPrueba(context),
         ],
       ),
     );
+  }
+
+  Widget _botones(BuildContext context) {
+    return Row(children: <Widget>[
+      Expanded(
+        flex: 2,
+          child: Card(
+        color: Colors.blue[600],
+        child: Container(
+            height: 30, alignment: Alignment.center, child: Text("Dias Habiles",style: TextStyle(color: Colors.white),)),
+      )),
+      Expanded(
+        flex: 2,
+          child: Card(
+        color: Colors.blue[600],
+        child: Container(
+            height: 30, alignment: Alignment.center, child: Text("Fines de Semana",style: TextStyle(color: Colors.white),)),
+      )),
+      Expanded(
+        flex: 1,
+          child: Card(
+        color: Colors.blue[600],
+        child: Container(
+            height: 30, alignment: Alignment.center, child: Text("Otros",style: TextStyle(color: Colors.white),)),
+      )),
+    ]);
   }
 
   Widget cardPrueba(BuildContext context) {
@@ -29,7 +57,7 @@ class ColectivosLineasPage extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Icon(
-                Icons.directions_car,
+                EvaIcons.globeOutline,
                 size: 60,
               ),
               SizedBox(

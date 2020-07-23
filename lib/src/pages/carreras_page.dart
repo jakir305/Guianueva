@@ -80,9 +80,14 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
     return Card(
       elevation: 10.0,
       child: InkWell(
-          child: Text(
-            facultad.carrera,
-            style: TextStyle(fontSize: 30),
+          child: Expanded(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                facultad.carrera,
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
           ),
           onTap: () {
             if (facultad.duracion == null) {

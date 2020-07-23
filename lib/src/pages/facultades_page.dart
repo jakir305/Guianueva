@@ -70,11 +70,17 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
   ) {
     final facultadInfo = Provider.of<CarreraInfo>(context);
     return Card(
-      elevation: 10.0,
+      elevation: 5.0,
       child: InkWell(
-        child: Text(
-          universidad.facultad,
-          style: TextStyle(fontSize: 30),
+        child: Expanded(
+          child: Container(
+            height: 50.0,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              universidad.facultad,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
         ),
         onTap: () {
           facultadInfo.facultad = universidad.facultad;
