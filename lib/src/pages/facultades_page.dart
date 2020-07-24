@@ -72,14 +72,12 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
     return Card(
       elevation: 5.0,
       child: InkWell(
-        child: Expanded(
-          child: Container(
-            height: 50.0,
-            alignment: Alignment.centerLeft,
-            child: Text(
-              universidad.facultad,
-              style: TextStyle(fontSize: 20),
-            ),
+        child: Container(
+          height: 50.0,
+          alignment: Alignment.centerLeft,
+          child: Text(
+            universidad.facultad,
+            style: TextStyle(fontSize: 20),
           ),
         ),
         onTap: () {
