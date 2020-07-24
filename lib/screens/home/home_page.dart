@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                 )),
-            ListTile(
+            ListTile( 
               leading: Icon(Icons.info),
               title: Text("Acerca de Nosotros"),
               onTap: () {

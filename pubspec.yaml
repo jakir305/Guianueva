@@ -38,6 +38,7 @@ dependencies:
   firebase_messaging:
   line_awesome_icons:
   eva_icons_flutter:
+  flare_flutter:
 
 dev_dependencies:
   flutter_test:

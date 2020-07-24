@@ -12,7 +12,12 @@ class Becasvarias extends StatelessWidget {
         backgroundColor: Colors.tealAccent[700],
         elevation: 0.0,
       ),
-      body: Container(padding: EdgeInsets.all(10), child: _becasCard()),
+      body: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(
+            10,
+          ),
+          child: _becasCard()),
     ));
   }
 

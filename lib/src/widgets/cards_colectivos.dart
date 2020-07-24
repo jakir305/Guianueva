@@ -1,16 +1,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:guiae/src/Utils/text_style.dart';
-
+import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ListCardsColectivos extends StatelessWidget {
   
   final String lugar;
-  final Icon icon;
+  final String url;
+  final Color color;
+
 
   ListCardsColectivos({
     @required this.lugar,
-    this.icon,
+    this.url,
+    this.color,
     });
 
 
@@ -22,10 +26,14 @@ class ListCardsColectivos extends StatelessWidget {
         elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
         child: InkWell(
-            onTap:  () { Navigator.pushNamed(context, 'lineas'); },
+            onTap:  () async {
+          launch(url);
+        },
             child: Row(
             children: <Widget>[
-              Icon(Icons.directions_bus,size: 70.0,),
+              Icon(LineAwesomeIcons.bus,
+              size: 70.0,
+              color: color),
               SizedBox(width: 10.0,),
               Text(lugar,style: styleNombreUniver,textAlign:TextAlign.center,),
             

@@ -9,11 +9,13 @@ class ColectivosPage extends StatelessWidget {
         backgroundColor: Colors.tealAccent[700],
         title: Text('Colectivos'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          colectivosCard(context),
-        ],
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            colectivosCard(context),
+          ],
+        ),
       ),
     );
   }
@@ -22,22 +24,20 @@ class ColectivosPage extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
     return Container(
         width: double.infinity,
-        height: _screenSize.height * 0.2,
+        height: _screenSize.height * 0.8,
         child: ListView(
           children: <Widget>[
-            ListCardsColectivos(lugar: "Neuquén"),
+            ListCardsColectivos(
+              lugar: "Neuquén",
+              color: Colors.yellow[700],
+              url: "https://www.neuquencapital.gov.ar/transporte/",
+            ),
+            ListCardsColectivos(
+              lugar: "San Carlos de Bariloche",
+              color: Colors.red[700],
+              url: "http://www.mibus.com.ar/bariloche/",
+            ),
           ],
         ));
   }
-
-  // Widget _colectivos(BuildContext context) {
-  //   final _screenSize = MediaQuery.of(context).size;
-  //   return Container(
-  //       width: double.infinity,
-  //      height: _screenSize.height * 0.2,
-  //       child: ListCardsColectivos(
-  //         lugar: 'Neuquen',
-  //       ),
-  //    );
-  // }
 }
