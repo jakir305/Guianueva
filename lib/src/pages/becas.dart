@@ -136,7 +136,7 @@ class Becasvarias extends StatelessWidget {
         nombre: "Becas Internacionales",
         icon: AssetImage('Asset/unco.png'),
         color: Colors.red[200],
-        url: "https://www.argentina.gob.ar/educacion/becas-internacionales",
+        url: "https://www.argentina.gob.ar/educacion/becas",
       ),
       ListCardsBecas(
         institucion: 'Ministerio de Educación, Cultura, Ciencia y Tecnología',
@@ -157,8 +157,7 @@ class Becasvarias extends StatelessWidget {
         nombre: "Carreras Vinculadas al Petróleo",
         icon: AssetImage('Asset/unco.png'),
         color: Colors.orange[200],
-        url:
-            "https://www.pan-energy.com/Novedades/Paginas/programabecaspae.aspx",
+        url:  "https://www.pan-energy.com/Novedades/Paginas/programabecaspae.aspx",
       ),
     ]);
   }
