@@ -10,6 +10,8 @@ import 'package:guiae/src/pages/lineas_colectivos.dart';
 import 'package:guiae/src/pages/nosotros.dart';
 import 'package:guiae/src/pages/universidades.page.dart';
 import 'package:guiae/src/pages/becas.dart';
+import 'package:guiae/src/pages/eventos.dart';
+import 'package:guiae/src/pages/centros_estudio.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
@@ -23,5 +25,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'colectivos': (BuildContext context) => ColectivosPage(),
     'lineas': (BuildContext context) => ColectivosLineasPage(),
     'becas': (BuildContext context) => Becasvarias(),
+    'eventos': (BuildContext context) => Eventos(),
+    'centrosestudio': (BuildContext context) => CentrosEstudio(),
   };
 }

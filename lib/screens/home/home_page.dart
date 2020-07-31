@@ -4,6 +4,7 @@ import 'package:guiae/services/auth.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:guiae/src/Utils/text_style.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                 )),
-            ListTile( 
+            ListTile(
               leading: Icon(Icons.info),
               title: Text("Acerca de Nosotros"),
               onTap: () {
@@ -103,24 +104,40 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: IconButton(
-                          color: Colors.blue,
-                          iconSize: 100,
-                          icon: Icon(LineAwesomeIcons.university),
-                          onPressed: () {
-                            Navigator.pushNamed(context, 'universidades');
-                          }),
+                      child: Column(
+                        children: [
+                          IconButton(
+                              color: Colors.blue,
+                              iconSize: 100,
+                              icon: Icon(LineAwesomeIcons.university),
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'universidades');
+                              }),
+                          Text(
+                            "Universidades",
+                            style: styleTitulos,
+                          ),
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: Column(
                         children: <Widget>[
-                          IconButton(
-                              color: Colors.blue,
-                              iconSize: 100,
-                              icon: Icon(LineAwesomeIcons.bus),
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'colectivos');
-                              }),
+                          Column(
+                            children: [
+                              IconButton(
+                                  color: Colors.blue,
+                                  iconSize: 100,
+                                  icon: Icon(LineAwesomeIcons.bus),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'colectivos');
+                                  }),
+                              Text(
+                                "Colectivos",
+                                style: styleTitulos,
+                              )
+                            ],
+                          ),
                           SizedBox(
                             height: 70,
                           ),
@@ -128,24 +145,42 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Expanded(
-                      child: IconButton(
-                          color: Colors.blue,
-                          iconSize: 100,
-                          icon: Icon(LineAwesomeIcons.book),
-                          onPressed: () {
-                            Navigator.pushNamed(context, 'becas');
-                          }),
+                      child: Column(
+                        children: [
+                          IconButton(
+                              color: Colors.blue,
+                              iconSize: 100,
+                              icon: Icon(LineAwesomeIcons.book),
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'becas');
+                              }),
+                          Text(
+                            "Becas",
+                            style: styleTitulos,
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.event_available),
-                          onPressed: () {}),
+                      child: Column(
+                        children: [
+                          IconButton(
+                              color: Colors.blue,
+                              iconSize: 100,
+                              icon: Icon(LineAwesomeIcons.calendar_check_o),
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'eventos');
+                              }),
+                          Text(
+                            "Eventos",
+                            style: styleTitulos,
+                          )
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: Image.asset(
@@ -154,11 +189,21 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Expanded(
-                      child: IconButton(
-                          color: Colors.grey,
-                          iconSize: 100,
-                          icon: Icon(Icons.healing),
-                          onPressed: () {}),
+                      child: Column(
+                        children: [
+                          IconButton(
+                              color: Colors.blueAccent,
+                              iconSize: 100,
+                              icon: Icon(Icons.computer),
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'centrosestudio');
+                              }),
+                          Text(
+                            "Bibliotecas",
+                            style: styleTitulos,
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),

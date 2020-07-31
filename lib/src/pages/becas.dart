@@ -157,7 +157,8 @@ class Becasvarias extends StatelessWidget {
         nombre: "Carreras Vinculadas al Petróleo",
         icon: AssetImage('Asset/unco.png'),
         color: Colors.orange[200],
-        url:  "https://www.pan-energy.com/Novedades/Paginas/programabecaspae.aspx",
+        url:
+            "https://www.pan-energy.com/Novedades/Paginas/programabecaspae.aspx",
       ),
     ]);
   }

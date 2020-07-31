@@ -20,7 +20,7 @@ class ListCardsBecas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      elevation: 100.0,
+      elevation: 5.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
         onTap: () async {

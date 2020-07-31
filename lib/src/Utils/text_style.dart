@@ -19,3 +19,9 @@ final styleGuia = new TextStyle(
   letterSpacing: 1,
   color: Colors.tealAccent[700],
 );
+
+final styleTitulos = new TextStyle(
+  fontSize: 15,
+  color: Colors.blue,
+  fontStyle: FontStyle.normal,
+);
