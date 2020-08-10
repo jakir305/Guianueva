@@ -39,6 +39,7 @@ dependencies:
   line_awesome_icons:
   eva_icons_flutter:
   flare_flutter:
+  vector_math:
 
 dev_dependencies:
   flutter_test:

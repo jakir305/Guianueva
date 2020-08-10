@@ -8,6 +8,7 @@ import 'package:guiae/src/routes/routes.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:provider/provider.dart';
 import 'package:guiae/models/user.dart';
+import 'package:guiae/src/providers/push_notificans_provider.dart';
 
 void main() async{ 
   runApp(MyApp());
@@ -16,9 +17,23 @@ void main() async{
 
   }
 
-class MyApp extends StatelessWidget {
-  
+class MyApp extends StatefulWidget {
+
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    final pushProvider = new PushNotificationProvider();
+    pushProvider.initNotifications();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
