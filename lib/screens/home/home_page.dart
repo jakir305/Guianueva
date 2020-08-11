@@ -44,19 +44,7 @@ class _HomePageState extends State<HomePage> {
             actions: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: FlatButton.icon(
-                  icon: Icon(Icons.person),
-                  label: Text('Salir'),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0)),
-                  color: Colors.white,
-                  onPressed: () async {
-                    auth.signOutFacebook();
-                    auth.signOut();
-                    auth.signOutGoogle();
-                  },
                 ),
-              ),
             ]),
         drawer: Drawer(
           child: ListView(
@@ -114,6 +102,15 @@ class _HomePageState extends State<HomePage> {
             );
           },
               ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text("Salir"),
+                onTap: () async {
+                    auth.signOutFacebook();
+                    auth.signOut();
+                    auth.signOutGoogle();
+                  },
+              ),
             ],
           ),
         ),
@@ -154,7 +151,7 @@ class _RadialMenuState extends State<RadialMenu>
 class RadialAnimation extends StatelessWidget {
   RadialAnimation({Key key, this.controller})
       : scale = Tween<double>(
-          begin: 1.5,
+          begin: 3.5,
           end: 0.0,
         ).animate(
           CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn),
@@ -188,28 +185,28 @@ class RadialAnimation extends StatelessWidget {
           return Transform.rotate(
             angle: radians(rotation.value),
             child: Stack(alignment: Alignment.center, children: [
-              _buildButton(0,
+              _buildButton(30,
                   color: Colors.red, icon: LineAwesomeIcons.bookmark, link: () {
                 Navigator.pushNamed(context, 'centrosestudio');
               }),
-              _buildButton(60,
+              _buildButton(90,
                   color: Colors.blue, icon: LineAwesomeIcons.search_plus, link: () {
                 Navigator.pushNamed(context, 'universidades');
               }),
-              _buildButton(120,
+              _buildButton(150,
                   color: Colors.amber, icon: LineAwesomeIcons.calendar_check_o,
                   link: () {
                 Navigator.pushNamed(context, 'eventos');
               }),
-              _buildButton(180,
+              _buildButton(210,
                   color: Colors.blue, 
                   icon: LineAwesomeIcons.university, link: () {
                 Navigator.pushNamed(context, 'universidades');
               }),
-              _buildButton(240, color: Colors.blue, icon: LineAwesomeIcons.bus, link: () {
+              _buildButton(270, color: Colors.blue, icon: LineAwesomeIcons.bus, link: () {
                 Navigator.pushNamed(context, 'colectivos');
               }),
-              _buildButton(300,
+              _buildButton(330,
                   color: Colors.lime, icon: LineAwesomeIcons.book, link: () {
                 Navigator.pushNamed(context, 'becas');
               }),
@@ -223,8 +220,9 @@ class RadialAnimation extends StatelessWidget {
                     backgroundColor: Colors.red),
               ),
               Transform.scale(
-                scale: scale.value,
+                scale: scale.value,  
                 child: FloatingActionButton(
+                    backgroundColor: Colors.greenAccent[400],
                     heroTag: "1",
                     child: Icon(LineAwesomeIcons.plus_circle), onPressed: _open),
               )
@@ -247,7 +245,7 @@ class RadialAnimation extends StatelessWidget {
             (translation.value) * cos(rad), (translation.value) * sin(rad)),
       child: IconButton(
         color: color,
-        iconSize: 80,
+        iconSize: 100,
         icon: Icon(icon),
         onPressed: link,
       ),

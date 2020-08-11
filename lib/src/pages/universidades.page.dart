@@ -90,6 +90,24 @@ class UniversidadesPage extends StatelessWidget {
           nombreCompleto: 'Centro de Estudios Terciarios del Comahue',
           icon: AssetImage('Asset/unrn.png'),
         ),
+        ListCardsUniversidades(
+          nombre: 'Inpi',
+          nombreCompleto: 'Instituto Neuquino del Profesorado de Inglés',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'Si Jolie',
+          nombreCompleto: 'Instituto Si Jolie de Formación Profesional y Educación Superior',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'CPE',
+          nombreCompleto: 'Consejo Provincial de Educación',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+
+
+
       ],
     );
   }

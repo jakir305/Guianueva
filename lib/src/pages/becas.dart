@@ -24,68 +24,18 @@ class Becasvarias extends StatelessWidget {
   Widget _becasCard() {
     return ListView(children: <Widget>[
       ListCardsBecas(
-        institucion: 'Universidad Nacional de Cuyo',
-        nombre: "Beca Económica",
+        institucion: 'Universidad Nacional de Comahue',
+        nombre: "Becas",
         icon: AssetImage('Asset/unco.png'),
         color: Colors.blueAccent,
-        url: "http://www.uncuyo.edu.ar/bienestar/oferta-de-becas",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Cuyo',
-        nombre: "Beca de Residencia",
-        icon: AssetImage('Asset/unco.png'),
-        color: Colors.blueAccent,
-        url: "http://www.uncuyo.edu.ar/bienestar/oferta-de-becas",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Cuyo',
-        nombre: "Becas de Transporte para Alumnos con Discapacidad Motora",
-        icon: AssetImage('Asset/unco.png'),
-        color: Colors.blueAccent,
-        url: "http://www.uncuyo.edu.ar/bienestar/oferta-de-becas",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Cuyo',
-        nombre: "Becas Internacionales",
-        icon: AssetImage('Asset/unco.png'),
-        color: Colors.blueAccent,
-        url: "http://www.uncuyo.edu.ar/bienestar/oferta-de-becas",
+        url: "www.uncoma.edu.ar/secretaria_bienestar/becas.htm ",
       ),
       ListCardsBecas(
         institucion: 'Universidad Nacional de Rio Negro',
         nombre: "Ayuda Económica para Carreras Prioritarias",
         icon: AssetImage('Asset/unrn.png'),
         color: Colors.redAccent,
-        url: "https://www.unrn.edu.ar/section/48/programa-de-becas.html",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Rio Negro',
-        nombre: "Becas para Alumnas Madres",
-        icon: AssetImage('Asset/unrn.png'),
-        color: Colors.redAccent,
-        url: "https://www.unrn.edu.ar/section/48/programa-de-becas.html",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Rio Negro',
-        nombre: "Becas al Mérito Académico",
-        icon: AssetImage('Asset/unrn.png'),
-        color: Colors.redAccent,
-        url: "https://www.unrn.edu.ar/section/48/programa-de-becas.html",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Rio Negro',
-        nombre: "Becas por Discapacidad",
-        icon: AssetImage('Asset/unrn.png'),
-        color: Colors.redAccent,
-        url: "https://www.unrn.edu.ar/section/48/programa-de-becas.html",
-      ),
-      ListCardsBecas(
-        institucion: 'Universidad Nacional de Rio Negro',
-        nombre:
-            "Becas para Estudiantes Provenientes de la Linea Sur de la Provincia de Rio Negro",
-        icon: AssetImage('Asset/unrn.png'),
-        color: Colors.redAccent,
-        url: "https://www.unrn.edu.ar/section/48/programa-de-becas.html",
+        url: "https://www.unrn.edu.ar/programas-de-becas",
       ),
       ListCardsBecas(
         institucion: 'Consejo Deliberante de la Ciudad de Neuquén',
