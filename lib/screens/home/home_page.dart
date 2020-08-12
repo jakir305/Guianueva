@@ -8,6 +8,7 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'dart:math';
 import 'package:vector_math/vector_math.dart' show radians;
 import 'package:flutter/foundation.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,30 +38,32 @@ class _HomePageState extends State<HomePage> {
 
     var scaffold = Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text('Guia Estudiantil'),
-            backgroundColor: Colors.tealAccent[700],
-            elevation: 0.0,
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                ),
-            ]),
+        appBar: GradientAppBar(
+          title: Text('Flutter'),
+          backgroundColorStart: Colors.greenAccent,
+          backgroundColorEnd: Colors.white,
+        ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.all(0),
             children: [
               UserAccountsDrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.tealAccent[700],
+                    gradient: LinearGradient(
+                        colors: [Colors.greenAccent, Colors.white]),
+                    color: Colors.tealAccent,
                   ),
                   accountName: Text(
                     prefs.name,
                     style: TextStyle(
+                      color: Colors.black87,
                       fontSize: 25,
                     ),
                   ),
-                  accountEmail: Text(prefs.email),
+                  accountEmail: Text(
+                    prefs.email,
+                    style: TextStyle(color: Colors.black87),
+                  ),
                   currentAccountPicture: Container(
                     child: ClipRRect(
                       child: _avatar,
@@ -89,40 +92,37 @@ class _HomePageState extends State<HomePage> {
                 title: Text("Mas información"),
                 onTap: () {
                   showAboutDialog(
-                  context: context,
-                  applicationVersion: "0.0.0",
-                  applicationLegalese:
-                  '-',
-                  children: [
-                    Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Text('-'),
-                    ),
-              ],
-            );
-          },
+                    context: context,
+                    applicationVersion: "0.0.0",
+                    applicationLegalese: '-',
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text('-'),
+                      ),
+                    ],
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.exit_to_app),
                 title: Text("Salir"),
                 onTap: () async {
-                    auth.signOutFacebook();
-                    auth.signOut();
-                    auth.signOutGoogle();
-                  },
+                  auth.signOutFacebook();
+                  auth.signOut();
+                  auth.signOutGoogle();
+                },
               ),
             ],
           ),
         ),
         body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors:[Colors.greenAccent,Colors.white]) 
-          
-          ),
-          child: SizedBox.expand(child: RadialMenu())));
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.topRight,
+                    colors: [Colors.greenAccent, Colors.white])),
+            child: SizedBox.expand(child: RadialMenu())));
     return scaffold;
   }
 }
@@ -185,29 +185,26 @@ class RadialAnimation extends StatelessWidget {
           return Transform.rotate(
             angle: radians(rotation.value),
             child: Stack(alignment: Alignment.center, children: [
-              _buildButton(30,
+              _buildButton(54,
                   color: Colors.red, icon: LineAwesomeIcons.bookmark, link: () {
                 Navigator.pushNamed(context, 'centrosestudio');
               }),
-              _buildButton(90,
-                  color: Colors.blue, icon: LineAwesomeIcons.search_plus, link: () {
-                Navigator.pushNamed(context, 'universidades');
-              }),
-              _buildButton(150,
-                  color: Colors.amber, icon: LineAwesomeIcons.calendar_check_o,
-                  link: () {
+              _buildButton(126,
+                  color: Colors.amber,
+                  icon: LineAwesomeIcons.calendar_check_o, link: () {
                 Navigator.pushNamed(context, 'eventos');
               }),
-              _buildButton(210,
-                  color: Colors.blue, 
+              _buildButton(198,
+                  color: Colors.blue,
                   icon: LineAwesomeIcons.university, link: () {
                 Navigator.pushNamed(context, 'universidades');
               }),
-              _buildButton(270, color: Colors.blue, icon: LineAwesomeIcons.bus, link: () {
+              _buildButton(270, color: Colors.blue, icon: LineAwesomeIcons.bus,
+                  link: () {
                 Navigator.pushNamed(context, 'colectivos');
               }),
-              _buildButton(330,
-                  color: Colors.lime, icon: LineAwesomeIcons.book, link: () {
+              _buildButton(342, color: Colors.lime, icon: LineAwesomeIcons.book,
+                  link: () {
                 Navigator.pushNamed(context, 'becas');
               }),
               Transform.scale(
@@ -215,16 +212,17 @@ class RadialAnimation extends StatelessWidget {
                     1, // subtract the beginning value to run the opposite animation
                 child: FloatingActionButton(
                     heroTag: "2",
-                    child: Icon(LineAwesomeIcons.minus_circle),
+                    child: Icon(LineAwesomeIcons.remove),
                     onPressed: _close,
                     backgroundColor: Colors.red),
               ),
               Transform.scale(
-                scale: scale.value,  
+                scale: scale.value,
                 child: FloatingActionButton(
-                    backgroundColor: Colors.greenAccent[400],
+                    backgroundColor: Colors.white,
                     heroTag: "1",
-                    child: Icon(LineAwesomeIcons.plus_circle), onPressed: _open),
+                    child: Image.asset("Asset/Logo1.png"),
+                    onPressed: _open),
               )
             ]),
           );
@@ -236,7 +234,7 @@ class RadialAnimation extends StatelessWidget {
     Color color,
     IconData icon,
     VoidCallback link,
-
+    Object herotag,
   }) {
     final double rad = radians(angle);
     return Transform(

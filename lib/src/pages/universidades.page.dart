@@ -45,12 +45,12 @@ class UniversidadesPage extends StatelessWidget {
           icon: AssetImage('Asset/unrn.png'),
         ),
         ListCardsUniversidades(
-          nombre: 'Uflo',
+          nombre: 'FLORES',
           nombreCompleto: 'Universidad de Flores',
-          icon: AssetImage('Asset/unco.png'),
+          icon: AssetImage('Asset/unrn.png'),
         ),
         ListCardsUniversidades(
-          nombre: 'Escuela de la Policia',
+          nombre: 'POLICIA',
           nombreCompleto: 'Escuela de la policia Neuquen',
           icon: AssetImage('Asset/unrn.png'),
         ),
@@ -66,8 +66,7 @@ class UniversidadesPage extends StatelessWidget {
         ),
         ListCardsUniversidades(
           nombre: 'Enerc',
-          nombreCompleto:
-              'Escuela Nacional de Experimentación y Realización Cinematográfica',
+          nombreCompleto:'Escuela Nacional de Experimentación y Realización Cinematográfica',
           icon: AssetImage('Asset/unrn.png'),
         ),
         ListCardsUniversidades(
@@ -96,7 +95,7 @@ class UniversidadesPage extends StatelessWidget {
           icon: AssetImage('Asset/unrn.png'),
         ),
         ListCardsUniversidades(
-          nombre: 'Si Jolie',
+          nombre: 'SJ',
           nombreCompleto: 'Instituto Si Jolie de Formación Profesional y Educación Superior',
           icon: AssetImage('Asset/unrn.png'),
         ),
@@ -105,9 +104,66 @@ class UniversidadesPage extends StatelessWidget {
           nombreCompleto: 'Consejo Provincial de Educación',
           icon: AssetImage('Asset/unrn.png'),
         ),
-
-
-
+        ListCardsUniversidades(
+          nombre: 'CPE',
+          nombreCompleto: 'Consejo Provincial de Educación',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'ISIV',
+          nombreCompleto: 'Instituto ISIV Educacíon Superior',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'CEDEP',
+          nombreCompleto: 'Centro de Estudios para el Desarrollo Económico de la Patagonia',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'IFES',
+          nombreCompleto: 'Instituto de Formación y Educación Superior',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'IFSSA',
+          nombreCompleto: 'Instituto de Formación Superior',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'SENECA',
+          nombreCompleto: 'Instituto terciario SENECA',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'VINCULO',
+          nombreCompleto: 'Escuela de Psicología Social del Neuquén',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'PSICOGONIA',
+          nombreCompleto: 'Escuela de Psicología Social de la Patagonia',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'COCINEROS PATAGONICOS',
+          nombreCompleto: 'Escuela de Cocineros Patagonicos',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'ISIC',
+          nombreCompleto: 'Instituto Superior de Cocina Internacional',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'IPES',
+          nombreCompleto: 'Instituto Paneamericano de Estudios Superiores',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
+        ListCardsUniversidades(
+          nombre: 'HABITAT',
+          nombreCompleto: 'Escuela de Diseño en el Habitat',
+          icon: AssetImage('Asset/unrn.png'),
+        ),
       ],
     );
   }

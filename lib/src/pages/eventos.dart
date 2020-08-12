@@ -3,69 +3,82 @@ import 'package:flutter/material.dart';
 class Eventos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
-            backgroundColor: Colors.white,
-            appBar: AppBar(
-              title: Text('Eventos'),
-              backgroundColor: Colors.purple[700],
-              elevation: 0.0,
-            ),
-            body: Container(
-              color: Colors.white,
-              padding: EdgeInsets.symmetric(
-                vertical: 1.0,
-              ),
-              height: 500,
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      height: 100.0,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        clipBehavior: Clip.hardEdge,
-                        child: Image.network(
-                            "https://www.espaciopilar.com.ar/img/slider/slider1.jpg"),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        _card(context),
-                        _card(context),
-                        _card(context),
-                        _card(context),
-                        _card(context),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )));
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.tealAccent[700],
+        title: Text('Facultades'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          _imageneventos(context),
+          _scrollview(context),
+
+        ],
+      ),
+    );
   }
 
-  Widget _card(BuildContext context) {
+  Widget _imageneventos(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Container(
-      width: 120,
+        height: _screenSize.height * 0.4,
+        width: double.infinity,
+        child: Image(
+            image: NetworkImage(
+                "https://www.espaciopilar.com.ar/img/slider/slider1.jpg")));
+  }
+  Widget _scrollview(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+
+    return Container(
+            height: _screenSize.height * 0.45,
+            width: double.infinity,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                _card(context),
+                _card(context),
+                _card(context),
+                _card(context),
+                _card(context),
+              ],
+
+            ),
+          );
+
+  }
+
+  // Widget _crearlistado(BuildContext context) {
+  //   final _screenSize = MediaQuery.of(context).size;
+  //   return Container(alignment: ,)
+  // }
+  
+
+  Widget _card(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+    return Container(
+      width: 110,
       child: Card(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           color: Colors.purple[100],
           child: Wrap(
             children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                clipBehavior: Clip.hardEdge,
-                child: Image.network(
-                    "https://i.pinimg.com/originals/f8/a2/10/f8a21088d331a0be109b4a399bfed8bc.jpg"),
+              Container(
+
+                height: _screenSize.height*0.33,
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.asset(
+                        "Asset/evento.jpg"),
+                  ),
+                ),
               ),
               ListTile(
-                title: Text("Evento1"),
+                title: Text("Evento1",),
                 subtitle: Text("subtititulo1"),
               )
             ],

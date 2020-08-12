@@ -8,11 +8,11 @@ class CentrosEstudio extends StatelessWidget {
             backgroundColor: Colors.red[200],
             appBar: AppBar(
               title: Text('Centro de Estudios'),
-              backgroundColor: Colors.red[700],
+              backgroundColor: Colors.redAccent,
               elevation: 0.0,
             ),
             body: Container(
-              color: Colors.white,
+              color: Colors.red,
               padding: EdgeInsets.symmetric(
                 vertical: 0.0,
               ),
@@ -22,18 +22,17 @@ class CentrosEstudio extends StatelessWidget {
                 children: <Widget>[
                   _card(context),
                   _card(context),
-                  _card(context),
-                  _card(context),
-                  _card(context),
                 ],
               ),
             )));
   }
 
   Widget _card(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+
     return Container(
       color: Colors.red[200],
-      width: 160,
+      width: _screenSize.width * 0.4,
       child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
