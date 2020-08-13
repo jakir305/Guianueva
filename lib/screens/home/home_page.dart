@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
     var scaffold = Scaffold(
         backgroundColor: Colors.white,
         appBar: GradientAppBar(
-          title: Text('Flutter'),
           backgroundColorStart: Colors.greenAccent,
           backgroundColorEnd: Colors.white,
         ),
@@ -86,6 +85,13 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.flag),
                 title: Text("Politicas de Privacidad"),
                 onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.fiber_new),
+                title: Text("Test Vocacional"),
+                onTap: () {
+                  Navigator.pushNamed(context, 'test');
+                },
               ),
               ListTile(
                 leading: Icon(Icons.keyboard_tab),
@@ -160,7 +166,7 @@ class RadialAnimation extends StatelessWidget {
             CurvedAnimation(parent: controller, curve: Curves.elasticOut)),
         rotation = Tween<double>(
           begin: 0.0,
-          end: 360.0,
+          end: 720.0,
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -190,21 +196,27 @@ class RadialAnimation extends StatelessWidget {
                 Navigator.pushNamed(context, 'centrosestudio');
               }),
               _buildButton(126,
-                  color: Colors.amber,
+                  color: Colors.purple,
+                  herotag: "3",
                   icon: LineAwesomeIcons.calendar_check_o, link: () {
                 Navigator.pushNamed(context, 'eventos');
               }),
               _buildButton(198,
                   color: Colors.blue,
+                  herotag: "4",
                   icon: LineAwesomeIcons.university, link: () {
                 Navigator.pushNamed(context, 'universidades');
               }),
-              _buildButton(270, color: Colors.blue, icon: LineAwesomeIcons.bus,
-                  link: () {
+              _buildButton(270,
+                  herotag: "5",
+                  color: Colors.amber,
+                  icon: LineAwesomeIcons.bus, link: () {
                 Navigator.pushNamed(context, 'colectivos');
               }),
-              _buildButton(342, color: Colors.lime, icon: LineAwesomeIcons.book,
-                  link: () {
+              _buildButton(342,
+                  herotag: "6",
+                  color: Colors.lime,
+                  icon: LineAwesomeIcons.book, link: () {
                 Navigator.pushNamed(context, 'becas');
               }),
               Transform.scale(
@@ -241,11 +253,18 @@ class RadialAnimation extends StatelessWidget {
       transform: Matrix4.identity()
         ..translate(
             (translation.value) * cos(rad), (translation.value) * sin(rad)),
-      child: IconButton(
-        color: color,
-        iconSize: 100,
-        icon: Icon(icon),
-        onPressed: link,
+      child: Container(
+        height: 100,
+        width: 100,
+        child: FloatingActionButton(
+          heroTag: herotag,
+          backgroundColor: color,
+          child: Icon(
+            icon,
+            size: 85,
+          ),
+          onPressed: link,
+        ),
       ),
     );
   }

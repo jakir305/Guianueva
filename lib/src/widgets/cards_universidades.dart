@@ -5,11 +5,13 @@ import 'package:provider/provider.dart';
 
 class ListCardsUniversidades extends StatelessWidget {
   final String nombre;
+  final String alias;
   final String nombreCompleto;
   final AssetImage icon;
 
   ListCardsUniversidades({
     @required this.nombre,
+    @required this.alias,
     @required this.nombreCompleto,
     @required this.icon,
   });
@@ -30,7 +32,10 @@ class ListCardsUniversidades extends StatelessWidget {
             Container(
               width: 80,
               height: 80,
-              child: Image(image: icon),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  clipBehavior: Clip.hardEdge,
+                  child: Image(image: icon)),
             ),
             Expanded(
               child: Column(
@@ -38,7 +43,7 @@ class ListCardsUniversidades extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    nombre,
+                    alias,
                     style: styleNombreUniver,
                     textAlign: TextAlign.center,
                   ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:guiae/src/Utils/text_style.dart';
 import 'package:guiae/src/widgets/cards_becas.dart';
 
 class Becasvarias extends StatelessWidget {
@@ -7,13 +9,19 @@ class Becasvarias extends StatelessWidget {
     return Container(
         child: Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Becas'),
-        backgroundColor: Colors.tealAccent[700],
+      appBar: GradientAppBar(
+        title: Text(
+          'Becas',
+          style: styleappbar,
+        ),
+        backgroundColorStart: Colors.tealAccent,
+        backgroundColorEnd: Colors.white,
         elevation: 0.0,
       ),
       body: Container(
-          color: Colors.white,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.teal, Colors.white]),
+          ),
           padding: EdgeInsets.all(
             10,
           ),
@@ -28,7 +36,7 @@ class Becasvarias extends StatelessWidget {
         nombre: "Becas",
         icon: AssetImage('Asset/unco.png'),
         color: Colors.blueAccent,
-        url: "www.uncoma.edu.ar/secretaria_bienestar/becas.htm ",
+        url: "https://www.uncoma.edu.ar/index.php/becas/",
       ),
       ListCardsBecas(
         institucion: 'Universidad Nacional de Rio Negro',

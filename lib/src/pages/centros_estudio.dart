@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class CentrosEstudio extends StatelessWidget {
   @override
@@ -6,13 +7,15 @@ class CentrosEstudio extends StatelessWidget {
     return Container(
         child: Scaffold(
             backgroundColor: Colors.red[200],
-            appBar: AppBar(
+            appBar: GradientAppBar(
               title: Text('Centro de Estudios'),
-              backgroundColor: Colors.redAccent,
+              backgroundColorStart: Colors.redAccent,
+              backgroundColorEnd: Colors.white,
               elevation: 0.0,
             ),
             body: Container(
-              color: Colors.red,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [Colors.red, Colors.white])),
               padding: EdgeInsets.symmetric(
                 vertical: 0.0,
               ),

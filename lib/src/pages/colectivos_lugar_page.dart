@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:guiae/src/Utils/text_style.dart';
 import 'package:guiae/src/widgets/cards_colectivos.dart';
 
 class ColectivosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.tealAccent[700],
-        title: Text('Colectivos'),
+      appBar: GradientAppBar(
+        backgroundColorStart: Colors.amberAccent,
+        backgroundColorEnd: Colors.white,
+        title: Text(
+          'Colectivos',
+          style: styleappbar,
+        ),
       ),
       body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.amber, Colors.white])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

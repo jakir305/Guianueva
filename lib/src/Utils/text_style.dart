@@ -25,3 +25,7 @@ final styleTitulos = new TextStyle(
   color: Colors.blue,
   fontStyle: FontStyle.normal,
 );
+
+final styleappbar = new TextStyle(
+  color: Colors.black87,
+);

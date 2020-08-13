@@ -8,6 +8,7 @@ import 'package:guiae/src/pages/colectivos_lugar_page.dart';
 import 'package:guiae/src/pages/facultades_page.dart';
 import 'package:guiae/src/pages/lineas_colectivos.dart';
 import 'package:guiae/src/pages/nosotros.dart';
+import 'package:guiae/src/pages/test.dart';
 import 'package:guiae/src/pages/universidades.page.dart';
 import 'package:guiae/src/pages/becas.dart';
 import 'package:guiae/src/pages/eventos.dart';
@@ -27,5 +28,8 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'becas': (BuildContext context) => Becasvarias(),
     'eventos': (BuildContext context) => Eventos(),
     'centrosestudio': (BuildContext context) => CentrosEstudio(),
+    'test': (BuildContext context) => Testvocacional(),
+    'test2': (BuildContext context) => Testvocacional2(),
+    'test3': (BuildContext context) => Testvocacional3(),
   };
 }

@@ -32,7 +32,10 @@ class ListCardsBecas extends StatelessWidget {
               duration: Duration(seconds: 1),
               width: 80,
               height: 80,
-              child: Image(image: icon),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  clipBehavior: Clip.hardEdge,
+                  child: Image(image: icon)),
             ),
             SizedBox(
               width: 10,
