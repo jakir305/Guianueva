@@ -1,16 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:guiae/src/Utils/text_style.dart';
 
 class ListCardsTest extends StatelessWidget {
-  int _humanidades = 0;
-  int _arte = 0;
-  int _administracion = 0;
-  int _biologia = 0;
-  int _matematica = 0;
 
   final String pregunta;
   final String text1;
@@ -18,7 +9,11 @@ class ListCardsTest extends StatelessWidget {
   final String text3;
   final String text4;
   final String text5;
-  final Object next;
+  final Object next1;
+  final Object next2;
+  final Object next3;
+  final Object next4;
+  final Object next5;
   final Color color1;
   final Color color2;
 
@@ -29,7 +24,11 @@ class ListCardsTest extends StatelessWidget {
     @required this.text3,
     @required this.text4,
     @required this.text5,
-    @required this.next,
+    @required this.next1,
+    @required this.next2,
+    @required this.next3,
+    @required this.next4,
+    @required this.next5,
     @required this.color1,
     @required this.color2,
   });
@@ -40,17 +39,6 @@ class ListCardsTest extends StatelessWidget {
 
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: GradientAppBar(
-          title: Text(
-            'Test',
-            style: styleappbar,
-            textAlign: TextAlign.center,
-          ),
-          backgroundColorStart: color1,
-          backgroundColorEnd: color2,
-          elevation: 0.0,
-        ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [color1, color2]),
@@ -69,38 +57,23 @@ class ListCardsTest extends StatelessWidget {
               ),
             ),
             Testcard(
-              link: () {
-                _humanidades++;
-                next;
-              },
+              link:next1,
               text: text1,
             ),
             Testcard(
-              link: () {
-                _arte++;
-                next;
-              },
+              link:next2,
               text: text2,
             ),
             Testcard(
-              link: () {
-                _administracion++;
-                next;
-              },
+              link: next3,
               text: text3,
             ),
             Testcard(
-              link: () {
-                _biologia++;
-                next;
-              },
+              link:next4,
               text: text4,
             ),
             Testcard(
-              link: () {
-                _matematica++;
-                next;
-              },
+              link:next5,
               text: text5,
             ),
           ]),

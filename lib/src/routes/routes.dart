@@ -29,7 +29,14 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'eventos': (BuildContext context) => Eventos(),
     'centrosestudio': (BuildContext context) => CentrosEstudio(),
     'test': (BuildContext context) => Testvocacional(),
+
+
+
+    'test1': (BuildContext context) => Testvocacional1(),
     'test2': (BuildContext context) => Testvocacional2(),
     'test3': (BuildContext context) => Testvocacional3(),
+
+    'resultados': (BuildContext context) => Resultados(),
+
   };
 }
