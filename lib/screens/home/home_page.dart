@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
         appBar: GradientAppBar(
           backgroundColorStart: Colors.greenAccent,
           backgroundColorEnd: Colors.white,
+          elevation: 0,
         ),
         drawer: Drawer(
           child: ListView(

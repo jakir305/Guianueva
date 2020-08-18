@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 class ListCardsTest extends StatelessWidget {
-
   final String pregunta;
   final String text1;
   final String text2;
@@ -57,11 +56,11 @@ class ListCardsTest extends StatelessWidget {
               ),
             ),
             Testcard(
-              link:next1,
+              link: next1,
               text: text1,
             ),
             Testcard(
-              link:next2,
+              link: next2,
               text: text2,
             ),
             Testcard(
@@ -69,11 +68,11 @@ class ListCardsTest extends StatelessWidget {
               text: text3,
             ),
             Testcard(
-              link:next4,
+              link: next4,
               text: text4,
             ),
             Testcard(
-              link:next5,
+              link: next5,
               text: text5,
             ),
           ]),

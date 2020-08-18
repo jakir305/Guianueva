@@ -77,7 +77,9 @@ flutter:
     - family: Fuente1
       fonts:
         - asset: fonts/Monoton-Regular.ttf
-  #       - asset: fonts/Schyler-Regular.ttf
+    - family: Fuente2
+      fonts:
+        - asset: fonts/VesperLibre-Black.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

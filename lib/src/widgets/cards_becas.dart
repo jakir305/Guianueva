@@ -62,8 +62,9 @@ class ListCardsBecas extends StatelessWidget {
                   Container(
                     child: Text(
                       institucion,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 14,
                         color: Colors.black,
                       ),
                     ),

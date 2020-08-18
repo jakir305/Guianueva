@@ -29,14 +29,35 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'eventos': (BuildContext context) => Eventos(),
     'centrosestudio': (BuildContext context) => CentrosEstudio(),
     'test': (BuildContext context) => Testvocacional(),
-
-
-
     'test1': (BuildContext context) => Testvocacional1(),
     'test2': (BuildContext context) => Testvocacional2(),
     'test3': (BuildContext context) => Testvocacional3(),
-
+    'test4': (BuildContext context) => Testvocacional4(),
+    'test5': (BuildContext context) => Testvocacional5(),
+    'test6': (BuildContext context) => Testvocacional6(),
+    'test7': (BuildContext context) => Testvocacional7(),
+    'test8': (BuildContext context) => Testvocacional8(),
+    'test9': (BuildContext context) => Testvocacional9(),
+    'test10': (BuildContext context) => Testvocacional10(),
+    'test11': (BuildContext context) => Testvocacional11(),
+    'test12': (BuildContext context) => Testvocacional12(),
+    'test13': (BuildContext context) => Testvocacional13(),
+    'test14': (BuildContext context) => Testvocacional14(),
+    'test15': (BuildContext context) => Testvocacional15(),
+    'test16': (BuildContext context) => Testvocacional16(),
+    'test17': (BuildContext context) => Testvocacional17(),
+    'test18': (BuildContext context) => Testvocacional18(),
+    'test19': (BuildContext context) => Testvocacional19(),
+    'test20': (BuildContext context) => Testvocacional20(),
+    'test21': (BuildContext context) => Testvocacional21(),
+    'test22': (BuildContext context) => Testvocacional22(),
+    'test23': (BuildContext context) => Testvocacional23(),
+    'test24': (BuildContext context) => Testvocacional24(),
+    'test25': (BuildContext context) => Testvocacional25(),
+    'test26': (BuildContext context) => Testvocacional26(),
+    'test27': (BuildContext context) => Testvocacional27(),
+    'test28': (BuildContext context) => Testvocacional28(),
+    'test29': (BuildContext context) => Testvocacional29(),
     'resultados': (BuildContext context) => Resultados(),
-
   };
 }

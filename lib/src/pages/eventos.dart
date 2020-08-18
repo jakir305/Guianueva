@@ -8,7 +8,7 @@ class Eventos extends StatelessWidget {
       appBar: GradientAppBar(
         backgroundColorStart: Colors.purpleAccent,
         backgroundColorEnd: Colors.white,
-        title: Text('Facultades'),
+        title: Text('Eventos'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class Eventos extends StatelessWidget {
         width: double.infinity,
         child: Image(
             image: NetworkImage(
-                "https://www.espaciopilar.com.ar/img/slider/slider1.jpg")));
+                "https://scontent.fbrc1-1.fna.fbcdn.net/v/t1.0-9/69816312_462369147812097_2051216491545624576_o.jpg?_nc_cat=104&_nc_sid=e3f864&_nc_ohc=vJt2LWQisAgAX9yB4cN&_nc_ht=scontent.fbrc1-1.fna&oh=780f99e3bfd9439b0e3d3823a59aa07d&oe=5F6232B9")));
   }
 
   Widget _scrollview(BuildContext context) {

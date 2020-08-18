@@ -84,7 +84,7 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
             alignment: Alignment.centerLeft,
             child: Text(
               facultad.carrera,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, height: 1.5),
             ),
           ),
           onTap: () {
