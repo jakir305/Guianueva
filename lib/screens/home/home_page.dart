@@ -95,6 +95,13 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.fiber_new),
+                title: Text("CLOUD UNIVERSIDADES"),
+                onTap: () {
+                  Navigator.pushNamed(context, 'clouduniversidades');
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.keyboard_tab),
                 title: Text("Mas información"),
                 onTap: () {
@@ -158,7 +165,7 @@ class _RadialMenuState extends State<RadialMenu>
 class RadialAnimation extends StatelessWidget {
   RadialAnimation({Key key, this.controller})
       : scale = Tween<double>(
-          begin: 3.5,
+          begin: 4.0,
           end: 0.0,
         ).animate(
           CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn),
@@ -193,28 +200,34 @@ class RadialAnimation extends StatelessWidget {
             angle: radians(rotation.value),
             child: Stack(alignment: Alignment.center, children: [
               _buildButton(54,
-                  color: Colors.red, icon: LineAwesomeIcons.bookmark, link: () {
+                  text: "Centros de Estudio",
+                  color: Colors.red,
+                  icon: LineAwesomeIcons.bookmark, link: () {
                 Navigator.pushNamed(context, 'centrosestudio');
               }),
               _buildButton(126,
+                  text: "Eventos",
                   color: Colors.purple,
                   herotag: "3",
                   icon: LineAwesomeIcons.calendar_check_o, link: () {
                 Navigator.pushNamed(context, 'eventos');
               }),
               _buildButton(198,
+                  text: "Universidades",
                   color: Colors.blue,
                   herotag: "4",
                   icon: LineAwesomeIcons.university, link: () {
                 Navigator.pushNamed(context, 'universidades');
               }),
               _buildButton(270,
+                  text: "Colectivos",
                   herotag: "5",
                   color: Colors.amber,
                   icon: LineAwesomeIcons.bus, link: () {
                 Navigator.pushNamed(context, 'colectivos');
               }),
               _buildButton(342,
+                  text: "Becas",
                   herotag: "6",
                   color: Colors.lime,
                   icon: LineAwesomeIcons.book, link: () {
@@ -248,6 +261,7 @@ class RadialAnimation extends StatelessWidget {
     IconData icon,
     VoidCallback link,
     Object herotag,
+    String text,
   }) {
     final double rad = radians(angle);
     return Transform(
@@ -255,14 +269,22 @@ class RadialAnimation extends StatelessWidget {
         ..translate(
             (translation.value) * cos(rad), (translation.value) * sin(rad)),
       child: Container(
-        height: 100,
-        width: 100,
+        height: 110,
+        width: 110,
         child: FloatingActionButton(
           heroTag: herotag,
           backgroundColor: color,
-          child: Icon(
-            icon,
-            size: 85,
+          child: Column(
+            children: <Widget>[
+              Icon(
+                icon,
+                size: 75,
+              ),
+              Text(
+                text,
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
           onPressed: link,
         ),

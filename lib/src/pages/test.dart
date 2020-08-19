@@ -61,30 +61,39 @@ class _TestvocacionalState extends State<Testvocacional> {
                   child: Center(
                       child: Column(
                     children: <Widget>[
-                      Text(
-                        "Para saber que estudiar "
-                        "Completa el test y luego obtendras los resultados."
-                        "\n \n Es importante que sepas que el test no es final y consta de solo 29 preguntas,"
-                        " por lo tanto no puede llegar a ser exacto.\n\n",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17.0,
+                      Expanded(
+                        flex: 5,
+                        child: Text(
+                          "Para saber que estudiar "
+                          "Completa el test y luego obtendras los resultados."
+                          "\n \n Es importante que sepas que el test no es final y consta de solo 29 preguntas,"
+                          " por lo tanto no puede llegar a ser exacto.\n\n",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17.0,
+                          ),
                         ),
                       ),
-                      Text(
-                        "''La duda es uno de los nombres de la inteligencia.''",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Fuente2',
-                          fontSize: 15,
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          "''La duda es uno de los nombres de la inteligencia.''",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Fuente2',
+                            fontSize: 15,
+                          ),
                         ),
                       ),
-                      Text(
-                        "Jorge Luis Borges",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 13,
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          "Jorge Luis Borges",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                     ],
@@ -1419,9 +1428,11 @@ class _ResultadosState extends State<Resultados> {
         child: ListView(
           children: <Widget>[
             Container(
-                height: _screenSize.height * 0.125,
-                width: double.infinity,
-                color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                height: _screenSize.height * 0.1,
                 child: Center(
                     child: Text(
                   "Resultados",
@@ -1431,33 +1442,46 @@ class _ResultadosState extends State<Resultados> {
                   ),
                 ))),
             SizedBox(
-              height: _screenSize.height * 0.05,
+              height: _screenSize.height * 0.02,
             ),
             Resultadoscard(clase: "Humanidades", resultado: rhumanidades),
             SizedBox(
-              height: _screenSize.height * 0.02,
+              height: _screenSize.height * 0.01,
             ),
             Resultadoscard(clase: "Arte", resultado: rarte),
             SizedBox(
-              height: _screenSize.height * 0.02,
+              height: _screenSize.height * 0.01,
             ),
             Resultadoscard(
                 clase: "Administración y Economía", resultado: radministracion),
             SizedBox(
-              height: _screenSize.height * 0.02,
+              height: _screenSize.height * 0.01,
             ),
             Resultadoscard(clase: "Biología y Química", resultado: rbiologia),
             SizedBox(
-              height: _screenSize.height * 0.02,
+              height: _screenSize.height * 0.01,
             ),
             Resultadoscard(
                 clase: "Matemática y Física", resultado: rmatematica),
+            Container(
+              margin: EdgeInsets.all(40),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), color: Colors.white),
+              child: Text(
+                "Los resultados solo reflejan una parte pequeña de lo que te puede gustar, ¡Investiga!",
+                textAlign: TextAlign.center,
+              ),
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.pushReplacementNamed(context, "/");
-      }),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.red,
+          child: Icon(Icons.exit_to_app),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, "/");
+          }),
     );
   }
 }
@@ -1474,40 +1498,40 @@ class Resultadoscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
-    return Card(
-      child: Container(
-          alignment: AlignmentDirectional.center,
-          padding: EdgeInsets.all(4),
-          height: _screenSize.height * 0.1,
-          width: double.infinity,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 10,
+    return Container(
+        alignment: AlignmentDirectional.center,
+        margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+        padding: EdgeInsets.all(10),
+        height: _screenSize.height * 0.1,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50), color: Colors.white),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 10,
+              child: Text(
+                clase,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: SizedBox(
+                width: 12,
+              ),
+            ),
+            Expanded(
+                flex: 3,
                 child: Text(
-                  clase,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(
-                  width: 12,
-                ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Text(
-                    resultado,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 20),
-                  )),
-            ],
-          )),
-    );
+                  resultado,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 20),
+                )),
+          ],
+        ));
   }
 }
