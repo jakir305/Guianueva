@@ -25,11 +25,11 @@ dependencies:
   firebase_core :
   cupertino_icons:
   firebase_database:
-  firebase_auth: ^0.18.0+1
-  cloud_firestore: ^0.14.0+1 
+  firebase_auth: 
+  cloud_firestore: 
   provider:
   url_launcher:
-  google_sign_in: "^4.5.1"
+  google_sign_in: 
   charts_flutter:
   font_awesome_flutter:
   shared_preferences:
@@ -41,7 +41,7 @@ dependencies:
   eva_icons_flutter:
   flare_flutter:
   vector_math:
-  gradient_app_bar: ^0.0.1
+  gradient_app_bar: 
 
 dev_dependencies:
   flutter_test:
