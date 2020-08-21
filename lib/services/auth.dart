@@ -116,15 +116,23 @@ class AuthService {
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()
-        .then(
-            (data) => data.docs.forEach((doc) => name = doc.data()['nombre']));
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        name = (doc.data()["nombre"]);
+        print(name);
+      });
+    });
 
     FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()
-        .then(
-            (data) => data.docs.forEach((doc) => name = doc.data()['avatar']));
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        avatar = (doc.data()["avatar"]);
+        print(avatar);
+      });
+    });
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
