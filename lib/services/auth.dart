@@ -17,17 +17,17 @@ class AuthService {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // create user obj based on firebase user
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+  LocalUser _userFromFirebaseUser(User user) {
+    return user != null ? LocalUser(uid: user.uid) : null;
   }
 
   // auth change user stream
-  Stream<User> get user {
-    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+  Stream<LocalUser> get user {
+    return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
   // Login with Facebook
-  Future<FirebaseUser> loginWithFacebook() async {
+  Future<User> loginWithFacebook() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final result = await facebookLogin.logIn(['email']);
@@ -36,20 +36,20 @@ class AuthService {
       return null;
     }
 
-    final AuthCredential credential = FacebookAuthProvider.getCredential(
-      accessToken: result.accessToken.token,
-    );
+    final AuthCredential credential =
+        FacebookAuthProvider.credential(result.accessToken.token);
 
-    final AuthResult authResult = await _auth.signInWithCredential(credential);
-    final FirebaseUser user = authResult.user;
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
 
     assert(user.email != null);
     assert(user.displayName != null);
-    assert(user.photoUrl != null);
+    assert(user.photoURL != null);
 
     name = user.displayName;
     email = user.email;
-    imageUrl = user.photoUrl;
+    imageUrl = user.photoURL;
 
     prefs.setString('name', name);
     prefs.setString('email', email);
@@ -63,45 +63,23 @@ class AuthService {
   }
 
 // Login with Google
-  Future<String> signInWithGoogle() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    // Create a new credential
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
 
-    final AuthResult authResult = await _auth.signInWithCredential(credential);
-    final FirebaseUser user = authResult.user;
-
-    // Checking if email and name is null
-    assert(user.email != null);
-    assert(user.displayName != null);
-    assert(user.photoUrl != null);
-
-    name = user.displayName;
-    email = user.email;
-    imageUrl = user.photoUrl;
-
-    prefs.setString('name', name);
-    prefs.setString('email', email);
-    prefs.setString('imageUrl', imageUrl);
-
-    // Only taking the first part of the name, i.e., First Name
-    if (name.contains(" ")) {
-      name = name.substring(0, name.indexOf(" "));
-    }
-
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-
-    final FirebaseUser currentUser = await _auth.currentUser();
-    assert(user.uid == currentUser.uid);
-    return 'signInWithGoogle succeeded: $user';
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   // sign in with email and password
@@ -110,7 +88,7 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
-    FirebaseFirestore.instance
+    /*  FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .snapshots()
@@ -120,13 +98,13 @@ class AuthService {
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .snapshots()
-        .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"])));
+        .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"]))); */
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);
-      FirebaseUser user = result.user;
+      User user = result.user;
 
       email = _email;
       imageUrl = avatar;
@@ -148,11 +126,11 @@ class AuthService {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
         email: _email,
         password: password,
       );
-      FirebaseUser user = result.user;
+      User user = result.user;
 
       name = '';
       email = _email;
