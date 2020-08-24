@@ -1,6 +1,6 @@
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:guiae/src/Utils/text_style.dart';
+// import 'package:guiae/src/Utils/text_style.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -23,6 +23,7 @@ class _SignInState extends State<SignIn> {
   String password = '';
 
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -36,41 +37,39 @@ class _SignInState extends State<SignIn> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 50.0,
-                ),
+                _imagen(context),
                 Container(
-                  child: Image.asset('Asset/Logo1.png'),
-                  height: 100,
-                  width: 100,
-                ),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 5.0, vertical: 20.0),
-                  margin: EdgeInsets.all(10.0),
-                  child: Text('Guia  Estudiantil', style: styleGuia),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  height: _screenSize.height * 0.28,
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
                     children: <Widget>[
                       TextFormField(
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: InputDecoration.collapsed(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  style: BorderStyle.solid,
-                                  color: Colors.black,
-                                ),
-                                borderRadius: BorderRadius.circular(20)),
-                            hintText: 'correo'),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(1),
+                          prefixIcon: Image.asset(
+                            'Asset/ICONOS INICIO-06.png',
+                            scale: 9,
+                          ),
+                          fillColor: Color.fromRGBO(0, 167, 160, 1),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              style: BorderStyle.solid,
+                              color: Color.fromRGBO(0, 167, 160, 1),
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          hintText: 'Correo',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese Email valido' : null,
                         onChanged: (val) {
@@ -85,7 +84,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration.collapsed(
-                            fillColor: Colors.white,
+                            hintStyle: TextStyle(),
                             filled: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)),
@@ -101,7 +100,6 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -159,14 +157,14 @@ class _SignInState extends State<SignIn> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   elevation: 15.0,
-                  color: Colors.white,
+                  color: Color.fromRGBO(20, 120, 242, 1),
                   icon: Container(
                       width: 25.0,
                       height: 25.0,
                       child: Image.asset('Asset/Facebook.png')),
                   label: Text(
                     'Continuar con Facebook ',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15, color: Colors.white),
                   ),
                   onPressed: () async {
                     await _auth.loginWithFacebook();
@@ -196,4 +194,35 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+}
+
+Widget _imagen(BuildContext context) {
+  final _screenSize = MediaQuery.of(context).size;
+  return Container(
+    height: _screenSize.height * 0.418,
+    child: Column(
+      children: <Widget>[
+        SizedBox(
+          height: 30.0,
+        ),
+        Container(
+          child: Image.asset('Asset/Logo1.png'),
+          height: 150,
+          width: 150,
+        ),
+        Container(
+          margin: EdgeInsets.all(10.0),
+          child: Image.asset(
+            'Asset/ICONOS INICIO.png',
+            scale: 6,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _text(BuildContext context) {
+  final _screenSize = MediaQuery.of(context).size;
+  return Container();
 }
