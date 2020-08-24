@@ -112,25 +112,23 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         name = (doc.data()["nombre"]);
-        print(name);
       });
     });
 
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         avatar = (doc.data()["avatar"]);
-        print(avatar);
       });
     });
 

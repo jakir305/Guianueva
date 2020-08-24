@@ -24,13 +24,16 @@ class MostrarCarreras extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
-        return new ListView(
-          children: snapshot.data.docs.map((DocumentSnapshot document) {
-            return new ListTile(
-              title: new Text(document.data()['Carrera']),
-              subtitle: new Text(document.data()['Facultad']),
-            );
-          }).toList(),
+        return Container(
+          child: new ListView(
+            children: snapshot.data.docs.map((DocumentSnapshot document) {
+              print(document.data()['Carrera']);
+              return new ListTile(
+                title: new Text(document.data()['Carrera']),
+                subtitle: new Text(document.data()['Facultad']),
+              );
+            }).toList(),
+          ),
         );
       },
     );
