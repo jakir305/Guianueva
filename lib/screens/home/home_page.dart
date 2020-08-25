@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
 // import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
+import 'package:guiae/src/widgets/menu_card.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 // import 'package:guiae/src/Utils/text_style.dart';
 import 'dart:math';
 import 'package:vector_math/vector_math.dart' show radians;
 import 'package:flutter/foundation.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+// import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,129 +17,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AuthService auth = AuthService();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    Image _avatar;
-    final prefs = new PreferenciasUsuario();
-    if (prefs.imageUrl == '') {
-      _avatar = Image(
-        image: AssetImage(prefs.imageAsset),
-      );
-    } else {
-      _avatar = Image(
-        image: NetworkImage(prefs.imageUrl),
-        fit: BoxFit.cover,
-        height: 65,
-        width: 65,
-        alignment: Alignment.center,
-      );
-    }
-
     var scaffold = Scaffold(
-        backgroundColor: Colors.white,
-        appBar: GradientAppBar(
-          backgroundColorStart: Colors.greenAccent,
-          backgroundColorEnd: Colors.white,
-          elevation: 0,
-        ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.all(0),
-            children: [
-              UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.greenAccent, Colors.white]),
-                    color: Colors.tealAccent,
-                  ),
-                  accountName: Text(
-                    prefs.name,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 25,
-                    ),
-                  ),
-                  accountEmail: Text(
-                    prefs.email,
-                    style: TextStyle(color: Colors.black87),
-                  ),
-                  currentAccountPicture: Container(
-                    child: ClipRRect(
-                      child: _avatar,
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  )),
-              ListTile(
-                leading: Icon(Icons.info),
-                title: Text("Acerca de Nosotros"),
-                onTap: () {
-                  Navigator.pushNamed(context, 'nosotros');
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.share),
-                title: Text("Comparte la Aplicacion"),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.flag),
-                title: Text("Politicas de Privacidad"),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.fiber_new),
-                title: Text("Test Vocacional"),
-                onTap: () {
-                  Navigator.pushNamed(context, 'test');
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.fiber_new),
-                title: Text("CLOUD UNIVERSIDADES"),
-                onTap: () {
-                  Navigator.pushNamed(context, 'clouduniversidades');
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.keyboard_tab),
-                title: Text("Mas información"),
-                onTap: () {
-                  showAboutDialog(
-                    context: context,
-                    applicationVersion: "0.0.0",
-                    applicationLegalese: '-',
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text('-'),
-                      ),
-                    ],
-                  );
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text("Salir"),
-                onTap: () async {
-                  auth.signOutFacebook();
-                  auth.signOut();
-                  auth.signOutGoogle();
-                },
-              ),
-            ],
-          ),
-        ),
-        body: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.topRight,
-                    colors: [Colors.greenAccent, Colors.white])),
-            child: SizedBox.expand(child: RadialMenu())));
+      key: _scaffoldKey,
+      backgroundColor: Colors.white,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromRGBO(0, 167, 160, 1),
+          child: Icon(Icons.menu),
+          onPressed: () {
+            _scaffoldKey.currentState.openDrawer();
+          }),
+      drawer: _drawer(context),
+      body: _body(context),
+    );
     return scaffold;
   }
+}
+
+Widget _radialbody(BuildContext context) {
+  return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+              colors: [Colors.greenAccent, Colors.white])),
+      child: SizedBox.expand(child: RadialMenu()));
 }
 
 class RadialMenu extends StatefulWidget {
@@ -299,4 +206,168 @@ class RadialAnimation extends StatelessWidget {
   _close() {
     controller.reverse();
   }
+}
+
+Widget _drawer(BuildContext context) {
+  final AuthService auth = AuthService();
+  final Color color = Color.fromRGBO(0, 167, 160, 1);
+
+  Image _avatar;
+  final prefs = new PreferenciasUsuario();
+  if (prefs.imageUrl == '') {
+    _avatar = Image(
+      image: AssetImage(prefs.imageAsset),
+    );
+  } else {
+    _avatar = Image(
+      image: NetworkImage(prefs.imageUrl),
+      fit: BoxFit.cover,
+      height: 100,
+      width: 100,
+      alignment: Alignment.center,
+    );
+  }
+
+  return Drawer(
+    child: ListView(
+      padding: EdgeInsets.all(0),
+      children: [
+        UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: color,
+            ),
+            accountName: Text(
+              prefs.name,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+              ),
+            ),
+            accountEmail: Text(
+              prefs.email,
+              style: TextStyle(color: Colors.white),
+            ),
+            currentAccountPicture: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  border: Border.all(color: Colors.white, width: 5)),
+              child: ClipRRect(
+                child: _avatar,
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+            )),
+        ListTile(
+          leading: Icon(Icons.info),
+          title: Text("Acerca de Nosotros"),
+          onTap: () {
+            Navigator.pushNamed(context, 'nosotros');
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.share),
+          title: Text("Comparte la Aplicacion"),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: Icon(Icons.flag),
+          title: Text("Politicas de Privacidad"),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: Icon(Icons.fiber_new),
+          title: Text("Test Vocacional"),
+          onTap: () {
+            Navigator.pushNamed(context, 'test');
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.fiber_new),
+          title: Text("CLOUD UNIVERSIDADES"),
+          onTap: () {
+            Navigator.pushNamed(context, 'clouduniversidades');
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.keyboard_tab),
+          title: Text("Mas información"),
+          onTap: () {
+            showAboutDialog(
+              context: context,
+              applicationVersion: "0.0.0",
+              applicationLegalese: '-',
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text('-'),
+                ),
+              ],
+            );
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.exit_to_app),
+          title: Text("Salir"),
+          onTap: () async {
+            auth.signOutFacebook();
+            auth.signOut();
+            auth.signOutGoogle();
+          },
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _body(BuildContext context) {
+  return SafeArea(
+      child: Column(
+    children: <Widget>[
+      CardMenu(
+          nombre: "UNIVERSIDADES",
+          image: "Asset/Universidades.jpg",
+          link: () {
+            Navigator.pushNamed(context, 'universidades');
+          }),
+      Divider(
+        color: Colors.white,
+        height: 5,
+      ),
+      CardMenu(
+          nombre: "COLECTIVOS",
+          image: "Asset/colectivos.jpg",
+          link: () {
+            Navigator.pushNamed(context, 'colectivos');
+          }),
+      Divider(
+        color: Colors.white,
+        height: 5,
+      ),
+      CardMenu(
+          nombre: "BECAS",
+          image: "Asset/becas.jpg",
+          link: () {
+            Navigator.pushNamed(context, 'becas');
+          }),
+      Divider(
+        color: Colors.white,
+        height: 5,
+      ),
+      CardMenu(
+          nombre: "CENTRO DE ESTUDIOS",
+          image: "Asset/biblioteca.jpg",
+          link: () {
+            Navigator.pushNamed(context, 'centrosestudio');
+          }),
+      Divider(
+        color: Colors.white,
+        height: 5,
+      ),
+      CardMenu(
+          nombre: "EVENTOS",
+          image: "Asset/eventos.jpg",
+          link: () {
+            Navigator.pushNamed(context, 'eventos');
+          }),
+    ],
+  ));
 }
