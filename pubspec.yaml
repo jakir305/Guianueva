@@ -27,6 +27,7 @@ dependencies:
   cupertino_icons:
   firebase_database:
 <<<<<<< HEAD
+<<<<<<< HEAD
   firebase_auth:
   cloud_firestore:
   provider:
@@ -48,6 +49,13 @@ dependencies:
   url_launcher:
   google_sign_in:
 >>>>>>> parent of 34de1af... 21/08/2020 11:30
+=======
+  firebase_auth: ^0.18.0+1
+  cloud_firestore: ^0.14.0+1 
+  provider:
+  url_launcher:
+  google_sign_in: "^4.5.1"
+>>>>>>> parent of 77e8419... 123
   charts_flutter:
   font_awesome_flutter:
   shared_preferences:
@@ -60,7 +68,11 @@ dependencies:
   flare_flutter:
   vector_math:
 <<<<<<< HEAD
+<<<<<<< HEAD
   gradient_app_bar:
+=======
+  gradient_app_bar: ^0.0.1
+>>>>>>> parent of 77e8419... 123
 =======
   gradient_app_bar: ^0.0.1
 >>>>>>> parent of 77e8419... 123

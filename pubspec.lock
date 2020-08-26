@@ -85,10 +85,14 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
 <<<<<<< HEAD
+<<<<<<< HEAD
     version: "0.14.0+2"
 =======
     version: "0.13.7"
 >>>>>>> parent of 34de1af... 21/08/2020 11:30
+=======
+    version: "0.14.0+1"
+>>>>>>> parent of 77e8419... 123
   cloud_firestore_platform_interface:
     dependency: transitive
     description:
