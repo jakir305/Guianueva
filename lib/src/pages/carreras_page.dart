@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:guiae/src/providers/universidades_info.dart';
-import 'package:guiae/src/widgets/clouduniversidades.dart';
-import 'package:provider/provider.dart';
+import 'package:guiae/src/providers/models.dart';
+import 'package:guiae/src/providers/provider.dart';
+import 'package:guiae/src/widgets/showdialog_carreras.dart';
 
 class ListaDeCarreras extends StatefulWidget {
   @override
@@ -10,6 +10,11 @@ class ListaDeCarreras extends StatefulWidget {
 }
 
 class _ListaDeCarrerasState extends State<ListaDeCarreras> {
+  List carreras;
+  String facultadCarrera;
+  List carrerasDetalles;
+
+  final universidadesProvider = new UniversidadesProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,22 +23,85 @@ class _ListaDeCarrerasState extends State<ListaDeCarreras> {
         title: Text('Carreras'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          _carrerasMostrar(),
+          _imagenfacultad(),
+          _crearlistado(),
         ],
       ),
     );
   }
 
-  Widget _carrerasMostrar() {
-    final universidadInfo = Provider.of<UniversidadInfo>(context);
-    final size = MediaQuery.of(context).size;
+  Widget _imagenfacultad() {
+    final _screenSize = MediaQuery.of(context).size;
+
     return Container(
-      height: size.height * 0.85,
-      width: double.infinity,
-      child: MostrarCarreras(
-        documento: universidadInfo.universidad,
-      ),
+        height: _screenSize.height * 0.3,
+        width: double.infinity,
+        child: Image(
+            image: NetworkImage(
+                'https://www.neuqueninforma.gob.ar/wp-content/uploads/2019/06/WEB-Convenio-con-la-UNCo-5.jpg')));
+  }
+
+  Widget _crearlistado() {
+    final _screenSize = MediaQuery.of(context).size;
+
+    return FutureBuilder(
+      future: universidadesProvider.cargarCarreras(context),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<Facultades>> snapshot) {
+        if (snapshot.hasData) {
+          carreras = snapshot.data;
+          return Container(
+            height: _screenSize.height * 0.55,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: carreras.length,
+              itemBuilder: (context, i) => _crearItem(
+                carreras[i],
+              ),
+            ),
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _crearItem(
+    Facultades facultad,
+  ) {
+    String _duracion;
+
+    // carrerasDetalles = universidadesProvider.cargarDetalles(context);
+    return Card(
+      elevation: 10.0,
+      child: InkWell(
+          child: Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              facultad.carrera,
+              style: TextStyle(fontSize: 20, height: 1.5),
+            ),
+          ),
+          onTap: () {
+            if (facultad.duracion == null) {
+              _duracion = '';
+            } else {
+              _duracion = 'Duracion de la carrera: ${facultad.duracion}';
+            }
+
+            ShowDialog(
+              nombre: facultad.carrera,
+              icon: AssetImage('Asset/unco.png'),
+              duracion: _duracion,
+              lugar: 'Lugares: ${facultad.lugar}',
+              url: facultad.url,
+            ).alerta(context);
+          }),
     );
   }
 }

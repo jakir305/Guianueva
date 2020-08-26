@@ -24,6 +24,7 @@ class MostrarCarreras extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
+<<<<<<< HEAD:lib/src/widgets/clouduniversidades.dart
         return Container(
           child: new ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
@@ -33,6 +34,15 @@ class MostrarCarreras extends StatelessWidget {
               );
             }).toList(),
           ),
+=======
+        return new ListView(
+          children: snapshot.data.docs.map((DocumentSnapshot document) {
+            return new ListTile(
+              title: new Text(document.data()['Carrera']),
+              subtitle: new Text(document.data()['Facultad']),
+            );
+          }).toList(),
+>>>>>>> parent of 5e493fe... hoy:lib/src/pages/clouduniversidades.dart
         );
       },
     );
