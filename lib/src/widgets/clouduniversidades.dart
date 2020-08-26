@@ -10,11 +10,11 @@ class MostrarCarreras extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users =
+    CollectionReference univesidades =
         FirebaseFirestore.instance.collection(documento);
 
     return StreamBuilder<QuerySnapshot>(
-      stream: users.snapshots(),
+      stream: univesidades.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('No se pudo cargar');
@@ -27,7 +27,6 @@ class MostrarCarreras extends StatelessWidget {
         return Container(
           child: new ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
-              print(document.data()['Carrera']);
               return new ListTile(
                 title: new Text(document.data()['Carrera']),
                 subtitle: new Text(document.data()['Facultad']),
