@@ -64,46 +64,22 @@ class AuthService {
 
 // Login with Google
 
-  Future<String> signInWithGoogle() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
+    // Create a new credential
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
 
-    final UserCredential authResult =
-        await _auth.signInWithCredential(credential);
-    final User user = authResult.user;
-
-    // Checking if email and name is null
-    assert(user.email != null);
-    assert(user.displayName != null);
-    assert(user.photoURL != null);
-
-    name = user.displayName;
-    email = user.email;
-    imageUrl = user.photoURL;
-
-    prefs.setString('name', name);
-    prefs.setString('email', email);
-    prefs.setString('imageUrl', imageUrl);
-
-    // Only taking the first part of the name, i.e., First Name
-    if (name.contains(" ")) {
-      name = name.substring(0, name.indexOf(" "));
-    }
-
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-
-    final User currentUser = _auth.currentUser;
-    assert(user.uid == currentUser.uid);
-    return 'signInWithGoogle succeeded: $user';
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   // sign in with email and password
@@ -112,19 +88,17 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
-    FirebaseFirestore.instance
+    /*  FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
-        .get()
-        .then(
-            (data) => data.docs.forEach((doc) => name = doc.data()['nombre']));
+        .snapshots()
+        .listen((data) => data.docs.forEach((doc) => name = (doc["nombre"])));
 
     FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
-        .get()
-        .then(
-            (data) => data.docs.forEach((doc) => name = doc.data()['avatar']));
+        .snapshots()
+        .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"]))); */
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
