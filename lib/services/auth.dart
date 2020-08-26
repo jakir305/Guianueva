@@ -133,18 +133,30 @@ class AuthService {
     /*  FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
+<<<<<<< HEAD
         .snapshots()
         .listen((data) => data.docs.forEach((doc) => name = (doc["nombre"])));
+=======
+        .get()
+        .then(
+            (data) => data.docs.forEach((doc) => name = doc.data()['nombre']));
+>>>>>>> parent of 681d604... hoy
 
     FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
+<<<<<<< HEAD
         .snapshots()
 <<<<<<< HEAD
         .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"])));
 =======
         .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"]))); */
 >>>>>>> parent of 77e8419... 123
+=======
+        .get()
+        .then(
+            (data) => data.docs.forEach((doc) => name = doc.data()['avatar']));
+>>>>>>> parent of 681d604... hoy
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
