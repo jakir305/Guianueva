@@ -130,7 +130,11 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
+<<<<<<< HEAD
     /*  FirebaseFirestore.instance
+=======
+    FirebaseFirestore.instance
+>>>>>>> parent of 5e493fe... hoy
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
 <<<<<<< HEAD
@@ -138,9 +142,18 @@ class AuthService {
         .listen((data) => data.docs.forEach((doc) => name = (doc["nombre"])));
 =======
         .get()
+<<<<<<< HEAD
         .then(
             (data) => data.docs.forEach((doc) => name = doc.data()['nombre']));
 >>>>>>> parent of 681d604... hoy
+=======
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        name = (doc.data()["nombre"]);
+        print(name);
+      });
+    });
+>>>>>>> parent of 5e493fe... hoy
 
     FirebaseFirestore.instance
         .collection('usuarios')
@@ -154,9 +167,18 @@ class AuthService {
 >>>>>>> parent of 77e8419... 123
 =======
         .get()
+<<<<<<< HEAD
         .then(
             (data) => data.docs.forEach((doc) => name = doc.data()['avatar']));
 >>>>>>> parent of 681d604... hoy
+=======
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        avatar = (doc.data()["avatar"]);
+        print(avatar);
+      });
+    });
+>>>>>>> parent of 5e493fe... hoy
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();

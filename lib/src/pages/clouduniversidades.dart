@@ -24,6 +24,7 @@ class MostrarCarreras extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
+<<<<<<< HEAD:lib/src/pages/clouduniversidades.dart
 <<<<<<< HEAD:lib/src/widgets/clouduniversidades.dart
         return Container(
           child: new ListView(
@@ -35,6 +36,8 @@ class MostrarCarreras extends StatelessWidget {
             }).toList(),
           ),
 =======
+=======
+>>>>>>> parent of 5e493fe... hoy:lib/src/widgets/clouduniversidades.dart
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
@@ -42,7 +45,10 @@ class MostrarCarreras extends StatelessWidget {
               subtitle: new Text(document.data()['Facultad']),
             );
           }).toList(),
+<<<<<<< HEAD:lib/src/pages/clouduniversidades.dart
 >>>>>>> parent of 5e493fe... hoy:lib/src/pages/clouduniversidades.dart
+=======
+>>>>>>> parent of 5e493fe... hoy:lib/src/widgets/clouduniversidades.dart
         );
       },
     );
