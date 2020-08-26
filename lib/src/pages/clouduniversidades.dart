@@ -10,11 +10,11 @@ class MostrarCarreras extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference univesidades =
+    CollectionReference users =
         FirebaseFirestore.instance.collection(documento);
 
     return StreamBuilder<QuerySnapshot>(
-      stream: univesidades.snapshots(),
+      stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('No se pudo cargar');
@@ -24,20 +24,6 @@ class MostrarCarreras extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
-<<<<<<< HEAD:lib/src/pages/clouduniversidades.dart
-<<<<<<< HEAD:lib/src/widgets/clouduniversidades.dart
-        return Container(
-          child: new ListView(
-            children: snapshot.data.docs.map((DocumentSnapshot document) {
-              return new ListTile(
-                title: new Text(document.data()['Carrera']),
-                subtitle: new Text(document.data()['Facultad']),
-              );
-            }).toList(),
-          ),
-=======
-=======
->>>>>>> parent of 5e493fe... hoy:lib/src/widgets/clouduniversidades.dart
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
             return new ListTile(
@@ -45,10 +31,6 @@ class MostrarCarreras extends StatelessWidget {
               subtitle: new Text(document.data()['Facultad']),
             );
           }).toList(),
-<<<<<<< HEAD:lib/src/pages/clouduniversidades.dart
->>>>>>> parent of 5e493fe... hoy:lib/src/pages/clouduniversidades.dart
-=======
->>>>>>> parent of 5e493fe... hoy:lib/src/widgets/clouduniversidades.dart
         );
       },
     );

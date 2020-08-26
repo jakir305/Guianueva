@@ -22,40 +22,14 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-<<<<<<< HEAD
   firebase_core:
   cupertino_icons:
   firebase_database:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  firebase_auth:
-  cloud_firestore:
+  firebase_auth: 
+  cloud_firestore: 
   provider:
   url_launcher:
-  google_sign_in:
-=======
-  firebase_auth: ^0.18.0+1
-  cloud_firestore: ^0.14.0+1 
-  provider:
-  url_launcher:
-  google_sign_in: "^4.5.1"
->>>>>>> parent of 77e8419... 123
-=======
-  cupertino_icons:
-  firebase_database:
-  firebase_auth: ^0.16.1
-  cloud_firestore: ^0.13.7
-  provider:
-  url_launcher:
-  google_sign_in:
->>>>>>> parent of 34de1af... 21/08/2020 11:30
-=======
-  firebase_auth: ^0.18.0+1
-  cloud_firestore: ^0.14.0+1 
-  provider:
-  url_launcher:
-  google_sign_in: "^4.5.1"
->>>>>>> parent of 77e8419... 123
+  google_sign_in: 
   charts_flutter:
   font_awesome_flutter:
   shared_preferences:
@@ -67,15 +41,7 @@ dependencies:
   eva_icons_flutter:
   flare_flutter:
   vector_math:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  gradient_app_bar:
-=======
-  gradient_app_bar: ^0.0.1
->>>>>>> parent of 77e8419... 123
-=======
-  gradient_app_bar: ^0.0.1
->>>>>>> parent of 77e8419... 123
+  gradient_app_bar: 
 
 dev_dependencies:
   flutter_test:
@@ -115,12 +81,6 @@ flutter:
     - family: Fuente2
       fonts:
         - asset: fonts/VesperLibre-Black.ttf
-    - family: MMedium
-      fonts:
-        - asset: fonts/Montserrat-Medium.ttf
-    - family: MExtra
-      fonts:
-        - asset: fonts/Montserrat-ExtraBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

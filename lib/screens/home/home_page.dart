@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
-
-import 'package:guiae/src/search/search_delegate.dart';
 // import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
@@ -41,18 +39,6 @@ class _HomePageState extends State<HomePage> {
     var scaffold = Scaffold(
         backgroundColor: Colors.white,
         appBar: GradientAppBar(
-          actions: [
-            IconButton(
-              color: Colors.black,
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: DataSearch(),
-                );
-              },
-            ),
-          ],
           backgroundColorStart: Colors.greenAccent,
           backgroundColorEnd: Colors.white,
           elevation: 0,

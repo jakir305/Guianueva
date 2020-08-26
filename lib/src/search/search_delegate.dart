@@ -1,74 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:guiae/src/providers/provider.dart';
 
-class DataSearch extends SearchDelegate {
-  BuscadorProvider buscador = new BuscadorProvider();
-  String seleccion = '';
-
+class Datacarreras extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
-    //Las acciones de nuestra appbar
+    // acciones  de nuestro appbar
     return [
       IconButton(
-          icon: Icon(Icons.clear),
-          onPressed: () {
-            query = '';
-          })
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      )
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
-    //Icono a la izquierda del appbar
+    // Iconos a la izquierda del appbar
     return IconButton(
-        icon: AnimatedIcon(
-          progress: transitionAnimation,
-          icon: AnimatedIcons.menu_arrow,
-        ),
-        onPressed: () {
-          close(context, null);
-        });
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    // Crea los resultados que vamos a mostrar
+    // Crea los resultados que se muestran
     return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    //Son las sugerencias que se van a mostrar
-
-    if (query.isEmpty) {
-      return Container();
-    }
-    final listaSugerida = (query.isEmpty)
-        ? []
-        : buscador.carreras
-            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-
-    return FutureBuilder(
-      future: buscador.cargarCarreras(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        print(buscador.carreras);
-
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: listaSugerida.length,
-            itemBuilder: (context, i) {
-              return ListTile(
-                leading: Icon(Icons.movie),
-                title: Text(listaSugerida[i]),
-                onTap: () {},
-              );
-            },
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
-    );
+    // Sugerencias
+    return Container();
   }
 }
