@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/carreras_info.dart';
 import 'package:guiae/src/providers/models.dart';
 import 'package:guiae/src/providers/provider.dart';
@@ -88,3 +88,4 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
     );
   }
 }
+ */

@@ -29,3 +29,11 @@ final styleTitulos = new TextStyle(
 final styleappbar = new TextStyle(
   color: Colors.black87,
 );
+
+final styleMedium = new TextStyle(
+  fontFamily: 'MMedium',
+  color: Colors.white,
+);
+
+final styleExtra =
+    new TextStyle(fontFamily: 'MExtra', color: Color.fromRGBO(0, 167, 160, 1));

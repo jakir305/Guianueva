@@ -17,17 +17,17 @@ class AuthService {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // create user obj based on firebase user
-  LocalUser _userFromFirebaseUser(User user) {
-    return user != null ? LocalUser(uid: user.uid) : null;
+  User _userFromFirebaseUser(FirebaseUser user) {
+    return user != null ? User(uid: user.uid) : null;
   }
 
   // auth change user stream
-  Stream<LocalUser> get user {
-    return _auth.authStateChanges().map(_userFromFirebaseUser);
+  Stream<User> get user {
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
   // Login with Facebook
-  Future<User> loginWithFacebook() async {
+  Future<FirebaseUser> loginWithFacebook() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final result = await facebookLogin.logIn(['email']);
@@ -36,20 +36,20 @@ class AuthService {
       return null;
     }
 
-    final AuthCredential credential =
-        FacebookAuthProvider.credential(result.accessToken.token);
+    final AuthCredential credential = FacebookAuthProvider.getCredential(
+      accessToken: result.accessToken.token,
+    );
 
-    final UserCredential authResult =
-        await _auth.signInWithCredential(credential);
-    final User user = authResult.user;
+    final AuthResult authResult = await _auth.signInWithCredential(credential);
+    final FirebaseUser user = authResult.user;
 
     assert(user.email != null);
     assert(user.displayName != null);
-    assert(user.photoURL != null);
+    assert(user.photoUrl != null);
 
     name = user.displayName;
     email = user.email;
-    imageUrl = user.photoURL;
+    imageUrl = user.photoUrl;
 
     prefs.setString('name', name);
     prefs.setString('email', email);
@@ -63,7 +63,7 @@ class AuthService {
   }
 
 // Login with Google
-
+<<<<<<< HEAD
   Future<String> signInWithGoogle() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -71,23 +71,22 @@ class AuthService {
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleSignInAuthentication.accessToken,
       idToken: googleSignInAuthentication.idToken,
     );
 
-    final UserCredential authResult =
-        await _auth.signInWithCredential(credential);
-    final User user = authResult.user;
+    final AuthResult authResult = await _auth.signInWithCredential(credential);
+    final FirebaseUser user = authResult.user;
 
     // Checking if email and name is null
     assert(user.email != null);
     assert(user.displayName != null);
-    assert(user.photoURL != null);
+    assert(user.photoUrl != null);
 
     name = user.displayName;
     email = user.email;
-    imageUrl = user.photoURL;
+    imageUrl = user.photoUrl;
 
     prefs.setString('name', name);
     prefs.setString('email', email);
@@ -101,9 +100,28 @@ class AuthService {
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
 
-    final User currentUser = _auth.currentUser;
+    final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
     return 'signInWithGoogle succeeded: $user';
+=======
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    // Create a new credential
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+>>>>>>> parent of 77e8419... 123
   }
 
   // sign in with email and password
@@ -112,33 +130,61 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
+<<<<<<< HEAD
+    /*  FirebaseFirestore.instance
+=======
     FirebaseFirestore.instance
+>>>>>>> parent of 5e493fe... hoy
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
+<<<<<<< HEAD
+        .snapshots()
+        .listen((data) => data.docs.forEach((doc) => name = (doc["nombre"])));
+=======
         .get()
+<<<<<<< HEAD
+        .then(
+            (data) => data.docs.forEach((doc) => name = doc.data()['nombre']));
+>>>>>>> parent of 681d604... hoy
+=======
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         name = (doc.data()["nombre"]);
         print(name);
       });
     });
+>>>>>>> parent of 5e493fe... hoy
 
     FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
+<<<<<<< HEAD
+        .snapshots()
+<<<<<<< HEAD
+        .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"])));
+=======
+        .listen((data) => data.docs.forEach((doc) => avatar = (doc["avatar"]))); */
+>>>>>>> parent of 77e8419... 123
+=======
         .get()
+<<<<<<< HEAD
+        .then(
+            (data) => data.docs.forEach((doc) => name = doc.data()['avatar']));
+>>>>>>> parent of 681d604... hoy
+=======
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         avatar = (doc.data()["avatar"]);
         print(avatar);
       });
     });
+>>>>>>> parent of 5e493fe... hoy
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      UserCredential result = await _auth.signInWithEmailAndPassword(
+      AuthResult result = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);
-      User user = result.user;
+      FirebaseUser user = result.user;
 
       email = _email;
       imageUrl = avatar;
@@ -160,11 +206,11 @@ class AuthService {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      UserCredential result = await _auth.createUserWithEmailAndPassword(
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
         email: _email,
         password: password,
       );
-      User user = result.user;
+      FirebaseUser user = result.user;
 
       name = '';
       email = _email;
