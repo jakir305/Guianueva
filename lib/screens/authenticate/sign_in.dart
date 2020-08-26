@@ -1,6 +1,7 @@
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:guiae/src/Utils/text_style.dart';
+
+import 'package:guiae/src/Utils/text_style.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -57,25 +58,22 @@ class _SignInState extends State<SignIn> {
                           ),
                           maxLines: 1,
                           decoration: InputDecoration(
-                            filled: true,
-                            contentPadding: EdgeInsets.all(1),
-                            prefixIcon: Image.asset(
-                              'Asset/ICONOS INICIO-06.png',
-                              scale: 9,
-                            ),
-                            fillColor: color,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                style: BorderStyle.solid,
-                                color: color,
+                              filled: true,
+                              contentPadding: EdgeInsets.all(1),
+                              prefixIcon: Image.asset(
+                                'Asset/ICONOS INICIO-06.png',
+                                scale: 9,
                               ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            hintText: 'Correo',
-                            hintStyle: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                              fillColor: color,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: color,
+                                ),
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              hintText: 'Correo',
+                              hintStyle: styleMedium),
                           validator: (val) =>
                               val.isEmpty ? 'Ingrese Email valido' : null,
                           onChanged: (val) {
@@ -107,9 +105,7 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   borderRadius: BorderRadius.circular(30)),
                               hintText: 'Contraseña',
-                              hintStyle: TextStyle(
-                                color: color,
-                              )),
+                              hintStyle: styleMedium),
                           obscureText: true,
                           validator: (val) => val.length < 6
                               ? 'Contraseña menor a 6 caracteres'
@@ -135,7 +131,7 @@ class _SignInState extends State<SignIn> {
                           color: Colors.white,
                           child: Text(
                             'Iniciar sesion',
-                            style: TextStyle(color: color),
+                            style: styleExtra,
                           ),
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
@@ -164,7 +160,7 @@ class _SignInState extends State<SignIn> {
                         color: Colors.white,
                         child: Text(
                           '  Registrarse  ',
-                          style: TextStyle(color: color),
+                          style: styleExtra,
                         ),
                         onPressed: () => widget.toggleView(),
                       ),
