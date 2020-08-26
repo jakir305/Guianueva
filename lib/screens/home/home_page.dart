@@ -20,9 +20,11 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Color.fromRGBO(0, 167, 160, 1),
-          child: Icon(Icons.menu),
+      floatingActionButton: IconButton(
+          icon: Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
           onPressed: () {
             _scaffoldKey.currentState.openDrawer();
           }),
@@ -55,7 +57,7 @@ Widget _drawer(BuildContext context) {
 
   return Drawer(
     child: ListView(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       children: [
         UserAccountsDrawerHeader(
             decoration: BoxDecoration(
