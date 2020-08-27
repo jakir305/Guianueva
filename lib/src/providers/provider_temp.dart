@@ -38,7 +38,7 @@ class UniversidadesProvider {
     final universidadInfo = Provider.of<UniversidadInfo>(context);
     final carreraInfo = Provider.of<CarreraInfo>(context);
     nombreUniversidad = universidadInfo.universidad;
-    nombreFacultad = carreraInfo.facultad;
+    nombreFacultad = carreraInfo.carrera;
     final List<Facultades> carreras = new List();
     Facultades facultad1;
     await dbRef

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CarreraInfo with ChangeNotifier {
-  String _facultad = '';
+  String _carrera = '';
 
-  get facultad {
-    return _facultad;
+  get carrera {
+    return _carrera;
   }
 
-  set facultad(String nombre) {
-    this._facultad = nombre;
+  set carrera(String nombre) {
+    this._carrera = nombre;
     notifyListeners();
   }
 }

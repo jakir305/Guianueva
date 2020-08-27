@@ -25,7 +25,7 @@ class ListCardsUniversidades extends StatelessWidget {
       child: InkWell(
         onTap: () {
           universidadInfo.universidad = nombre;
-          Navigator.pushNamed(context, 'facultades');
+          Navigator.pushNamed(context, 'carreras');
         },
         child: Row(
           children: <Widget>[
