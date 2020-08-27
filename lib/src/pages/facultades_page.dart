@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/carreras_info.dart';
 import 'package:guiae/src/providers/models.dart';
-import 'package:guiae/src/providers/provider.dart';
+
 import 'package:provider/provider.dart';
 
 class ListaFacultadesPage extends StatefulWidget {
@@ -88,3 +88,4 @@ class _ListaFacultadesPageState extends State<ListaFacultadesPage> {
     );
   }
 }
+ */
