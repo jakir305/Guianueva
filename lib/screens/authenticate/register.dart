@@ -1,6 +1,5 @@
 import 'package:guiae/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:guiae/src/Utils/text_style.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
