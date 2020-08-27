@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 // import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
@@ -11,19 +12,24 @@ import 'package:vector_math/vector_math.dart' show radians;
 import 'package:flutter/foundation.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
+List carreras;
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  Image _avatar;
+  final prefs = new PreferenciasUsuario();
   final AuthService auth = AuthService();
-
+  final BuscadorProvider buscador = new BuscadorProvider();
   @override
-  Widget build(BuildContext context) {
-    Image _avatar;
-    final prefs = new PreferenciasUsuario();
-    if (prefs.imageUrl == '') {
+  void initState() {
+    buscador.cargarCarreras();
+    carreras = buscador.carreras;
+
+    if (prefs.imageUrl == "") {
       _avatar = Image(
         image: AssetImage(prefs.imageAsset),
       );
@@ -37,6 +43,11 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     var scaffold = Scaffold(
         backgroundColor: Colors.white,
         appBar: GradientAppBar(

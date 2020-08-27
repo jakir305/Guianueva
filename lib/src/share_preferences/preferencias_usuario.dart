@@ -20,7 +20,7 @@ class PreferenciasUsuario {
 
   // nombre
   get name {
-    return _prefs.getString('name') ?? '';
+    return _prefs.getString('name') ?? "";
   }
 
   set name(String valor) {
@@ -29,7 +29,7 @@ class PreferenciasUsuario {
 
   //email
   get email {
-    return _prefs.getString('email') ?? '';
+    return _prefs.getString('email') ?? "";
   }
 
   set email(String valor) {
@@ -38,7 +38,7 @@ class PreferenciasUsuario {
 
   //imagen de perfil
   get imageUrl {
-    return _prefs.getString('imageUrl') ?? '';
+    return _prefs.getString("imageUrl") ?? "";
   }
 
   set imageUrl(String valor) {
@@ -47,7 +47,7 @@ class PreferenciasUsuario {
 
   //imagen de perfil Asset
   get imageAsset {
-    return _prefs.getString('imageAsset') ?? '';
+    return _prefs.getString('imageAsset') ?? "";
   }
 
   set imageAsset(String valor) {
