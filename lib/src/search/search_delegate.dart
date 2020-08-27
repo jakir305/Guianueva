@@ -1,29 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:guiae/src/providers/provider.dart';
-
-List carreras;
-
-class Cargar extends StatefulWidget {
-  Cargar({Key key}) : super(key: key);
-
-  @override
-  _CargarState createState() => _CargarState();
-}
-
-class _CargarState extends State<Cargar> {
-  BuscadorProvider buscador = new BuscadorProvider();
-  @override
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+import 'package:guiae/screens/home/home_page.dart';
 
 class DataSearch extends SearchDelegate {
   String seleccion = '';
 
   List<Widget> buildActions(BuildContext context) {
-    Cargar().createState();
     //Las acciones de nuestra appbar
     return [
       IconButton(
@@ -50,7 +31,9 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // Crea los resultados que vamos a mostrar
-    return Container();
+    return Container(
+      child: Center(child: Text(seleccion)),
+    );
   }
 
   @override
@@ -72,7 +55,10 @@ class DataSearch extends SearchDelegate {
         return ListTile(
           leading: Icon(Icons.movie),
           title: Text(listaSugerida[i]),
-          onTap: () {},
+          onTap: () {
+            seleccion = listaSugerida[i];
+            showResults(context);
+          },
         );
       },
     );

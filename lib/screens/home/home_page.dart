@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
+
+List carreras;
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,6 +15,31 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  Image _avatar;
+  final prefs = new PreferenciasUsuario();
+  final AuthService auth = AuthService();
+  final BuscadorProvider buscador = new BuscadorProvider();
+  @override
+  void initState() {
+    buscador.cargarCarreras();
+    carreras = buscador.carreras;
+
+    if (prefs.imageUrl == "") {
+      _avatar = Image(
+        image: AssetImage(prefs.imageAsset),
+      );
+    } else {
+      _avatar = Image(
+        image: NetworkImage(prefs.imageUrl),
+        fit: BoxFit.cover,
+        height: 65,
+        width: 65,
+        alignment: Alignment.center,
+      );
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

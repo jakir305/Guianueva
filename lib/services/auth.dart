@@ -119,7 +119,6 @@ class AuthService {
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         name = (doc.data()["nombre"]);
-        print(name);
       });
     });
 
@@ -130,7 +129,6 @@ class AuthService {
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         avatar = (doc.data()["avatar"]);
-        print(avatar);
       });
     });
 
@@ -188,13 +186,7 @@ class AuthService {
 
   // sign out
   Future signOut() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
     //Limpio variables de sharedPreferences
-    prefs.setString('imageUrl', '');
-    prefs.setString('email', '');
-    prefs.setString('imageAsset', '');
-    prefs.setString('name', '');
 
     try {
       return await _auth.signOut();

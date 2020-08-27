@@ -14,10 +14,10 @@ import 'package:guiae/src/providers/push_notificans_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  runApp(MyApp());
   final prefs = new PreferenciasUsuario();
   await prefs.initPrefs();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
