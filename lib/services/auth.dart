@@ -112,7 +112,7 @@ class AuthService {
     String _password,
   ) async {
     //Busca la instancia de usuario en flutter y asigna el nombre
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()
@@ -123,7 +123,7 @@ class AuthService {
       });
     });
 
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection('usuarios')
         .where("correo", isEqualTo: _email)
         .get()

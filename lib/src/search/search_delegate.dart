@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/provider.dart';
 
-class DataSearch extends SearchDelegate {
-  BuscadorProvider buscador = new BuscadorProvider();
-  String seleccion = '';
+List carreras;
+
+class Cargar extends StatefulWidget {
+  Cargar({Key key}) : super(key: key);
 
   @override
+  _CargarState createState() => _CargarState();
+}
+
+class _CargarState extends State<Cargar> {
+  BuscadorProvider buscador = new BuscadorProvider();
+  @override
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class DataSearch extends SearchDelegate {
+  String seleccion = '';
+
   List<Widget> buildActions(BuildContext context) {
+    Cargar().createState();
     //Las acciones de nuestra appbar
     return [
       IconButton(
@@ -45,29 +62,18 @@ class DataSearch extends SearchDelegate {
     }
     final listaSugerida = (query.isEmpty)
         ? []
-        : buscador.carreras
+        : carreras
             .where((p) => p.toLowerCase().contains(query.toLowerCase()))
             .toList();
 
-    return FutureBuilder(
-      future: buscador.cargarCarreras(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        print(buscador.carreras);
-
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: listaSugerida.length,
-            itemBuilder: (context, i) {
-              return ListTile(
-                leading: Icon(Icons.movie),
-                title: Text(listaSugerida[i]),
-                onTap: () {},
-              );
-            },
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
+    return ListView.builder(
+      itemCount: listaSugerida.length,
+      itemBuilder: (context, i) {
+        return ListTile(
+          leading: Icon(Icons.movie),
+          title: Text(listaSugerida[i]),
+          onTap: () {},
+        );
       },
     );
   }
