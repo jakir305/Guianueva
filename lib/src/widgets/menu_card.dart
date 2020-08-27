@@ -33,10 +33,22 @@ class CardMenu extends StatelessWidget {
               nombre,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: 'styleExtra',
+                fontFamily: 'MExtra',
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
                 fontSize: 20,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0, 10.0),
+                    blurRadius: 6.0,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                  Shadow(
+                    offset: Offset(0, 10.0),
+                    blurRadius: 8.0,
+                    color: Color.fromARGB(125, 0, 0, 0),
+                  ),
+                ],
               ),
             )),
       ),

@@ -25,6 +25,9 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    final Color color = Color.fromRGBO(0, 167, 160, 1);
+    final _screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -43,15 +46,13 @@ class _RegisterState extends State<Register> {
                   height: 50.0,
                 ),
                 Container(
+                  height: _screenSize.height * 0.2,
                   child: Image.asset('Asset/Logo1.png'),
-                  height: 100,
-                  width: 100,
                 ),
                 Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 5.0, vertical: 20.0),
-                  margin: EdgeInsets.all(10.0),
-                  child: Text('Guia  Estudiantil', style: styleGuia),
+                  height: _screenSize.height * 0.1,
+                  padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
+                  child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -59,22 +60,29 @@ class _RegisterState extends State<Register> {
                     children: <Widget>[
                       // nombre y apellido
                       TextFormField(
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         keyboardType: TextInputType.text,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: InputDecoration.collapsed(
-                            fillColor: Colors.white,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.people,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.all(1),
+                            fillColor: color,
                             filled: true,
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   style: BorderStyle.solid,
-                                  color: Colors.black,
+                                  color: color,
                                 ),
-                                borderRadius: BorderRadius.circular(20)),
-                            hintText: 'nombre y apellido'),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: 'Nombre y Apellido',
+                            hintStyle: TextStyle(color: Colors.white)),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese su nombre y apellido' : null,
                         onChanged: (val) {
@@ -88,13 +96,19 @@ class _RegisterState extends State<Register> {
 
                       // Caja de correo
                       TextFormField(
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
+                          color: color,
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(1),
+                            prefixIcon: Image.asset(
+                              'Asset/ICONOS INICIO-04.png',
+                              scale: 9,
+                            ),
                             fillColor: Colors.white,
                             filled: true,
                             border: OutlineInputBorder(
@@ -102,8 +116,9 @@ class _RegisterState extends State<Register> {
                                   style: BorderStyle.solid,
                                   color: Colors.black,
                                 ),
-                                borderRadius: BorderRadius.circular(20)),
-                            hintText: 'correo'),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: 'Correo',
+                            hintStyle: TextStyle(color: color)),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese Email valido' : null,
                         onChanged: (val) {
@@ -117,17 +132,24 @@ class _RegisterState extends State<Register> {
 
                       // Caja de contraseña
                       TextFormField(
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: InputDecoration.collapsed(
-                            fillColor: Colors.white,
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(1),
+                            prefixIcon: Image.asset(
+                              'Asset/ICONOS INICIO-05.png',
+                              scale: 9,
+                            ),
+                            fillColor: color,
                             filled: true,
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            hintText: 'contraseña'),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: 'Contraseña',
+                            hintStyle: TextStyle(color: Colors.white)),
                         obscureText: true,
                         validator: (val) => val.length < 6
                             ? 'Contraseña menor a 6 caracteres'
@@ -146,17 +168,25 @@ class _RegisterState extends State<Register> {
 
                       // Caja de contraseña validacion
                       TextFormField(
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         style: TextStyle(
+                          color: color,
                           fontSize: 20.0,
                         ),
                         maxLines: 1,
-                        decoration: InputDecoration.collapsed(
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(1),
+                            prefixIcon: Image.asset(
+                              'Asset/ICONOS INICIO-05.png',
+                              color: color,
+                              scale: 9,
+                            ),
                             fillColor: Colors.white,
                             filled: true,
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            hintText: 'repita la contraseña'),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: 'Repita la Contraseña',
+                            hintStyle: TextStyle(color: color)),
                         obscureText: true,
                         validator: (val) {
                           if (val != valTemp) {
@@ -215,7 +245,13 @@ class _RegisterState extends State<Register> {
                 InkWell(
                   child: Text(
                     "Ya tenes cuenta? Ingresa aca",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(shadows: <Shadow>[
+                      Shadow(
+                        blurRadius: 8.0,
+                        color: Colors.black87,
+                        offset: Offset(0, 0),
+                      )
+                    ], color: Colors.white, fontSize: 15),
                   ),
                   onTap: () => widget.toggleView(),
                 ),
