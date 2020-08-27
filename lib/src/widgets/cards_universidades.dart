@@ -19,8 +19,9 @@ class ListCardsUniversidades extends StatelessWidget {
   Widget build(BuildContext context) {
     final universidadInfo = Provider.of<UniversidadInfo>(context);
     return Card(
+      margin: EdgeInsets.fromLTRB(25, 20, 25, 0),
       color: Colors.white,
-      elevation: 10,
+      elevation: 40,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
         onTap: () {
@@ -30,8 +31,8 @@ class ListCardsUniversidades extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 100,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   clipBehavior: Clip.hardEdge,

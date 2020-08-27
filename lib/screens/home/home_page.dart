@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Color color = Color.fromRGBO(0, 167, 160, 1);
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Image _avatar;
   final prefs = new PreferenciasUsuario();
@@ -68,21 +69,19 @@ class _HomePageState extends State<HomePage> {
         children: [
           UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                gradient:
-                    LinearGradient(colors: [Colors.greenAccent, Colors.white]),
-                color: Colors.tealAccent,
+                color: color,
               ),
               accountName: Text(
                 prefs.name,
                 style: TextStyle(
                   fontFamily: "MExtra",
-                  color: Colors.black87,
+                  color: Colors.white,
                   fontSize: 25,
                 ),
               ),
               accountEmail: Text(
                 prefs.email,
-                style: TextStyle(fontFamily: "MMedium", color: Colors.black87),
+                style: TextStyle(fontFamily: "MMedium", color: Colors.white),
               ),
               currentAccountPicture: Container(
                 decoration: BoxDecoration(

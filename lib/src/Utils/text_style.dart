@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 final styleNombreUniver = new TextStyle(
-  fontSize: 25,
-  color: Colors.black,
-  fontStyle: FontStyle.italic,
+  fontFamily: "MExtra",
+  fontSize: 35,
+  color: Colors.grey[800],
 );
 
 final styleNombreComUniver = new TextStyle(
+  fontFamily: "MMedio",
   fontSize: 15,
   color: Colors.black,
-  fontStyle: FontStyle.italic,
 );
 
 final styleGuia = new TextStyle(
