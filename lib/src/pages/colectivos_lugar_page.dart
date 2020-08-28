@@ -7,17 +7,20 @@ class ColectivosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(
-        backgroundColorStart: Colors.amberAccent,
-        backgroundColorEnd: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(144, 71, 150, 1),
         title: Text(
           'Colectivos',
-          style: styleappbar,
+          style: TextStyle(fontFamily: 'MExtra'),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.amber, Colors.white])),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.5, 1],
+                colors: [Colors.white, Color.fromRGBO(144, 71, 150, 1)])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -37,12 +40,10 @@ class ColectivosPage extends StatelessWidget {
           children: <Widget>[
             ListCardsColectivos(
               lugar: "Neuquén",
-              color: Colors.yellow[700],
               url: "https://www.neuquencapital.gov.ar/transporte/",
             ),
             ListCardsColectivos(
               lugar: "San Carlos de Bariloche",
-              color: Colors.red[700],
               url: "http://www.mibus.com.ar/bariloche/",
             ),
           ],

@@ -154,13 +154,13 @@ class UniversidadesPage extends StatelessWidget {
           icon: AssetImage('Asset/logos universidades-20.png'),
         ),
         ListCardsUniversidades(
-          alias: "VINCULO",
+          alias: "Vinculo",
           nombre: 'VINCULO',
           nombreCompleto: 'Escuela de Psicología Social del Neuquén',
           icon: AssetImage('Asset/logos universidades-21.png'),
         ),
         ListCardsUniversidades(
-          alias: "PSICOGONIA",
+          alias: "Psicogonia",
           nombre: 'PSICOGONIA',
           nombreCompleto: 'Escuela de Psicología Social de la Patagonia',
           icon: AssetImage('Asset/logos universidades-22.png'),
@@ -194,6 +194,24 @@ class UniversidadesPage extends StatelessWidget {
           nombre: 'CPE',
           nombreCompleto: 'Consejo Provincial de Educación',
           icon: AssetImage('Asset/logos universidades-27.png'),
+        ),
+        ListCardsUniversidades(
+          alias: "Siglo 21",
+          nombre: 'Siglo21',
+          nombreCompleto: 'Universidad Siglo 21',
+          icon: AssetImage('Asset/logos universidades-28.jpg'),
+        ),
+        ListCardsUniversidades(
+          alias: "CFP",
+          nombre: 'Cfp',
+          nombreCompleto: 'Centro de Formación Profesional',
+          icon: AssetImage('Asset/logos universidades-29.jpg'),
+        ),
+        ListCardsUniversidades(
+          alias: "Virtual",
+          nombre: 'Virtual',
+          nombreCompleto: 'Universidades Virtuales',
+          icon: AssetImage('Asset/logos universidades-30.jpg'),
         ),
       ],
     );
