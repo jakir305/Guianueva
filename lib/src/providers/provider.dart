@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:guiae/models/carreras_model.dart';
 
 class BuscadorProvider {
-  List carreras = new List();
+  List<Carrera> carreras = new List();
+  Carrera carrera = new Carrera();
+
   List universidades = [
     'Unco',
     'Balseiro',
@@ -9,19 +12,19 @@ class BuscadorProvider {
   ];
 
   Future<List> cargarCarreras() async {
-    Future.delayed(Duration(seconds: 5));
     for (var i = 0; i < universidades.length; i++) {
-      carreras.clear();
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection(universidades[i])
           .get()
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) async {
-          carreras.add(doc.data()['Carrera']);
+          carrera.nombre = await (doc.data()['Carrera']);
+          carreras.add(carrera);
+          print(carrera);
         });
       });
     }
 
-    return null;
+    return carreras;
   }
 }

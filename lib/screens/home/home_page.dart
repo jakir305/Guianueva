@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
 
-List carreras;
+List<Carrera> carreras;
 
 class HomePage extends StatefulWidget {
   @override

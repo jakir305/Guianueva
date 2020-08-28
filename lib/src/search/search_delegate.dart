@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/screens/home/home_page.dart';
 
 class DataSearch extends SearchDelegate {
@@ -43,10 +44,11 @@ class DataSearch extends SearchDelegate {
     if (query.isEmpty) {
       return Container();
     }
-    final listaSugerida = (query.isEmpty)
+
+    final List<Carrera> listaSugerida = (query.isEmpty)
         ? []
         : carreras
-            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
+            .where((p) => p.nombre.toLowerCase().contains(query.toLowerCase()))
             .toList();
 
     return ListView.builder(
@@ -54,9 +56,9 @@ class DataSearch extends SearchDelegate {
       itemBuilder: (context, i) {
         return ListTile(
           leading: Icon(Icons.movie),
-          title: Text(listaSugerida[i]),
+          title: Text(listaSugerida[i].nombre),
           onTap: () {
-            seleccion = listaSugerida[i];
+            seleccion = listaSugerida[i].nombre;
             showResults(context);
           },
         );
