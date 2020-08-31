@@ -56,7 +56,14 @@ class DataSearch extends SearchDelegate {
       itemBuilder: (context, i) {
         return ListTile(
           leading: Icon(Icons.movie),
-          title: Text(listaSugerida[i].nombre),
+          title: Column(
+            children: [
+              Text(listaSugerida[i].url),
+              Text(listaSugerida[i].nombre),
+            ],
+          ),
+          subtitle: Text(listaSugerida[i].facultad),
+          trailing: Text(listaSugerida[i].duracion),
           onTap: () {
             seleccion = listaSugerida[i].nombre;
             showResults(context);

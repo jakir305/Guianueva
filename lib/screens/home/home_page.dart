@@ -23,9 +23,6 @@ class _HomePageState extends State<HomePage> {
   final BuscadorProvider buscador = new BuscadorProvider();
   @override
   void initState() {
-    buscador.cargarCarreras();
-    carreras = buscador.carreras;
-
     if (prefs.imageUrl == "") {
       _avatar = Image(
         image: AssetImage(prefs.imageAsset),
@@ -39,6 +36,9 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.center,
       );
     }
+
+    carreras = buscador.cargarBuscador();
+    print(carreras.length);
 
     super.initState();
   }

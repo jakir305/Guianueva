@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:guiae/src/Utils/text_style.dart';
+
 import 'package:guiae/src/widgets/cards_colectivos.dart';
 
 class ColectivosPage extends StatelessWidget {
