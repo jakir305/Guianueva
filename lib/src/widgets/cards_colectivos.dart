@@ -27,12 +27,6 @@ class ListCardsColectivos extends StatelessWidget {
           launch(url);
         },
         child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Color.fromRGBO(144, 71, 150, 1),
-              width: 2,
-            ),
-          ),
           height: 70,
           alignment: AlignmentDirectional.center,
           child: Text(
