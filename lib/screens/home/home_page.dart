@@ -97,6 +97,7 @@ class _HomePageState extends State<HomePage> {
             leading: Icon(Icons.search),
             title: Text("BUSCADOR"),
             onTap: () {
+              Navigator.pop(context);
               showSearch(context: context, delegate: DataSearch());
             },
           ),

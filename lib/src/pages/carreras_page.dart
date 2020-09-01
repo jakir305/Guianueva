@@ -38,7 +38,6 @@ class ListaDeCarreras extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 carreraInfo.carrera = document.data()['Carrera'];
-                print(carreraInfo.carrera);
                 Navigator.pushNamed(context, 'detalles');
               },
               child: Column(
@@ -46,7 +45,7 @@ class ListaDeCarreras extends StatelessWidget {
                 children: [
                   new ListTile(
                     title: new Text(document.data()['Carrera']),
-                    subtitle: new Text(document.data()['Facultad']),
+                    subtitle: new Text(document.data()['Universidad']),
                   ),
                   Divider(
                     color: Colors.black,
