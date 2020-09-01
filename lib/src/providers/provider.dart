@@ -4,10 +4,10 @@ import 'package:guiae/models/carreras_model.dart';
 class BuscadorProvider {
   final List<Carrera> carreras = new List();
 
-  List universidades = [
-    'Unco',
-    'Balseiro',
-    'Ucasal',
+
+  /* 'Balseiro', 'Cedep','Cetec','Cfp','Cocineros','Cocineros','Cpe','Edh','Enerc','Epsp','Ifes','Ifssa'
+    ,'Inpi','Ipes','Isci','Isiv','Issa','Itp','Iupa','Policia','Potenciar','Seneca','Siglo21','Sijolie','Trasporte','Ucasal','Uflo','Unco','Unrn','Utn','Vinculo'
+ */  List universidades = ['Unco', 'Balseiro','Unrn','Utn'   
   ];
 
   cargarBuscador() {
@@ -21,8 +21,10 @@ class BuscadorProvider {
                 carrera.duracion = await doc.data()["Descripción"];
                 carrera.facultad = await doc.data()["Facultad"];
                 carrera.url = await doc.data()["Url"];
+                carrera.localidad = await doc.data()["Localidad"];
+                carrera.universidad = await doc.data()["Universidad"];
+                carrera.iniciales = await doc.data()["Iniciales"];
                 carreras.add(carrera);
-                print(carrera.nombre);
               }));
     }
 

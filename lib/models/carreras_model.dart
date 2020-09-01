@@ -5,6 +5,7 @@ class Carrera {
   String url;
   String localidad;
   String universidad;
+  String iniciales;
 
   Carrera(
       {this.nombre,
@@ -12,5 +13,6 @@ class Carrera {
       this.duracion,
       this.localidad,
       this.url,
-      this.universidad});
+      this.universidad,
+      this.iniciales});
 }
