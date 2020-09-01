@@ -19,6 +19,7 @@ class ListCardsBecas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.fromLTRB(30, 0, 30, 15),
       color: Colors.white,
       elevation: 5.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
@@ -52,6 +53,7 @@ class ListCardsBecas extends StatelessWidget {
                     nombre,
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: "MMedium",
                       fontSize: 17.0,
                       color: color,
                     ),
@@ -64,6 +66,7 @@ class ListCardsBecas extends StatelessWidget {
                       institucion,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: "MMedium",
                         fontSize: 14,
                         color: Colors.black,
                       ),

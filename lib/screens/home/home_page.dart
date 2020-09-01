@@ -125,13 +125,6 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.fiber_new),
-            title: Text("CLOUD UNIVERSIDADES"),
-            onTap: () {
-              Navigator.pushNamed(context, 'clouduniversidades');
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.keyboard_tab),
             title: Text("Mas información"),
             onTap: () {

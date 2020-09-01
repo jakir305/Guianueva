@@ -35,14 +35,14 @@ class _TestvocacionalState extends State<Testvocacional> {
             children: <Widget>[
               Container(
                   height: _screenSize.height * 0.125,
-                  width: double.infinity,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(50),
                       color: Colors.white),
                   child: Center(
                       child: Text(
                     "Test Vocacional",
                     style: TextStyle(
+                      fontFamily: "MExtra",
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                     ),
@@ -70,6 +70,7 @@ class _TestvocacionalState extends State<Testvocacional> {
                           " por lo tanto no puede llegar a ser exacto.\n\n",
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: "MMedium",
                             fontWeight: FontWeight.bold,
                             fontSize: 17.0,
                           ),
@@ -82,7 +83,7 @@ class _TestvocacionalState extends State<Testvocacional> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Fuente2',
-                            fontSize: 15,
+                            fontSize: 20,
                           ),
                         ),
                       ),

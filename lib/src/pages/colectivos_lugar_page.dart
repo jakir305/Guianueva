@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> d5c4edaace97eeeaa130a416b0739642d714443b
 import 'package:guiae/src/widgets/cards_colectivos.dart';
 
 class ColectivosPage extends StatelessWidget {

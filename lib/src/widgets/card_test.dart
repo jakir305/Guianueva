@@ -52,7 +52,8 @@ class ListCardsTest extends StatelessWidget {
               child: Text(
                 pregunta,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(
+                    color: Colors.white, fontSize: 18, fontFamily: "MMedium"),
               ),
             ),
             Testcard(
@@ -96,15 +97,16 @@ class Testcard extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-      child: Container(
-        height: _screenSize.height * 0.125,
-        width: double.infinity,
-        padding: EdgeInsets.all(5),
-        child: InkWell(
-          onTap: link,
+      child: InkWell(
+        onTap: link,
+        child: Container(
+          alignment: AlignmentDirectional.center,
+          height: _screenSize.height * 0.125,
+          width: double.infinity,
+          padding: EdgeInsets.all(5),
           child: Text(
             text,
-            style: TextStyle(fontSize: 19),
+            style: TextStyle(fontSize: 19, fontFamily: "MMedium"),
             textAlign: TextAlign.center,
           ),
         ),
