@@ -167,7 +167,7 @@ class _SignInState extends State<SignIn> {
                       SizedBox(
                         width: 20.0,
                       ),
-                      RaisedButton(
+                      RaisedButton(                        
                         highlightColor: Colors.tealAccent[700],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
@@ -182,14 +182,15 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: _screenSize.height*0.05),
                 Text(
                   error,
                   style: TextStyle(color: Colors.red, fontSize: 14.0),
                 ),
                 Container(
                   height: _screenSize.height * 0.2,
-                  child: Column(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
                     children: [
                       RaisedButton.icon(
                         highlightColor: Colors.tealAccent[700],
@@ -215,6 +216,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       SizedBox(
                         height: _screenSize.height * 0.02,
+                        width: 5.0,
                       ),
                       RaisedButton.icon(
                           highlightColor: Colors.tealAccent[700],
