@@ -20,11 +20,6 @@ final styleGuia = new TextStyle(
   color: Colors.tealAccent[700],
 );
 
-final styleTitulos = new TextStyle(
-  fontSize: 15,
-  color: Colors.blue,
-  fontStyle: FontStyle.normal,
-);
 
 final styleappbar = new TextStyle(
   color: Colors.black87,

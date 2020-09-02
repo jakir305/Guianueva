@@ -186,8 +186,12 @@ class AuthService {
 
   // sign out
   Future signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     //Limpio variables de sharedPreferences
-
+    prefs.setString('email', "");
+      prefs.setString('imageAsset', "");
+      prefs.setString('name', "");
+      prefs.setString('imageUrl', "");
     try {
       return await _auth.signOut();
     } catch (error) {

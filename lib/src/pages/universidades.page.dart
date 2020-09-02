@@ -172,8 +172,8 @@ class UniversidadesPage extends StatelessWidget {
           icon: AssetImage('Asset/logos universidades-23.png'),
         ),
         ListCardsUniversidades(
-          alias: "ISIC",
-          nombre: 'ISIC',
+          alias: "ISCI",
+          nombre: 'ISCI',
           nombreCompleto: 'Instituto Superior de Cocina Internacional',
           icon: AssetImage('Asset/logos universidades-24.png'),
         ),

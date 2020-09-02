@@ -29,7 +29,7 @@ class ListCardsBecas extends StatelessWidget {
         },
         child: Row(
           children: <Widget>[
-            AnimatedContainer(
+            /* AnimatedContainer(
               duration: Duration(seconds: 1),
               width: 80,
               height: 80,
@@ -37,7 +37,7 @@ class ListCardsBecas extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   clipBehavior: Clip.hardEdge,
                   child: Image(image: icon)),
-            ),
+            ), */
             SizedBox(
               width: 10,
             ),

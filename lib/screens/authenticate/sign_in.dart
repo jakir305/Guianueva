@@ -151,8 +151,6 @@ class _SignInState extends State<SignIn> {
                           ),
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              print(nombre);
-
                               dynamic result =
                                   await _auth.signInWithEmailAndPassword(
                                 email,

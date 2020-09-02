@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/screens/authenticate/register.dart';
 import 'package:guiae/screens/authenticate/sign_in.dart';
+import 'package:guiae/screens/home/home_page.dart';
 import 'package:guiae/screens/home/wrapper.dart';
 import 'package:guiae/src/pages/carreras_page.dart';
 import 'package:guiae/src/pages/colectivos_lugar_page.dart';
@@ -15,7 +16,9 @@ import 'package:guiae/src/pages/centros_estudio.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
+    'home': (BuildContext context) => HomePage(),
     '/': (BuildContext context) => Wrapper(),
+    'loading': (BuildContext context) => Wrapper(),
     'detalles': (BuildContext context) => CarreraDetalles(),
     'universidades': (BuildContext context) => UniversidadesPage(),
     'carreras': (BuildContext context) => ListaDeCarreras(),

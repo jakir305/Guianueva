@@ -10,7 +10,7 @@ class ListaDeCarreras extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hola'),
+        title: Text('Carreras'),
       ),
       body: mostrarCarrera(context),
     );
@@ -20,7 +20,7 @@ class ListaDeCarreras extends StatelessWidget {
     final universidadInfo = Provider.of<UniversidadInfo>(context);
     final carreraInfo = Provider.of<CarreraInfo>(context);
 
-    CollectionReference users =
+        CollectionReference users =
         FirebaseFirestore.instance.collection(universidadInfo.universidad);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),

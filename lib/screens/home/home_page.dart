@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
@@ -65,93 +67,99 @@ class _HomePageState extends State<HomePage> {
 
   Widget _drawer(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.all(0),
-        children: [
-          UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: color,
+      child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 1.8,
+                sigmaY: 1.8,
               ),
-              accountName: Text(
-                prefs.name,
-                style: TextStyle(
-                  fontFamily: "MExtra",
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
-              accountEmail: Text(
-                prefs.email,
-                style: TextStyle(fontFamily: "MMedium", color: Colors.white),
-              ),
-              currentAccountPicture: Container(
+              child: ListView(
+          padding: EdgeInsets.all(0),
+          children: [
+            UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    border: Border.all(color: Colors.white, width: 2)),
-                child: ClipRRect(
-                  child: _avatar,
-                  borderRadius: BorderRadius.circular(50.0),
+                  color: color,
                 ),
-              )),
-          ListTile(
-            leading: Icon(Icons.search),
-            title: Text("BUSCADOR"),
-            onTap: () {
-              Navigator.pop(context);
-              showSearch(context: context, delegate: DataSearch());
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.info),
-            title: Text("Acerca de Nosotros"),
-            onTap: () {
-              Navigator.pushNamed(context, 'nosotros');
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.share),
-            title: Text("Comparte la Aplicacion"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.flag),
-            title: Text("Politicas de Privacidad"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.fiber_new),
-            title: Text("Test Vocacional"),
-            onTap: () {
-              Navigator.pushNamed(context, 'test');
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.keyboard_tab),
-            title: Text("Mas información"),
-            onTap: () {
-              showAboutDialog(
-                context: context,
-                applicationVersion: "0.0.0",
-                applicationLegalese: '-',
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Text('-'),
+                accountName: Text(
+                  prefs.name,
+                  style: TextStyle(
+                    fontFamily: "MExtra",
+                    color: Colors.white,
+                    fontSize: 25,
                   ),
-                ],
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text("Salir"),
-            onTap: () async {
-              auth.signOutFacebook();
-              auth.signOut();
-              auth.signOutGoogle();
-            },
-          ),
-        ],
+                ),
+                accountEmail: Text(
+                  prefs.email,
+                  style: TextStyle(fontFamily: "MMedium", color: Colors.white),
+                ),
+                currentAccountPicture: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                      border: Border.all(color: Colors.white, width: 2)),
+                  child: ClipRRect(
+                    child: _avatar,
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                )),
+            ListTile(
+              leading: Icon(Icons.search),
+              title: Text("BUSCADOR"),
+              onTap: () {
+                Navigator.pop(context);
+                showSearch(context: context, delegate: DataSearch());
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text("Acerca de Nosotros"),
+              onTap: () {
+                Navigator.pushNamed(context, 'nosotros');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.share),
+              title: Text("Comparte la Aplicacion"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.flag),
+              title: Text("Politicas de Privacidad"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.fiber_new),
+              title: Text("Test Vocacional"),
+              onTap: () {
+                Navigator.pushNamed(context, 'test');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.keyboard_tab),
+              title: Text("Mas información"),
+              onTap: () {
+                showAboutDialog(
+                  context: context,
+                  applicationVersion: "0.0.0",
+                  applicationLegalese: '-',
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text('-'),
+                    ),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Salir"),
+              onTap: () async {
+                auth.signOutFacebook();
+                auth.signOut();
+                auth.signOutGoogle();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
