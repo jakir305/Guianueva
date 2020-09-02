@@ -227,7 +227,7 @@ class _SignInState extends State<SignIn> {
                           icon: Container(
                               width: 25.0,
                               height: 25.0,
-                              child: Image.asset('Asset/Google.png')),
+                              child: Image.asset('Asset/ICONOS INICIO-02.png')),
                           label: Text(
                             'Continuar con Google',
                             style: TextStyle(fontSize: 15),
