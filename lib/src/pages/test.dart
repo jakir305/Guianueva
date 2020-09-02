@@ -59,46 +59,22 @@ class _TestvocacionalState extends State<Testvocacional> {
                   height: _screenSize.height * 0.5,
                   width: double.infinity,
                   child: Center(
-                      child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 5,
-                        child: Text(
-                          "Para saber que estudiar "
-                          "Completa el test y luego obtendras los resultados."
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(                          
+                          style: TextStyle(fontFamily: "MMedium",color: Colors.black87, ),
+                          children: <TextSpan>[
+                            TextSpan(text: "Para saber que estudiar "
+                          "completa el test y luego obtendras los resultados."
                           "\n \n Es importante que sepas que el test no es final y consta de solo 29 preguntas,"
-                          " por lo tanto no puede llegar a ser exacto.\n\n",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: "MMedium",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17.0,
-                          ),
+                          " por lo tanto no puede llegar a ser exacto.\n \n"),
+                            TextSpan(text:"''La duda es uno de los nombres de la inteligencia.''\n", style: TextStyle(fontFamily: "Fuente2")),
+                            TextSpan(text:"Jorge Luis Borges"),
+
+                          ]
                         ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          "''La duda es uno de los nombres de la inteligencia.''",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Fuente2',
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          "Jorge Luis Borges",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ))),
+                        )
+                  )),
             ],
           ),
         ),
@@ -1526,7 +1502,7 @@ class Resultadoscard extends StatelessWidget {
               ),
             ),
             Expanded(
-                flex: 3,
+                flex: 4,
                 child: Text(
                   resultado,
                   textAlign: TextAlign.left,
