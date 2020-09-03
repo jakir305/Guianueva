@@ -68,11 +68,11 @@ class _HomePageState extends State<HomePage> {
   Widget _drawer(BuildContext context) {
     return Drawer(
       child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 1.8,
-                sigmaY: 1.8,
-              ),
-              child: ListView(
+        filter: ImageFilter.blur(
+          sigmaX: 1.8,
+          sigmaY: 1.8,
+        ),
+        child: ListView(
           padding: EdgeInsets.all(0),
           children: [
             UserAccountsDrawerHeader(
