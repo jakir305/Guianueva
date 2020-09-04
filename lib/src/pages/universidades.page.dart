@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/src/widgets/cards_universidades.dart';
 import 'package:guiae/src/search/search_delegate.dart';
+
 class UniversidadesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Color color = Color.fromRGBO(0, 167, 160, 1);
+    final Color color = Color.fromRGBO(11, 174, 212, 1);
 
     return Container(
         child: Scaffold(
@@ -13,18 +14,19 @@ class UniversidadesPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(
-          Icons.search,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-                showSearch(context: context, delegate: DataSearch());
-          },
-          )],
+              Icons.search,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
         backgroundColor: color,
         title: Text(
           "Universidades",
-          style: TextStyle(fontFamily: "MExtra", color: Colors.white),
+          style: TextStyle(fontFamily: "MBold", color: Colors.white),
         ),
       ),
       body: Container(

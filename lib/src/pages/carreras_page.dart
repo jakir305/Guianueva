@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/carreras_info.dart';
 import 'package:guiae/src/providers/universidades_info.dart';
+import 'package:guiae/src/widgets/card_carreras.dart';
 
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,7 @@ class ListaDeCarreras extends StatelessWidget {
     final universidadInfo = Provider.of<UniversidadInfo>(context);
     final carreraInfo = Provider.of<CarreraInfo>(context);
 
-        CollectionReference users =
+    CollectionReference users =
         FirebaseFirestore.instance.collection(universidadInfo.universidad);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
@@ -36,23 +37,13 @@ class ListaDeCarreras extends StatelessWidget {
 
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
-            return GestureDetector(
-              onTap: () {
+            return new ListCardsCarreras(
+              carreras: document.data()['Carrera'],
+              facultad: document.data()['Universidad'],
+              link: () {
                 carreraInfo.carrera = document.data()['Carrera'];
                 Navigator.pushNamed(context, 'detalles');
               },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  new ListTile(
-                    title: new Text(document.data()['Carrera']),
-                    subtitle: new Text(document.data()['Universidad']),
-                  ),
-                  Divider(
-                    color: Colors.black,
-                  ),
-                ],
-              ),
             );
           }).toList(),
         );
