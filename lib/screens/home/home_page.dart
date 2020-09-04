@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/services/auth.dart';
+import 'package:guiae/src/pages/temp_notifi.dart';
 import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
@@ -24,6 +25,9 @@ class _HomePageState extends State<HomePage> {
   final BuscadorProvider buscador = new BuscadorProvider();
   @override
   void initState() {
+
+    Notifications().showNotificationWithDefaultSound();
+
     if (prefs.imageUrl == "") {
       _avatar = Image(
         image: AssetImage(prefs.imageAsset),

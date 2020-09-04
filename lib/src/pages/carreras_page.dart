@@ -6,6 +6,7 @@ import 'package:guiae/src/providers/universidades_info.dart';
 import 'package:provider/provider.dart';
 
 class ListaDeCarreras extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

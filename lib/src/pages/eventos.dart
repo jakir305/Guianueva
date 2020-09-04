@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-class Eventos extends StatelessWidget {
+class Eventos extends StatefulWidget  {
+  @override
+  _EventosState createState() => _EventosState();
+}
+
+class _EventosState extends State<Eventos> {
+  @override
+  void initState() { 
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,11 +61,6 @@ class Eventos extends StatelessWidget {
       ),
     );
   }
-
-  // Widget _crearlistado(BuildContext context) {
-  //   final _screenSize = MediaQuery.of(context).size;
-  //   return Container(alignment: ,)
-  // }
 
   Widget _card(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
