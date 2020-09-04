@@ -89,6 +89,18 @@ flutter:
     - family: MMedium
       fonts:
         - asset: fonts/Montserrat-Medium.ttf
+    - family: MBold
+      fonts:
+        - asset: fonts/Montserrat-Bold.ttf
+    - family: MSemi
+      fonts:
+        - asset: fonts/Montserrat-SemiBold.ttf
+    - family: MItalic
+      fonts:
+        - asset: fonts/Montserrat-MediumItalic.ttf
+    - family: MBlackitalic
+      fonts:
+        - asset: fonts/Montserrat-BlackItalic.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

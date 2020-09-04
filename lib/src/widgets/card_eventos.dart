@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ListCardsBecas extends StatelessWidget {
-  final String institucion;
+class ListCardsEventos extends StatelessWidget {
+  final String descripcion1;
+  final String descripcion2;
+  final String descripcion3;
   final String nombre;
-  final AssetImage icon;
   final String url;
 
-  ListCardsBecas({
-    @required this.institucion,
+  ListCardsEventos({
+    this.descripcion1,
+    this.descripcion2,
+    this.descripcion3,
     this.nombre,
-    this.icon,
     this.url,
   });
 
@@ -21,7 +23,7 @@ class ListCardsBecas extends StatelessWidget {
     final Color colorfont2 = Color.fromRGBO(117, 118, 120, 1);
 
     return Card(
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
       color: Colors.white,
       elevation: 20.0,
       child: InkWell(
@@ -51,17 +53,31 @@ class ListCardsBecas extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                child: Text(
-                  institucion,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "MSemi",
-                    fontSize: 15,
-                    color: colorfont2,
-                  ),
-                ),
+              SizedBox(
+                height: 10.0,
               ),
+              Container(
+                  child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: "MItalic",
+                      fontWeight: FontWeight.w900,
+                      color: Color.fromRGBO(228, 67, 128, 1),
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: descripcion1),
+                      TextSpan(text: "-"),
+                      TextSpan(
+                          text: descripcion2,
+                          style: TextStyle(
+                              fontFamily: "MBlackitalic",
+                              fontWeight: FontWeight.w900)),
+                      TextSpan(text: "-"),
+                      TextSpan(text: descripcion3),
+                    ]),
+              )),
             ],
           ),
         ),

@@ -60,21 +60,25 @@ class _TestvocacionalState extends State<Testvocacional> {
                   width: double.infinity,
                   child: Center(
                       child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(                          
-                          style: TextStyle(fontFamily: "MMedium",color: Colors.black87, ),
-                          children: <TextSpan>[
-                            TextSpan(text: "Para saber que estudiar "
-                          "completa el test y luego obtendras los resultados."
-                          "\n \n Es importante que sepas que el test no es final y consta de solo 29 preguntas,"
-                          " por lo tanto no puede llegar a ser exacto.\n \n"),
-                            TextSpan(text:"''La duda es uno de los nombres de la inteligencia.''\n", style: TextStyle(fontFamily: "Fuente2")),
-                            TextSpan(text:"Jorge Luis Borges"),
-
-                          ]
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        style: TextStyle(
+                          fontFamily: "MMedium",
+                          color: Colors.black87,
                         ),
-                        )
-                  )),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: "Para saber que estudiar "
+                                  "completa el test y luego obtendras los resultados."
+                                  "\n \n Es importante que sepas que el test no es final y consta de solo 29 preguntas,"
+                                  " por lo tanto no puede llegar a ser exacto.\n \n"),
+                          TextSpan(
+                              text:
+                                  "''La duda es uno de los nombres de la inteligencia.''\n",
+                              style: TextStyle(fontFamily: "Fuente2")),
+                          TextSpan(text: "Jorge Luis Borges"),
+                        ]),
+                  ))),
             ],
           ),
         ),
@@ -1457,7 +1461,7 @@ class _ResultadosState extends State<Resultados> {
           backgroundColor: Colors.red,
           child: Icon(Icons.exit_to_app),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, "/");
+            Navigator.pop(context);
           }),
     );
   }

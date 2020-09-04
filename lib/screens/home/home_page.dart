@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:guiae/src/providers/provider.dart';
+import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
 
@@ -49,14 +50,31 @@ class _HomePageState extends State<HomePage> {
     var scaffold = Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      floatingActionButton: IconButton(
-          icon: Icon(
-            Icons.menu,
-            color: Colors.white,
+      floatingActionButton: Stack(
+        children: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                _scaffoldKey.currentState.openDrawer();
+              }),
+          Align(
+            widthFactor: 8.5,
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            ),
           ),
-          onPressed: () {
-            _scaffoldKey.currentState.openDrawer();
-          }),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       drawer: _drawer(context),
       body: _body(context),

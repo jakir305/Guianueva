@@ -1,91 +1,73 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:guiae/src/widgets/card_eventos.dart';
 
 class Eventos extends StatelessWidget {
+  final Color color = Color.fromRGBO(228, 67, 128, 1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(
-        backgroundColorStart: Colors.purpleAccent,
-        backgroundColorEnd: Colors.white,
-        title: Text('Eventos'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.purple, Colors.white])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            _imageneventos(context),
-            _scrollview(context),
-          ],
+        appBar: AppBar(
+          backgroundColor: color,
+          title: Text(
+            'Eventos',
+            style: TextStyle(fontFamily: "Mbold", color: Colors.white),
+          ),
         ),
-      ),
+        body: _body(context));
+  }
+
+  Widget _body(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+    CollectionReference users =
+        FirebaseFirestore.instance.collection("Eventos");
+    return StreamBuilder<QuerySnapshot>(
+      stream: users.snapshots(),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Algo salio mal');
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        return Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.5, 1],
+                    colors: [Colors.white, color])),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                _imageneventos(context),
+                Container(
+                  height: _screenSize.height * 0.6,
+                  width: double.infinity,
+                  child: new ListView(
+                    children:
+                        snapshot.data.docs.map((DocumentSnapshot document) {
+                      return new ListCardsEventos(
+                        nombre: document.data()['Nombre'],
+                        url: document.data()['Url'],
+                        descripcion1: document.data()['Descripcion1'],
+                        descripcion2: document.data()['Descripcion2'],
+                        descripcion3: document.data()['Descripcion3'],
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            ));
+      },
     );
   }
 
   Widget _imageneventos(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
     return Container(
-        height: _screenSize.height * 0.4,
+        height: _screenSize.height * 0.3,
         width: double.infinity,
-        child: Image(
-            image: NetworkImage(
-                "https://scontent.fbrc1-1.fna.fbcdn.net/v/t1.0-9/69816312_462369147812097_2051216491545624576_o.jpg?_nc_cat=104&_nc_sid=e3f864&_nc_ohc=vJt2LWQisAgAX9yB4cN&_nc_ht=scontent.fbrc1-1.fna&oh=780f99e3bfd9439b0e3d3823a59aa07d&oe=5F6232B9")));
-  }
-
-  Widget _scrollview(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
-
-    return Container(
-      height: _screenSize.height * 0.45,
-      width: double.infinity,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          _card(context),
-          _card(context),
-          _card(context),
-          _card(context),
-          _card(context),
-        ],
-      ),
-    );
-  }
-
-  // Widget _crearlistado(BuildContext context) {
-  //   final _screenSize = MediaQuery.of(context).size;
-  //   return Container(alignment: ,)
-  // }
-
-  Widget _card(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
-    return Container(
-      width: 110,
-      child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          color: Colors.purple[100],
-          child: Wrap(
-            children: <Widget>[
-              Container(
-                height: _screenSize.height * 0.33,
-                child: Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    clipBehavior: Clip.hardEdge,
-                    child: Image.asset("Asset/evento.jpg"),
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Evento1",
-                ),
-                subtitle: Text("subtititulo1"),
-              )
-            ],
-          )),
-    );
+        child: Image.asset("Asset/eventos.jpg"));
   }
 }
