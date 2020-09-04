@@ -2,6 +2,10 @@
     package="com.lihuel305.guiae">
     
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    
 
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
