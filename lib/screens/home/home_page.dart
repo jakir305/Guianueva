@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/services/auth.dart';
 import 'package:guiae/src/providers/provider.dart';
-import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
 
@@ -100,14 +99,6 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                 )),
-            ListTile(
-              leading: Icon(Icons.search),
-              title: Text("BUSCADOR"),
-              onTap: () {
-                Navigator.pop(context);
-                showSearch(context: context, delegate: DataSearch());
-              },
-            ),
             ListTile(
               leading: Icon(Icons.info),
               title: Text("Acerca de Nosotros"),

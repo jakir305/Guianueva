@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/src/widgets/cards_universidades.dart';
-
+import 'package:guiae/src/search/search_delegate.dart';
 class UniversidadesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,6 +10,17 @@ class UniversidadesPage extends StatelessWidget {
         child: Scaffold(
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+          Icons.search,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+                showSearch(context: context, delegate: DataSearch());
+          },
+          )],
         backgroundColor: color,
         title: Text(
           "Universidades",

@@ -18,7 +18,7 @@ class _LoadingState extends State<Loading> {
 
   _LoadingState() {
     _timer = new Timer(const Duration(seconds: 4), () {
-       setState(() {
+      setState(() {
         
         
       });
@@ -39,7 +39,7 @@ class _LoadingState extends State<Loading> {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          child: Icon(Icons.ac_unit_sharp),
+          child: Icon(Icons.add_box),
         ),
       )
     );
