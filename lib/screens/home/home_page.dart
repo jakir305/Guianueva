@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
     var scaffold = Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
+
       floatingActionButton: Stack(
         children: <Widget>[
           IconButton(
@@ -65,16 +66,18 @@ class _HomePageState extends State<HomePage> {
                 _scaffoldKey.currentState.openDrawer();
               }),
           Align(
-            widthFactor: 8.5,
-            alignment: Alignment.topRight,
-            child: IconButton(
-              icon: Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-              onPressed: () {
+            alignment: AlignmentDirectional.topEnd,
+            widthFactor: 20,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 5, 20, 0),
+              child: FloatingActionButton(
+                backgroundColor: color,
+                onPressed: () {
                 showSearch(context: context, delegate: DataSearch());
-              },
+                  },
+                heroTag: null,
+                child: Icon(Icons.search),
+              ),
             ),
           ),
         ],
