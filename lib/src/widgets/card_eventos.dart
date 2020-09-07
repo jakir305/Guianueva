@@ -18,9 +18,8 @@ class ListCardsEventos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
+    
     final Color colorfont = Color.fromRGBO(87, 88, 90, 1);
-    final Color colorfont2 = Color.fromRGBO(117, 118, 120, 1);
 
     return Card(
       margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -31,7 +30,7 @@ class ListCardsEventos extends StatelessWidget {
           launch(url);
         },
         child: Container(
-          height: _screenSize.height * 0.11,
+          height: 90,
           alignment: AlignmentDirectional.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
