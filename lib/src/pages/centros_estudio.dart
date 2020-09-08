@@ -4,19 +4,33 @@ import 'package:guiae/src/widgets/cards_cenntrodeestudio.dart';
 
 class CentrosEstudio extends StatelessWidget {
   final Color color = Color.fromRGBO(151, 203, 90, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red[200],
-        appBar: AppBar(
-          title: Text(
-            'Centro de Estudios',
-            style: TextStyle(fontFamily: "MBold"),
-          ),
-          backgroundColor: color,
-          elevation: 0.0,
-        ),
-        body: _body(context));
+      body: CustomScrollView(
+        slivers: <Widget>[
+          _appBar(),
+        ],
+      ),
+    );
+  }
+
+  Widget _appBar() {
+    return SliverAppBar(
+      elevation: 2.0,
+      backgroundColor: color,
+      title: Text(
+        "Centros de estudio",
+        style: TextStyle(
+            fontFamily: "MBold",
+            color: Colors.white,
+            fontWeight: FontWeight.w900),
+      ),
+      expandedHeight: 200.0,
+      floating: false,
+      pinned: true,
+    );
   }
 
   Widget _body(BuildContext context) {
@@ -33,6 +47,7 @@ class CentrosEstudio extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
         return Container(
+          width: double.infinity,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -42,10 +57,14 @@ class CentrosEstudio extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              _imagenestudio(context),
               Container(
-                height: _screenSize.height * 0.6,
-                width: double.infinity,
+                  height: _screenSize.height * 0.3,
+                  child: Image.asset("Asset/biblioteca.jpg")),
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                height: _screenSize.height * 0.53,
                 child: new ListView(
                   children: snapshot.data.docs.map((DocumentSnapshot document) {
                     return new ListCardsCentrodeEstudio(
@@ -61,13 +80,5 @@ class CentrosEstudio extends StatelessWidget {
         );
       },
     );
-  }
-
-  Widget _imagenestudio(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
-    return Container(
-        height: _screenSize.height * 0.3,
-        width: double.infinity,
-        child: Image.asset("Asset/biblioteca.jpg"));
   }
 }

@@ -2,36 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:guiae/src/widgets/card_eventos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Eventos extends StatefulWidget  {
-
+class Eventos extends StatefulWidget {
   @override
   _EventosState createState() => _EventosState();
 }
 
 class _EventosState extends State<Eventos> {
-  
   final Color color = Color.fromRGBO(228, 67, 128, 1);
   @override
-  void initState() { 
+  void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
           backgroundColor: color,
           title: Text(
             'Eventos',
             style: TextStyle(fontFamily: "Mbold", color: Colors.white),
           ),
         ),
-      body: _body(context));
+        body: _body(context));
   }
 
-
-Widget _body(BuildContext context) {
-final _screenSize = MediaQuery.of(context).size;
-  CollectionReference users =
+  Widget _body(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+    CollectionReference users =
         FirebaseFirestore.instance.collection("Eventos");
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
@@ -63,8 +61,6 @@ final _screenSize = MediaQuery.of(context).size;
                         nombre: document.data()['Nombre'],
                         url: document.data()['Url'],
                         descripcion1: document.data()['Descripcion1'],
-                        descripcion2: document.data()['Descripcion2'],
-                        descripcion3: document.data()['Descripcion3'],
                       );
                     }).toList(),
                   ),
@@ -72,9 +68,8 @@ final _screenSize = MediaQuery.of(context).size;
               ],
             ));
       },
-  );
-}
-
+    );
+  }
 
   Widget _imageneventos(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
@@ -83,5 +78,4 @@ final _screenSize = MediaQuery.of(context).size;
         width: double.infinity,
         child: Image.asset("Asset/eventos.jpg"));
   }
-
 }

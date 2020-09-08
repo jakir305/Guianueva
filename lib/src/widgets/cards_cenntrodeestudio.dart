@@ -15,42 +15,33 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color colorfont = Color.fromRGBO(87, 88, 90, 1);
-    final Color colorfont2 = Color.fromRGBO(117, 118, 120, 1);
+    final Color borderColor = Color(0xffb904795);
 
     return GestureDetector(
-      onTap: () async {
-        launch(url);
-      },
-      child: Card(
-        margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-        color: Colors.white,
-        elevation: 20,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-          50.0,
-        )),
-        child: Container(
-          alignment: AlignmentDirectional.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                nombre,
-                style: TextStyle(
-                    fontFamily: 'MBold', fontSize: 20, color: colorfont),
-                textAlign: TextAlign.center,
+        onTap: () async {
+          launch(url);
+        },
+        child: ClipRRect(
+          child: Container(
+            height: 50.0,
+            width: 80.0,
+            decoration: BoxDecoration(
+                boxShadow: [BoxShadow(color: Colors.white)],
+                border: Border.all(color: borderColor, width: 1.5),
+                borderRadius: BorderRadius.all(Radius.circular(30))),
+            child: InkWell(
+              onTap: () async {
+                launch(url);
+              },
+              child: Center(
+                child: Text(
+                  nombre,
+                  style: TextStyle(fontFamily: 'MMedium', fontSize: 25),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              Text(
-                descripcion,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'MItalic', fontSize: 15, color: colorfont2),
-              )
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

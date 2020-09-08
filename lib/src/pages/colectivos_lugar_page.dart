@@ -38,14 +38,20 @@ class ColectivosPage extends StatelessWidget {
                   colors: [Colors.white, Color.fromRGBO(144, 71, 150, 1)])),
           child: new ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  new ListCardsColectivos(
-                    lugar: document.data()['Ciudad'],
-                    url: document.data()['Url'],
-                  ),
-                ],
+              return Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    new ListCardsColectivos(
+                      lugar: document.data()['Ciudad'],
+                      url: document.data()['Url'],
+                    ),
+                    SizedBox(
+                      height: 15.0,
+                    )
+                  ],
+                ),
               );
             }).toList(),
           ),

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/services/auth.dart';
-import 'package:guiae/src/pages/temp_notifi.dart';
 import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
@@ -26,9 +25,6 @@ class _HomePageState extends State<HomePage> {
   final BuscadorProvider buscador = new BuscadorProvider();
   @override
   void initState() {
-
-    Notifications().showNotificationWithDefaultSound();
-
     if (prefs.imageUrl == "") {
       _avatar = Image(
         image: AssetImage(prefs.imageAsset),
@@ -54,7 +50,6 @@ class _HomePageState extends State<HomePage> {
     var scaffold = Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-
       floatingActionButton: Stack(
         children: <Widget>[
           IconButton(
@@ -69,12 +64,14 @@ class _HomePageState extends State<HomePage> {
             alignment: AlignmentDirectional.topEnd,
             widthFactor: 20,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 5, 20, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
               child: FloatingActionButton(
-                backgroundColor: color,
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.white,
+                elevation: 0.0,
                 onPressed: () {
-                showSearch(context: context, delegate: DataSearch());
-                  },
+                  showSearch(context: context, delegate: DataSearch());
+                },
                 heroTag: null,
                 child: Icon(Icons.search),
               ),

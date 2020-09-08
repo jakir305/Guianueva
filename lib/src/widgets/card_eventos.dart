@@ -3,22 +3,18 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ListCardsEventos extends StatelessWidget {
   final String descripcion1;
-  final String descripcion2;
-  final String descripcion3;
+
   final String nombre;
   final String url;
 
   ListCardsEventos({
     this.descripcion1,
-    this.descripcion2,
-    this.descripcion3,
     this.nombre,
     this.url,
   });
 
   @override
   Widget build(BuildContext context) {
-    
     final Color colorfont = Color.fromRGBO(87, 88, 90, 1);
 
     return Card(
@@ -69,12 +65,10 @@ class ListCardsEventos extends StatelessWidget {
                       TextSpan(text: descripcion1),
                       TextSpan(text: "-"),
                       TextSpan(
-                          text: descripcion2,
                           style: TextStyle(
                               fontFamily: "MBlackitalic",
                               fontWeight: FontWeight.w900)),
                       TextSpan(text: "-"),
-                      TextSpan(text: descripcion3),
                     ]),
               )),
             ],
