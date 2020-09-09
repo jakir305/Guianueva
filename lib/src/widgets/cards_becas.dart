@@ -22,17 +22,19 @@ class ListCardsBecas extends StatelessWidget {
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
-          new BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10.0,
-          ),
-        ],
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 1.0,
+                spreadRadius: 0.0,
+                offset: Offset(3.0, 3.0), // shadow direction: bottom right
+              )
+            ],
       ),
       height: 90.0,
       child: Card(
         margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
         color: Colors.white,
-        elevation: 10.0,
+        elevation: 20.0,
         child: InkWell(
           onTap: () async {
             launch(url);

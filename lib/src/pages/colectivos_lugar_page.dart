@@ -34,7 +34,7 @@ class ColectivosPage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [0.5, 1],
+                  stops: [0.35, 1],
                   colors: [Colors.white, Color.fromRGBO(144, 71, 150, 1)])),
           child: new ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
@@ -47,9 +47,7 @@ class ColectivosPage extends StatelessWidget {
                       lugar: document.data()['Ciudad'],
                       url: document.data()['Url'],
                     ),
-                    SizedBox(
-                      height: 15.0,
-                    )
+                    
                   ],
                 ),
               );

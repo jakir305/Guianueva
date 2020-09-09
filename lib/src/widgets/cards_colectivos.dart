@@ -13,29 +13,40 @@ class ListCardsColectivos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return GestureDetector(
+      onTap: () async {
+        launch(url);
+      },
       child: Container(
-        width: 330.0,
-        height: 55.0,
-        decoration: BoxDecoration(
-            boxShadow: [BoxShadow(color: Colors.white)],
-            border: Border.all(color: borderColor, width: 1.5),
-            borderRadius: BorderRadius.all(Radius.circular(30))),
-        child: InkWell(
-          onTap: () async {
-            launch(url);
-          },
-          child: Container(
-            height: 70,
-            alignment: AlignmentDirectional.center,
-            child: Text(
-              lugar,
-              style: TextStyle(fontFamily: 'MMedium', fontSize: 25),
-              textAlign: TextAlign.center,
-            ),
+          margin: EdgeInsets.only(top: 5.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: borderColor, width: 2.0),
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 1.0,
+                spreadRadius: 0.0,
+                offset: Offset(1.0, 1.0), // shadow direction: bottom right
+              )
+            ],
           ),
-        ),
-      ),
+          child: Container(
+            width: 330,
+            height: 55,
+            child: (Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                    child: Text(
+                  lugar,
+                  style: TextStyle(fontFamily: 'MMedium', fontSize: 25),
+                )),
+              ],
+            )),
+          ) // child widget, replace with your own
+          ),
     );
   }
 }

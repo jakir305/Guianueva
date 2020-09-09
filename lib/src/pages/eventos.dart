@@ -24,11 +24,20 @@ class _EventosState extends State<Eventos> {
             style: TextStyle(fontFamily: "Mbold", color: Colors.white),
           ),
         ),
-        body: _body(context));
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.5, 1],
+                  colors: [Colors.white, color])),
+          child: ListView(
+            children: [_imageneventos(context), _body(context)],
+          ),
+        ));
   }
 
   Widget _body(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
     CollectionReference users =
         FirebaseFirestore.instance.collection("Eventos");
     return StreamBuilder<QuerySnapshot>(
@@ -40,41 +49,23 @@ class _EventosState extends State<Eventos> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
-        return Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.5, 1],
-                    colors: [Colors.white, color])),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                _imageneventos(context),
-                Container(
-                  height: _screenSize.height * 0.55,
-                  width: double.infinity,
-                  child: new ListView(
-                    children:
-                        snapshot.data.docs.map((DocumentSnapshot document) {
-                      return new ListCardsEventos(
-                        nombre: document.data()['Nombre'],
-                        url: document.data()['Url'],
-                        descripcion1: document.data()['Descripcion1'],
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ],
-            ));
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: snapshot.data.docs.map((DocumentSnapshot document) {
+            return ListCardsEventos(
+              nombre: document.data()['Nombre'],
+              url: document.data()['Url'],
+              descripcion1: document.data()['Descripcion1'],
+            );
+          
+          }).toList(),
+        );
       },
     );
   }
 
   Widget _imageneventos(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
     return Container(
-        height: _screenSize.height * 0.3,
         width: double.infinity,
         child: Image.asset("Asset/eventos.jpg"));
   }

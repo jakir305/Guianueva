@@ -15,33 +15,50 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color borderColor = Color(0xffb904795);
+    final Color color = Color.fromRGBO(151, 203, 90, 1);
 
     return GestureDetector(
-        onTap: () async {
-          launch(url);
-        },
-        child: ClipRRect(
-          child: Container(
-            height: 50.0,
-            width: 80.0,
-            decoration: BoxDecoration(
-                boxShadow: [BoxShadow(color: Colors.white)],
-                border: Border.all(color: borderColor, width: 1.5),
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            child: InkWell(
-              onTap: () async {
-                launch(url);
-              },
-              child: Center(
-                child: Text(
-                  nombre,
-                  style: TextStyle(fontFamily: 'MMedium', fontSize: 25),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
+      onTap: () async {
+        launch(url);
+      },
+      child: Container(
+          margin: EdgeInsets.only(top: 5.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: color, width: 2.0),
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 1.0,
+                spreadRadius: 1.0,
+                offset: Offset(2.0, 2.0), // shadow direction: bottom right
+              )
+            ],
           ),
-        ));
+          child: Container(
+            width: 330,
+            height: 40,
+            child: (Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                    child: Text(
+                  nombre,
+                  style: TextStyle(fontFamily: 'MMedium', fontSize: 15),
+                )),
+                SizedBox(
+                  height: 2.0,
+                ),
+                Center(
+                    child: Text(
+                  descripcion,
+                  style: TextStyle(fontFamily: 'MMedium', fontSize: 12),
+                )),
+              ],
+            )),
+          ) // child widget, replace with your own
+          ),
+    );
   }
 }

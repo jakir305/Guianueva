@@ -16,62 +16,63 @@ class ListCardsEventos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color colorfont = Color.fromRGBO(87, 88, 90, 1);
+    final Color colorfont2 = Color.fromRGBO(228, 67, 128, 1);
 
-    return Card(
-      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-      color: Colors.white,
-      elevation: 20.0,
-      child: InkWell(
-        onTap: () async {
-          launch(url);
-        },
-        child: Container(
-          height: 90,
-          alignment: AlignmentDirectional.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                alignment: AlignmentDirectional.center,
-                child: Text(
-                  nombre,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "MBold",
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w700,
-                    color: colorfont,
+    return Container(
+      decoration: new BoxDecoration(
+        boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 1.0,
+                spreadRadius: 1.0,
+                offset: Offset(1.0, 1.0), // shadow direction: bottom right
+              )
+            ],
+      ),
+      height: 80.0,
+      child: Card(
+        margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+        color: Colors.white,
+        elevation: 20.0,
+        child: InkWell(
+          onTap: () async {
+            launch(url);
+          },
+          child: Container(
+            height: 100,
+            alignment: AlignmentDirectional.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  child: Text(
+                    nombre,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "MBold",
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w700,
+                      color: colorfont,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                  child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
+                Container(
+                  child: Text(
+                    descripcion1,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: "MItalic",
-                      fontWeight: FontWeight.w900,
-                      color: Color.fromRGBO(228, 67, 128, 1),
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(text: descripcion1),
-                      TextSpan(text: "-"),
-                      TextSpan(
-                          style: TextStyle(
-                              fontFamily: "MBlackitalic",
-                              fontWeight: FontWeight.w900)),
-                      TextSpan(text: "-"),
-                    ]),
-              )),
-            ],
+                        fontFamily: "MSemi",
+                        fontSize: 15,
+                        color: colorfont2),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

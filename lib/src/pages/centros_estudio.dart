@@ -18,19 +18,30 @@ class CentrosEstudio extends StatelessWidget {
                 fontWeight: FontWeight.w900),
           ),
         ),
-        body: ListView(
-          children: [
-            SizedBox(
-              height: 15.0,
-            ),
-            _image(),
-            _body(context),
-          ],
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.55, 1],
+                  colors: [Colors.white, Color.fromRGBO(151, 203, 90, 1)])),
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 15.0,
+              ),
+              _image(context),
+              _body(context),
+            ],
+          ),
         ));
   }
 
-  Widget _image() {
+  Widget _image(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: Image(
         image: AssetImage("Asset/biblioteca.jpg"),
       ),
@@ -38,39 +49,32 @@ class CentrosEstudio extends StatelessWidget {
   }
 
   Widget _body(BuildContext context) {
-    final _screensize = MediaQuery.of(context).size;
     CollectionReference users =
         FirebaseFirestore.instance.collection("Centrodeestudio");
-    return Container(
-      width: double.infinity,
-      height: _screensize.height,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.5, 1],
-              colors: [Colors.white, Color.fromRGBO(144, 71, 150, 1)])),
-      child: StreamBuilder<QuerySnapshot>(
-        stream: users.snapshots(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.hasError) {
-            return Text('Algo salio mal');
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          return new Column(
-            children: snapshot.data.docs.map((DocumentSnapshot document) {
-              return Container(
+    return StreamBuilder<QuerySnapshot>(
+      stream: users.snapshots(),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Algo salio mal');
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        return new Column(
+          children: snapshot.data.docs.map((DocumentSnapshot document) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Container(
                 child: ListCardsCentrodeEstudio(
                   nombre: document.data()['Nombre'],
-                  descripcion: document.data()['Subtitulo'],
+                  descripcion: document.data()['Descripción'],
+                  
                 ),
-              );
-            }).toList(),
-          );
-        },
-      ),
+              ),
+            );
+          }).toList(),
+        );
+      },
     );
   }
 }
