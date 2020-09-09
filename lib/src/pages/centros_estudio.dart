@@ -8,77 +8,69 @@ class CentrosEstudio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          _appBar(),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          backgroundColor: color,
+          title: Text(
+            "Centros de estudio",
+            style: TextStyle(
+                fontFamily: "MBold",
+                color: Colors.white,
+                fontWeight: FontWeight.w900),
+          ),
+        ),
+        body: ListView(
+          children: [
+            SizedBox(
+              height: 15.0,
+            ),
+            _image(),
+            _body(context),
+          ],
+        ));
   }
 
-  Widget _appBar() {
-    return SliverAppBar(
-      elevation: 2.0,
-      backgroundColor: color,
-      title: Text(
-        "Centros de estudio",
-        style: TextStyle(
-            fontFamily: "MBold",
-            color: Colors.white,
-            fontWeight: FontWeight.w900),
+  Widget _image() {
+    return Container(
+      child: Image(
+        image: AssetImage("Asset/biblioteca.jpg"),
       ),
-      expandedHeight: 200.0,
-      floating: false,
-      pinned: true,
     );
   }
 
   Widget _body(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
+    final _screensize = MediaQuery.of(context).size;
     CollectionReference users =
-        FirebaseFirestore.instance.collection("Biblotecas");
-    return StreamBuilder<QuerySnapshot>(
-      stream: users.snapshots(),
-      builder: (BuildContext context, snapshot) {
-        if (snapshot.hasError) {
-          return Text('Algo salio mal');
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        }
-        return Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.5, 1],
-                  colors: [Colors.white, color])),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                  height: _screenSize.height * 0.3,
-                  child: Image.asset("Asset/biblioteca.jpg")),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: _screenSize.height * 0.53,
-                child: new ListView(
-                  children: snapshot.data.docs.map((DocumentSnapshot document) {
-                    return new ListCardsCentrodeEstudio(
-                      nombre: document.data()['Nombre'],
-                      url: document.data()['Url'],
-                      descripcion: document.data()['Descripcion'],
-                    );
-                  }).toList(),
+        FirebaseFirestore.instance.collection("Centrodeestudio");
+    return Container(
+      width: double.infinity,
+      height: _screensize.height,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.5, 1],
+              colors: [Colors.white, Color.fromRGBO(144, 71, 150, 1)])),
+      child: StreamBuilder<QuerySnapshot>(
+        stream: users.snapshots(),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.hasError) {
+            return Text('Algo salio mal');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          return new Column(
+            children: snapshot.data.docs.map((DocumentSnapshot document) {
+              return Container(
+                child: ListCardsCentrodeEstudio(
+                  nombre: document.data()['Nombre'],
+                  descripcion: document.data()['Subtitulo'],
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+              );
+            }).toList(),
+          );
+        },
+      ),
     );
   }
 }
