@@ -167,7 +167,7 @@ class _SignInState extends State<SignIn> {
                       SizedBox(
                         width: 20.0,
                       ),
-                      RaisedButton(                        
+                      RaisedButton(
                         highlightColor: Colors.tealAccent[700],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
@@ -182,7 +182,7 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                SizedBox(height: _screenSize.height*0.05),
+                SizedBox(height: _screenSize.height * 0.05),
                 Text(
                   error,
                   style: TextStyle(color: Colors.red, fontSize: 14.0),

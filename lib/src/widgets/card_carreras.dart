@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:guiae/src/providers/carreras_info.dart';
+import 'package:guiae/src/providers/universidades_info.dart';
+import 'package:guiae/src/widgets/showdialog_carreras.dart';
 import 'package:provider/provider.dart';
 
 class ListCardsCarreras extends StatelessWidget {
   final Color color = new Color.fromRGBO(11, 174, 212, 1);
+  final Color colorFont = Color.fromRGBO(87, 88, 90, 1);
   final String carreras;
   final String facultad;
-  final VoidCallback link;
+  final String localidad;
+  final String universidad;
+  final String url;
+  final String descripcion;
 
-  ListCardsCarreras({
-    @required this.carreras,
-    this.facultad,
-    this.link,
-  });
+  ListCardsCarreras(
+      {@required this.carreras,
+      @required this.facultad,
+      @required this.localidad,
+      @required this.universidad,
+      @required this.url,
+      @required this.descripcion});
 
   @override
   Widget build(BuildContext context) {
-    final carreraInfo = Provider.of<CarreraInfo>(context);
+    final universidadInfo = Provider.of<UniversidadInfo>(context);
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
@@ -34,46 +41,48 @@ class ListCardsCarreras extends StatelessWidget {
         elevation: 10.0,
         child: GestureDetector(
           onTap: () {
-            carreraInfo.carrera = carreras;
-            Navigator.pushNamed(context, 'detalles');
+            ShowDialog(
+                    nombre: carreras,
+                    duracion: descripcion,
+                    icon:
+                        AssetImage("Asset/${universidadInfo.universidad}.png"),
+                    lugar: localidad,
+                    url: url)
+                .alerta(context);
           },
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 1,
-                    ),
-                    Text(
+          child: Container(
+            height: 60.0,
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
                       carreras,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: "MMedium",
-                        fontSize: 16.0,
-                        color: Colors.black87,
+                          fontFamily: "MBold",
+                          fontSize: 16.0,
+                          color: colorFont),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      facultad,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: "MBlackitalic",
+                        fontSize: 12,
+                        color: color,
                       ),
                     ),
-                    Container(
-                      child: Text(
-                        facultad,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "MMedium",
-                          fontSize: 13,
-                          color: color,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 1.0,
-              ),
-            ],
+            ),
           ),
         ),
       ),

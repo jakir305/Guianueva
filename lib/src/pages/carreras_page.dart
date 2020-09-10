@@ -19,8 +19,8 @@ class ListaDeCarreras extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Container(
-                  width: 40.0,
-                  height: 40.0,
+                  width: 45.0,
+                  height: 45.0,
                   child: Image(
                     image:
                         AssetImage("Asset/${universidadInfo.universidad}.png"),
@@ -73,6 +73,10 @@ class ListaDeCarreras extends StatelessWidget {
             return ListCardsCarreras(
               carreras: (document.data()['Carrera']),
               facultad: (document.data()['Facultad']),
+              url: (document.data()['Url']),
+              localidad: (document.data()['Localidad']),
+              universidad: (document.data()['Universidad']),
+              descripcion: (document.data()['Descripción']),
             );
           }).toList());
         });

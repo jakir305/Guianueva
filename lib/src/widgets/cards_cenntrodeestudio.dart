@@ -20,6 +20,7 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color color = Color.fromRGBO(151, 203, 90, 1);
+    final Color colorFont = Color.fromRGBO(87, 88, 90, 1);
 
     return GestureDetector(
       onTap: () async {
@@ -49,7 +50,8 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
                 Center(
                     child: Text(
                   nombre,
-                  style: TextStyle(fontFamily: 'MMedium', fontSize: 15),
+                  style: TextStyle(
+                      fontFamily: 'MBold', fontSize: 15, color: colorFont),
                 )),
                 SizedBox(
                   height: 2.0,
@@ -57,7 +59,8 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
                 Center(
                     child: Text(
                   descripcion,
-                  style: TextStyle(fontFamily: 'MMedium', fontSize: 12),
+                  style: TextStyle(
+                      fontFamily: 'MMedium', fontSize: 13, color: colorFont),
                 )),
               ],
             )),

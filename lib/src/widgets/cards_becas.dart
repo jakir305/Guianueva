@@ -28,9 +28,8 @@ class ListCardsBecas extends StatelessWidget {
           )
         ],
       ),
-      height: 90.0,
+      height: 100.0,
       child: Card(
-        margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
         color: Colors.white,
         elevation: 20.0,
         child: InkWell(
@@ -38,7 +37,6 @@ class ListCardsBecas extends StatelessWidget {
             launch(url);
           },
           child: Container(
-            height: 100,
             alignment: AlignmentDirectional.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -47,28 +45,23 @@ class ListCardsBecas extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Container(
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                    nombre,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "MBold",
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w700,
-                      color: colorfont,
-                    ),
+                Text(
+                  nombre,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "MBold",
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
+                    color: colorfont,
                   ),
                 ),
-                Container(
-                  child: Text(
-                    institucion,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "MSemi",
-                      fontSize: 15,
-                      color: colorfont2,
-                    ),
+                Text(
+                  institucion,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "MSemi",
+                    fontSize: 14,
+                    color: colorfont2,
                   ),
                 ),
               ],

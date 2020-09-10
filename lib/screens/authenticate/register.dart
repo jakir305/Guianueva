@@ -207,11 +207,7 @@ class _RegisterState extends State<Register> {
                         itemHeight: 100.0,
                         hint: Text('Icono'),
                         value: avatar,
-                        items: <String>[
-                          'Asset/unco1.png',
-                          'Asset/balseiro.png',
-                          'Asset/utn.png'
-                        ].map((String value) {
+                        items: <String>[].map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Center(

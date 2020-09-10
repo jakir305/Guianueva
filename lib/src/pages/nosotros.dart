@@ -43,8 +43,8 @@ class _NosotrosState extends State<Nosotros> {
             height: 10.0,
           ),
           Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: acercaDeNosotros,
+            padding: const EdgeInsets.all(8.0),
+            child: Container(child: acercaDeNosotros),
           ),
         ],
       ),

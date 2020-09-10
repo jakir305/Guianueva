@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
 import 'package:guiae/screens/home/home_page.dart';
-import 'package:guiae/src/providers/carreras_info.dart';
-import 'package:guiae/src/providers/universidades_info.dart';
-import 'package:provider/provider.dart';
+import 'package:guiae/src/widgets/showdialog_carreras.dart';
 
 final Map iconos = {
   "Universidad Nacional del Comahue": "Asset/Unco.png",
@@ -32,7 +30,7 @@ final Map iconos = {
   "Instituto SI JOLIE": "Asset/Sijolie.png",
   "Universidad Catolica de Salta": "Asset/Ucasal.png",
   "Universidad De Flores": "Asset/Uflo.png",
-  "Centros de formacion profecional": "Asset/Cfp.jpg",
+  "Centros de formacion profecional": "Asset/Cfp.png",
   "Escuela de Diseño en el Habitat": "Asset/Edh.png",
   "Instituto Superior en Cocina Internacional": "Asset/Isci.png",
   "Escuela de Psicología Social de la Patagonia": "Asset/Epsp.png",
@@ -75,8 +73,6 @@ class DataSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final universidadInfo = Provider.of<UniversidadInfo>(context);
-    final carreraInfo = Provider.of<CarreraInfo>(context);
     //Son las sugerencias que se van a mostrar
 
     if (query.isEmpty) {
@@ -116,10 +112,13 @@ class DataSearch extends SearchDelegate {
 
               /* Text(listaSugerida[i].localidad), */
               onTap: () {
-                close(context, null);
-                carreraInfo.carrera = listaSugerida[i].nombre;
-                universidadInfo.universidad = listaSugerida[i].iniciales;
-                Navigator.pushNamed(context, 'detalles');
+                ShowDialog(
+                        nombre: listaSugerida[i].nombre,
+                        duracion: listaSugerida[i].duracion,
+                        icon: AssetImage(iconos[listaSugerida[i].universidad]),
+                        lugar: listaSugerida[i].localidad,
+                        url: listaSugerida[i].url)
+                    .alerta(context);
               },
             ),
             Divider(

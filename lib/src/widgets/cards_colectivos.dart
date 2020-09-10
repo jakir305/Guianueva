@@ -20,7 +20,7 @@ class ListCardsColectivos extends StatelessWidget {
       child: Container(
           margin: EdgeInsets.only(top: 5.0),
           decoration: BoxDecoration(
-            border: Border.all(color: borderColor, width: 2.0),
+            border: Border.all(color: borderColor, width: 1.0),
             borderRadius: BorderRadius.circular(30),
             color: Colors.white,
             boxShadow: [
@@ -34,14 +34,17 @@ class ListCardsColectivos extends StatelessWidget {
           ),
           child: Container(
             width: 330,
-            height: 55,
+            height: 50,
             child: (Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
                     child: Text(
                   lugar,
-                  style: TextStyle(fontFamily: 'MMedium', fontSize: 25),
+                  style: TextStyle(
+                      fontFamily: 'MMedium',
+                      fontSize: 25,
+                      color: Colors.blueGrey[800]),
                 )),
               ],
             )),

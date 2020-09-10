@@ -21,15 +21,14 @@ class ListCardsEventos extends StatelessWidget {
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 1.0,
-                spreadRadius: 1.0,
-                offset: Offset(1.0, 1.0), // shadow direction: bottom right
-              )
-            ],
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 1.0,
+            spreadRadius: 1.0,
+            offset: Offset(1.0, 1.0), // shadow direction: bottom right
+          )
+        ],
       ),
-      height: 80.0,
       child: Card(
         margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
         color: Colors.white,
@@ -39,7 +38,6 @@ class ListCardsEventos extends StatelessWidget {
             launch(url);
           },
           child: Container(
-            height: 100,
             alignment: AlignmentDirectional.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -50,14 +48,20 @@ class ListCardsEventos extends StatelessWidget {
                 ),
                 Container(
                   alignment: AlignmentDirectional.center,
-                  child: Text(
-                    nombre,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "MBold",
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w700,
-                      color: colorfont,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Text(
+                        nombre,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: "MBold",
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                          color: colorfont,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -66,9 +70,11 @@ class ListCardsEventos extends StatelessWidget {
                     descripcion1,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontFamily: "MSemi",
-                        fontSize: 15,
-                        color: colorfont2),
+                      fontFamily: "MItalic",
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w700,
+                      color: colorfont2,
+                    ),
                   ),
                 ),
               ],

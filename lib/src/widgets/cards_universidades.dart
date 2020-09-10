@@ -43,10 +43,16 @@ class ListCardsUniversidades extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    alias,
-                    style: styleNombreUniver,
-                    textAlign: TextAlign.center,
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        alias,
+                        style: styleNombreUniver,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                   Text(nombreCompleto,
                       style: styleNombreComUniver, textAlign: TextAlign.center),
