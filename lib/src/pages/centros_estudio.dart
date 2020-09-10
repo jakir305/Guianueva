@@ -68,7 +68,8 @@ class CentrosEstudio extends StatelessWidget {
                 child: ListCardsCentrodeEstudio(
                   nombre: document.data()['Nombre'],
                   descripcion: document.data()['Descripción'],
-                  
+                  latitud: document.data()['Latitud'],
+                  longitud: document.data()['Longitud'],
                 ),
               ),
             );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class ListCardsCentrodeEstudio extends StatelessWidget {
   final String nombre;
   final String descripcion;
+  final double latitud;
+  final double longitud;
 
   final String url;
 
@@ -11,6 +13,8 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
     this.nombre,
     this.url,
     this.descripcion,
+    this.latitud,
+    this.longitud,
   });
 
   @override
@@ -19,7 +23,7 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
 
     return GestureDetector(
       onTap: () async {
-        launch(url);
+        MapsLauncher.launchQuery('Int. Pedro Linares 1520, Neuquén');
       },
       child: Container(
           margin: EdgeInsets.only(top: 5.0),

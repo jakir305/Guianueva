@@ -15,24 +15,49 @@ class CarreraDetalles extends StatefulWidget {
 class _CarreraDetallesState extends State<CarreraDetalles> {
   @override
   Widget build(BuildContext context) {
+    final universidadInfo = Provider.of<UniversidadInfo>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detalles'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Image(
+                    image:
+                        AssetImage("Asset/${universidadInfo.universidad}.png"),
+                  )),
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                "Carreras " + universidadInfo.universidad,
+                style: TextStyle(fontFamily: 'MSemi', fontSize: 20),
+              ),
+            ),
+          ],
+        ),
       ),
       body: mostrarCarrera(context),
     );
   }
 
   Widget mostrarCarrera(BuildContext context) {
-    
     final universidadInfo = Provider.of<UniversidadInfo>(context);
     final carreraInfo = Provider.of<CarreraInfo>(context);
 
     CollectionReference users =
         FirebaseFirestore.instance.collection(universidadInfo.universidad);
     return StreamBuilder<QuerySnapshot>(
-      stream: users.where("Carrera",isEqualTo: carreraInfo.carrera).snapshots(),
-      builder: (BuildContext context,snapshot) {
+      stream:
+          users.where("Carrera", isEqualTo: carreraInfo.carrera).snapshots(),
+      builder: (BuildContext context, snapshot) {
         if (snapshot.hasError) {
           return Text('Algo salio mal');
         }
@@ -46,13 +71,8 @@ class _CarreraDetallesState extends State<CarreraDetalles> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                new ListTile(
-                  title: new Text(document.data()['Carrera']),
-                  subtitle: new Text(document.data()['Facultad']),
-                ),
-                Divider(
-                  color: Colors.black,
-                ),
+                Text("Carrera: ${document.data()['Carrera']}"),
+                Text(document.data()['Facultad']),
               ],
             );
           }).toList(),
@@ -60,5 +80,4 @@ class _CarreraDetallesState extends State<CarreraDetalles> {
       },
     );
   }
-  
 }

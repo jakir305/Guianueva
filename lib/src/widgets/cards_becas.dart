@@ -4,13 +4,11 @@ import 'package:url_launcher/url_launcher.dart';
 class ListCardsBecas extends StatelessWidget {
   final String institucion;
   final String nombre;
-  final AssetImage icon;
   final String url;
 
   ListCardsBecas({
     @required this.institucion,
     this.nombre,
-    this.icon,
     this.url,
   });
 
@@ -22,13 +20,13 @@ class ListCardsBecas extends StatelessWidget {
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 1.0,
-                spreadRadius: 0.0,
-                offset: Offset(3.0, 3.0), // shadow direction: bottom right
-              )
-            ],
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 1.0,
+            spreadRadius: 0.0,
+            offset: Offset(3.0, 3.0), // shadow direction: bottom right
+          )
+        ],
       ),
       height: 90.0,
       child: Card(

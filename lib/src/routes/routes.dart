@@ -6,7 +6,7 @@ import 'package:guiae/screens/home/wrapper.dart';
 import 'package:guiae/src/pages/carreras_page.dart';
 import 'package:guiae/src/pages/colectivos_lugar_page.dart';
 import 'package:guiae/src/pages/detalles_page.dart';
-import 'package:guiae/src/pages/lineas_colectivos.dart';
+
 import 'package:guiae/src/pages/nosotros.dart';
 import 'package:guiae/src/pages/test.dart';
 import 'package:guiae/src/pages/universidades.page.dart';
@@ -26,7 +26,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'ingresar': (BuildContext context) => SignIn(),
     'nosotros': (BuildContext context) => Nosotros(),
     'colectivos': (BuildContext context) => ColectivosPage(),
-    'lineas': (BuildContext context) => ColectivosLineasPage(),
     'becas': (BuildContext context) => Becasvarias(),
     'eventos': (BuildContext context) => Eventos(),
     'centrosestudio': (BuildContext context) => CentrosEstudio(),
