@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final Color color = Color.fromRGBO(0, 167, 160, 1);
+  final Color colorfont1 = Color(0xff3C3C3B);
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Image _avatar;
   final prefs = new PreferenciasUsuario();
@@ -123,31 +124,51 @@ class _HomePageState extends State<HomePage> {
                 )),
             ListTile(
               leading: Icon(Icons.info),
-              title: Text("Acerca de Nosotros"),
+              title: Text(
+                "Acerca de Nosotros",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () {
                 Navigator.pushNamed(context, 'nosotros');
               },
             ),
             ListTile(
               leading: Icon(Icons.share),
-              title: Text("Comparte la Aplicacion"),
+              title: Text(
+                "Comparte la Aplicacion",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.flag),
-              title: Text("Politicas de Privacidad"),
+              title: Text(
+                "Politicas de Privacidad",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.fiber_new),
-              title: Text("Test Vocacional"),
+              title: Text(
+                "Test Vocacional",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () {
                 Navigator.pushNamed(context, 'test');
               },
             ),
             ListTile(
               leading: Icon(Icons.keyboard_tab),
-              title: Text("Mas información"),
+              title: Text(
+                "Mas información",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () {
                 showAboutDialog(
                   context: context,
@@ -164,7 +185,11 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text("Salir"),
+              title: Text(
+                "Salir",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
               onTap: () async {
                 auth.signOutFacebook();
                 auth.signOut();

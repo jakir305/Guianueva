@@ -42,6 +42,7 @@ class ListCardsCarreras extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             ShowDialog(
+                    facultad: facultad,
                     nombre: carreras,
                     duracion: descripcion,
                     icon:

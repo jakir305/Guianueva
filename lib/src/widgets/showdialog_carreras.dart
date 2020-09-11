@@ -8,8 +8,10 @@ class ShowDialog {
   final String url;
   final String duracion;
   final String lugar;
+  final String facultad;
 
   ShowDialog({
+    @required this.facultad,
     @required this.nombre,
     @required this.icon,
     @required this.url,
@@ -18,6 +20,8 @@ class ShowDialog {
   });
 
   alerta(BuildContext context) {
+    final Color colorfont1 = Color(0xff3C3C3B);
+    final Color colorfont2 = Color(0xff0088C2);
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -25,18 +29,103 @@ class ShowDialog {
         return CupertinoAlertDialog(
           content: Column(
             children: <Widget>[
-              Text(
-                "Carrera: $nombre",
-                style: TextStyle(fontFamily: "MMedium"),
+              RichText(
+                textAlign: TextAlign.center,
+                text: new TextSpan(
+                  style: TextStyle(
+                    color: colorfont1,
+                    fontSize: 13.0,
+                    fontFamily: "MMedium",
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Carrera: ',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "MExtra",
+                        )),
+                    TextSpan(
+                        text: nombre,
+                        style: TextStyle(
+                            fontFamily: "MBlackitalic", color: colorfont2)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10.0,
               ),
-              Text(lugar),
+              RichText(
+                textAlign: TextAlign.center,
+                text: new TextSpan(
+                  style: TextStyle(
+                    color: colorfont1,
+                    fontSize: 13.0,
+                    fontFamily: "MMedium",
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Facultad: ',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "MExtra",
+                        )),
+                    TextSpan(
+                        text: facultad,
+                        style: TextStyle(
+                            fontFamily: "MBlackitalic", color: colorfont2)),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 10.0,
               ),
-              Text(duracion),
+              RichText(
+                textAlign: TextAlign.center,
+                text: new TextSpan(
+                  style: TextStyle(
+                    color: colorfont1,
+                    fontSize: 13.0,
+                    fontFamily: "MMedium",
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Duración: ',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "MExtra",
+                        )),
+                    TextSpan(
+                        text: duracion,
+                        style: TextStyle(
+                            fontFamily: "MBlackitalic", color: colorfont2)),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              RichText(
+                textAlign: TextAlign.center,
+                text: new TextSpan(
+                  style: TextStyle(
+                    color: colorfont1,
+                    fontSize: 13.0,
+                    fontFamily: "MMedium",
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Ubicación: ',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "MExtra",
+                        )),
+                    TextSpan(
+                        text: lugar,
+                        style: TextStyle(
+                            fontFamily: "MBlackitalic", color: colorfont2)),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 10.0,
               ),
@@ -49,13 +138,18 @@ class ShowDialog {
           ),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text('Cerrar'),
+              child: Text(
+                'Cerrar',
+                style: TextStyle(fontFamily: "MBlackitalic", color: colorfont2),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             CupertinoDialogAction(
-              child: Text('Ir al link'),
+              child: Text('Ir al link',
+                  style:
+                      TextStyle(fontFamily: "MBlackitalic", color: colorfont2)),
               onPressed: () {
                 _launchURL();
               },

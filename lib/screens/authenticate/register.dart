@@ -207,7 +207,12 @@ class _RegisterState extends State<Register> {
                         itemHeight: 100.0,
                         hint: Text('Icono'),
                         value: avatar,
-                        items: <String>[].map((String value) {
+                        items: <String>[
+                          "Asset/avatar1.png",
+                          "Asset/avatar2.png",
+                          "Asset/avatar3.png",
+                          "Asset/avatar4.png",
+                        ].map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Center(
@@ -255,7 +260,11 @@ class _RegisterState extends State<Register> {
                 ),
                 Text(
                   error,
-                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                  style: TextStyle(
+                    fontFamily: "MMedium",
+                    color: Colors.red,
+                    fontSize: 15.0,
+                  ),
                 ),
                 SizedBox(height: 15.0),
                 Row(

@@ -73,6 +73,7 @@ class DataSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final Color colorfont1 = Color(0xff3C3C3B);
     //Son las sugerencias que se van a mostrar
 
     if (query.isEmpty) {
@@ -99,12 +100,23 @@ class DataSearch extends SearchDelegate {
                   )),
               title: Text(
                 listaSugerida[i].nombre,
-                style: TextStyle(fontSize: 12.0),
+                style: TextStyle(
+                  color: colorfont1,
+                  fontSize: 13.0,
+                  fontFamily: "MExtra",
+                ),
               ),
               subtitle: (() {
                 //Verificacion de titulo
                 if (listaSugerida[i].localidad != null) {
-                  return Text(listaSugerida[i].localidad);
+                  return Text(
+                    listaSugerida[i].localidad,
+                    style: TextStyle(
+                      color: colorfont1,
+                      fontSize: 15.0,
+                      fontFamily: "MMedium",
+                    ),
+                  );
                 } else {
                   return Container();
                 }
@@ -117,7 +129,8 @@ class DataSearch extends SearchDelegate {
                         duracion: listaSugerida[i].duracion,
                         icon: AssetImage(iconos[listaSugerida[i].universidad]),
                         lugar: listaSugerida[i].localidad,
-                        url: listaSugerida[i].url)
+                        url: listaSugerida[i].url,
+                        facultad: listaSugerida[i].facultad)
                     .alerta(context);
               },
             ),
