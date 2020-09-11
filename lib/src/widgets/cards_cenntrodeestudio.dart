@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:maps_launcher/maps_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ListCardsCentrodeEstudio extends StatelessWidget {
   final String nombre;
   final String descripcion;
-  final double latitud;
-  final double longitud;
 
   final String url;
 
@@ -13,18 +11,17 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
     this.nombre,
     this.url,
     this.descripcion,
-    this.latitud,
-    this.longitud,
   });
 
   @override
   Widget build(BuildContext context) {
     final Color color = Color.fromRGBO(151, 203, 90, 1);
     final Color colorFont = Color.fromRGBO(87, 88, 90, 1);
+    final _screenSize = MediaQuery.of(context).size;
 
     return GestureDetector(
       onTap: () async {
-        MapsLauncher.launchQuery('Int. Pedro Linares 1520, Neuquén');
+        launch(url);
       },
       child: Container(
           margin: EdgeInsets.only(top: 5.0),
@@ -42,7 +39,7 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
             ],
           ),
           child: Container(
-            width: 330,
+            width: _screenSize.width*0.8,
             height: 40,
             child: (Column(
               mainAxisAlignment: MainAxisAlignment.center,
