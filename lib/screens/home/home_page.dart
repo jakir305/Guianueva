@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     var scaffold = Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -81,7 +82,8 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      drawer: _drawer(context),
+      drawer:
+          Container(width: _screenSize.width * 0.75, child: _drawer(context)),
       body: _body(context),
     );
     return scaffold;

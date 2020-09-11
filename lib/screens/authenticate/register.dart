@@ -45,7 +45,7 @@ class _RegisterState extends State<Register> {
                   height: 50.0,
                 ),
                 Container(
-                  height: _screenSize.height * 0.2,
+                  height: _screenSize.height * 0.25,
                   child: Image.asset('Asset/Logo1.png'),
                 ),
                 Container(
@@ -67,6 +67,8 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 16.0, fontFamily: "MMedium"),
                             prefixIcon: Icon(
                               Icons.people,
                               color: Colors.white,
@@ -81,7 +83,8 @@ class _RegisterState extends State<Register> {
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
                             hintText: 'Nombre y Apellido',
-                            hintStyle: TextStyle(color: Colors.white)),
+                            hintStyle: TextStyle(
+                                color: Colors.white, fontFamily: "MMedium")),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese su nombre y apellido' : null,
                         onChanged: (val) {
@@ -103,6 +106,8 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 16.0, fontFamily: "MMedium"),
                             contentPadding: EdgeInsets.all(1),
                             prefixIcon: Image.asset(
                               'Asset/ICONOS INICIO-04.png',
@@ -117,7 +122,8 @@ class _RegisterState extends State<Register> {
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
                             hintText: 'Correo',
-                            hintStyle: TextStyle(color: color)),
+                            hintStyle:
+                                TextStyle(color: color, fontFamily: "MMedium")),
                         validator: (val) =>
                             val.isEmpty ? 'Ingrese Email valido' : null,
                         onChanged: (val) {
@@ -138,6 +144,8 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 16.0, fontFamily: "MMedium"),
                             contentPadding: EdgeInsets.all(1),
                             prefixIcon: Image.asset(
                               'Asset/ICONOS INICIO-05.png',
@@ -148,7 +156,8 @@ class _RegisterState extends State<Register> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50)),
                             hintText: 'Contraseña',
-                            hintStyle: TextStyle(color: Colors.white)),
+                            hintStyle: TextStyle(
+                                color: Colors.white, fontFamily: "MMedium")),
                         obscureText: true,
                         validator: (val) => val.length < 6
                             ? 'Contraseña menor a 6 caracteres'
@@ -174,6 +183,8 @@ class _RegisterState extends State<Register> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 16.0, fontFamily: "MMedium"),
                             contentPadding: EdgeInsets.all(1),
                             prefixIcon: Image.asset(
                               'Asset/ICONOS INICIO-05.png',
@@ -185,7 +196,8 @@ class _RegisterState extends State<Register> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50)),
                             hintText: 'Repita la Contraseña',
-                            hintStyle: TextStyle(color: color)),
+                            hintStyle:
+                                TextStyle(color: color, fontFamily: "MMedium")),
                         obscureText: true,
                         validator: (val) {
                           if (val != valTemp) {
@@ -205,7 +217,10 @@ class _RegisterState extends State<Register> {
                       ),
                       DropdownButton<String>(
                         itemHeight: 100.0,
-                        hint: Text('Icono'),
+                        hint: Text(
+                          'Icono',
+                          style: TextStyle(fontFamily: "MMedium"),
+                        ),
                         value: avatar,
                         items: <String>[
                           "Asset/avatar1.png",
@@ -245,13 +260,17 @@ class _RegisterState extends State<Register> {
                 InkWell(
                   child: Text(
                     "Ya tenes cuenta? Ingresa aca",
-                    style: TextStyle(shadows: <Shadow>[
-                      Shadow(
-                        blurRadius: 8.0,
-                        color: Colors.black87,
-                        offset: Offset(0, 0),
-                      )
-                    ], color: Colors.white, fontSize: 15),
+                    style: TextStyle(
+                        shadows: <Shadow>[
+                          Shadow(
+                            blurRadius: 8.0,
+                            color: Colors.black87,
+                            offset: Offset(0, 0),
+                          )
+                        ],
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontFamily: "MMedium"),
                   ),
                   onTap: () => widget.toggleView(),
                 ),
@@ -278,7 +297,8 @@ class _RegisterState extends State<Register> {
                         color: Colors.white,
                         child: Text(
                           '  Registrarse e ingresar  ',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(
+                              color: Colors.black, fontFamily: "MMedium"),
                         ),
                         onPressed: () async {
                           if (avatar == null) {

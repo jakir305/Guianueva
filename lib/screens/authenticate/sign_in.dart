@@ -23,6 +23,8 @@ class _SignInState extends State<SignIn> {
   String nombre = '';
   String email = '';
   String password = '';
+  //Color on focus
+  Color color1 = Color.fromRGBO(0, 167, 160, 1);
 
   Widget build(BuildContext context) {
     final Color color = Color.fromRGBO(0, 167, 160, 1);
@@ -31,6 +33,7 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       body: Container(
         height: double.infinity,
+        width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.center,
@@ -55,88 +58,87 @@ class _SignInState extends State<SignIn> {
                   padding: EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        height: 70,
-                        child: TextFormField(
-                          textAlign: TextAlign.left,
-                          keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
-                            fontFamily: "MMedium",
-                            color: Colors.white,
-                            fontSize: 20.0,
+                      TextFormField(
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(
+                          fontFamily: "MMedium",
+                          color: Colors.white,
+                          fontSize: 20.0,
+                        ),
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                          errorStyle:
+                              TextStyle(fontSize: 16.0, fontFamily: "MMedium"),
+                          contentPadding: EdgeInsets.all(1),
+                          fillColor: color1,
+                          filled: true,
+                          prefixIcon: Image.asset(
+                            'Asset/ICONOS INICIO-06.png',
+                            scale: 10,
                           ),
-                          maxLines: 1,
-                          decoration: InputDecoration(
-                            errorStyle: TextStyle(
-                                fontSize: 16.0, fontFamily: "MMedium"),
-                            counterText: ' ',
-                            contentPadding: EdgeInsets.all(1),
-                            fillColor: color,
-                            filled: true,
-                            prefixIcon: Image.asset(
-                              'Asset/ICONOS INICIO-06.png',
-                              scale: 9,
-                            ),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  style: BorderStyle.solid,
-                                  color: color,
-                                ),
-                                borderRadius: BorderRadius.circular(50)),
-                            hintText: 'Correo',
-                            hintStyle: TextStyle(
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                style: BorderStyle.solid,
+                                color: color,
+                              ),
+                              borderRadius: BorderRadius.circular(50)),
+                          hintText: 'Correo',
+                          hintStyle: TextStyle(
                               fontFamily: "MMedium",
                               color: Colors.white,
-                            ),
-                          ),
-                          validator: (val) =>
-                              val.isEmpty ? ('Ingrese Email valido') : null,
-                          onChanged: (val) {
-                            setState(() => email = val);
-                          },
+                              fontSize: 20.0),
                         ),
+                        validator: (val) =>
+                            val.isEmpty ? ('Ingrese Email valido') : null,
+                        onChanged: (val) {
+                          setState(() => email = val);
+                        },
                       ),
                       SizedBox(
                         height: 10.0,
                       ),
-                      Container(
-                        height: 70,
-                        child: TextFormField(
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: "MMedium",
-                            color: color,
-                            fontSize: 20.0,
-                          ),
-                          maxLines: 1,
-                          decoration: InputDecoration(
-                            errorStyle: TextStyle(
-                                fontSize: 16.0, fontFamily: "MMedium"),
-                            counterText: ' ',
-                            contentPadding: EdgeInsets.all(1),
-                            fillColor: Colors.white,
-                            prefixIcon: Image.asset(
-                              'Asset/ICONOS INICIO-05.png',
-                              scale: 9,
-                              color: color,
-                            ),
-                            filled: true,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50)),
-                            hintText: 'Contraseña',
-                            hintStyle: TextStyle(
-                              fontFamily: "MMedium",
-                              color: color,
-                            ),
-                          ),
-                          obscureText: true,
-                          validator: (val) => val.length < 6
-                              ? 'Contraseña menor a 6 caracteres'
-                              : null,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          },
+
+                      //Contraseña
+                      TextFormField(
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: "MMedium",
+                          color: color,
+                          fontSize: 20.0,
                         ),
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                          errorStyle:
+                              TextStyle(fontSize: 16.0, fontFamily: "MMedium"),
+                          contentPadding: EdgeInsets.all(1),
+                          fillColor: Colors.white,
+                          prefixIcon: Image.asset(
+                            'Asset/ICONOS INICIO-05.png',
+                            scale: 10,
+                            color: color,
+                          ),
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                style: BorderStyle.solid,
+                                color: color,
+                              ),
+                              borderRadius: BorderRadius.circular(50)),
+                          hintText: 'Contraseña',
+                          hintStyle: TextStyle(
+                            fontFamily: "MMedium",
+                            fontSize: 20.0,
+                            color: color,
+                          ),
+                        ),
+                        obscureText: true,
+                        validator: (val) => val.length < 6
+                            ? 'Contraseña menor a 6 caracteres'
+                            : null,
+                        onChanged: (val) {
+                          setState(() => password = val);
+                        },
                       ),
                     ],
                   ),
