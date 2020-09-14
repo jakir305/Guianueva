@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,6 +15,7 @@ class ListCardsBecas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     final Color colorfont = Color.fromRGBO(87, 88, 90, 1);
     final Color colorfont2 = Color.fromRGBO(117, 118, 120, 1);
 
@@ -28,7 +30,7 @@ class ListCardsBecas extends StatelessWidget {
           )
         ],
       ),
-      height: 100.0,
+      height: _screenSize.width * 0.25,
       child: Card(
         color: Colors.white,
         elevation: 20.0,
@@ -45,24 +47,30 @@ class ListCardsBecas extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                AutoSizeText(
                   nombre,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: "MBold",
-                    fontSize: 25.0,
                     fontWeight: FontWeight.w700,
                     color: colorfont,
                   ),
+                  minFontSize: 15.0,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                Text(
+                AutoSizeText(
                   institucion,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontFamily: "MSemi",
-                    fontSize: 14,
+                    fontFamily: "MBold",
+                    fontWeight: FontWeight.w700,
                     color: colorfont2,
                   ),
+                  maxFontSize: 12.0,
+                  minFontSize: 10.0,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

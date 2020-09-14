@@ -212,7 +212,7 @@ class UniversidadesPage extends StatelessWidget {
           alias: "Siglo 21",
           nombre: 'Siglo21',
           nombreCompleto: 'Universidad Siglo 21',
-          icon: AssetImage('Asset/Siglo21.jpg'),
+          icon: AssetImage('Asset/Siglo21.png'),
         ),
         ListCardsUniversidades(
           alias: "CFP",
@@ -224,7 +224,7 @@ class UniversidadesPage extends StatelessWidget {
           alias: "Virtual",
           nombre: 'Virtual',
           nombreCompleto: 'Universidades Virtuales',
-          icon: AssetImage('Asset/Virtual.jpg'),
+          icon: AssetImage('Asset/Virtual.png'),
         ),
       ],
     );

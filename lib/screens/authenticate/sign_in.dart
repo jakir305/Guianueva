@@ -54,11 +54,12 @@ class _SignInState extends State<SignIn> {
                   padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
                   child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
+                Column(
+                  children: <Widget>[
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 60.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
@@ -95,12 +96,13 @@ class _SignInState extends State<SignIn> {
                           setState(() => email = val);
                         },
                       ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
+                    ),
 
-                      //Contraseña
-                      TextFormField(
+                    //Contraseña
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 50.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: "MMedium",
@@ -113,10 +115,13 @@ class _SignInState extends State<SignIn> {
                               TextStyle(fontSize: 16.0, fontFamily: "MMedium"),
                           contentPadding: EdgeInsets.all(1),
                           fillColor: Colors.white,
-                          prefixIcon: Image.asset(
-                            'Asset/ICONOS INICIO-05.png',
-                            scale: 10,
-                            color: color,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Image.asset(
+                              'Asset/ICONOS INICIO-05.png',
+                              scale: 10,
+                              color: color,
+                            ),
                           ),
                           filled: true,
                           border: OutlineInputBorder(
@@ -125,7 +130,7 @@ class _SignInState extends State<SignIn> {
                                 color: color,
                               ),
                               borderRadius: BorderRadius.circular(50)),
-                          hintText: 'Contraseña',
+                          hintText: '    Contraseña',
                           hintStyle: TextStyle(
                             fontFamily: "MMedium",
                             fontSize: 20.0,
@@ -140,8 +145,8 @@ class _SignInState extends State<SignIn> {
                           setState(() => password = val);
                         },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10.0),
                 Container(
@@ -224,16 +229,12 @@ class _SignInState extends State<SignIn> {
                     fontSize: 15.0,
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
                 Container(
-                  height: _screenSize.height * 0.2,
                   child: Wrap(
                     alignment: WrapAlignment.center,
                     children: [
                       Container(
-                        width: 230.0,
+                        width: _screenSize.width * 0.7,
                         child: RaisedButton.icon(
                           highlightColor: Colors.tealAccent[700],
                           shape: RoundedRectangleBorder(
@@ -243,10 +244,15 @@ class _SignInState extends State<SignIn> {
                           icon: Container(
                               width: 25.0,
                               height: 25.0,
-                              child: Image.asset('Asset/ICONOS INICIO-01.png')),
+                              child: Container(
+                                  width: 25,
+                                  height: 25,
+                                  child: Image.asset(
+                                      'Asset/ICONOS INICIO-01.png'))),
                           label: Text(
                             'Continuar con Facebook',
                             style: TextStyle(
+                              fontFamily: "MMedium",
                               fontWeight: FontWeight.w700,
                               fontSize: 15,
                               color: Colors.white70,
@@ -258,11 +264,10 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       SizedBox(
-                        height: _screenSize.height * 0.02,
-                        width: 5.0,
+                        height: 8.0,
                       ),
                       Container(
-                        width: 230.0,
+                        width: _screenSize.width * 0.7,
                         child: RaisedButton.icon(
                             highlightColor: Colors.tealAccent[700],
                             shape: RoundedRectangleBorder(
@@ -276,7 +281,10 @@ class _SignInState extends State<SignIn> {
                                     Image.asset('Asset/ICONOS INICIO-02.png')),
                             label: Text(
                               'Continuar con Google',
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: "MMedium",
+                              ),
                             ),
                             onPressed: () async {
                               await _auth.signInWithGoogle();

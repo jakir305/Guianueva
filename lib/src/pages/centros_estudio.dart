@@ -29,9 +29,6 @@ class CentrosEstudio extends StatelessWidget {
                   colors: [Colors.white, Color.fromRGBO(151, 203, 90, 1)])),
           child: ListView(
             children: [
-              SizedBox(
-                height: 2.0,
-              ),
               _image(context),
               _body(context),
             ],
@@ -40,16 +37,12 @@ class CentrosEstudio extends StatelessWidget {
   }
 
   Widget _image(BuildContext context) {
-    
-    final _screenSize = MediaQuery.of(context).size;
     return Container(
-            height: _screenSize.height * 0.3,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("Asset/biblioteca.jpg",
-                    )))
+      width: double.infinity,
+      child: Image(
+        fit: BoxFit.cover,
+        image: AssetImage("Asset/biblioteca.jpg"),
+      ),
     );
   }
 
@@ -73,7 +66,8 @@ class CentrosEstudio extends StatelessWidget {
                 child: ListCardsCentrodeEstudio(
                   nombre: document.data()['Nombre'],
                   descripcion: document.data()['Descripción'],
-                  url: document.data()['Url'],
+                  latitud: document.data()['Latitud'],
+                  longitud: document.data()['Longitud'],
                 ),
               ),
             );

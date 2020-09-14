@@ -13,7 +13,6 @@ class ListCardsColectivos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     final _screenSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () async {
@@ -35,7 +34,7 @@ class ListCardsColectivos extends StatelessWidget {
             ],
           ),
           child: Container(
-            width:  _screenSize.width*0.8 ,
+            width: _screenSize.width * 0.9,
             height: 50,
             child: (Column(
               mainAxisAlignment: MainAxisAlignment.center,

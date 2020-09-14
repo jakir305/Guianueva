@@ -65,15 +65,8 @@ class _EventosState extends State<Eventos> {
   }
 
   Widget _imageneventos(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
     return Container(
-            height: _screenSize.height * 0.3,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("Asset/eventos.jpg",
-                    )))
-    );
+        width: double.infinity,
+        child: Image.asset("Asset/eventos.jpg"));
   }
 }

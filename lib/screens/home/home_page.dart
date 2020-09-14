@@ -97,7 +97,6 @@ class _HomePageState extends State<HomePage> {
           sigmaY: 1.8,
         ),
         child: ListView(
-          padding: EdgeInsets.all(0),
           children: [
             UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
@@ -145,15 +144,6 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.flag),
-              title: Text(
-                "Politicas de Privacidad",
-                style: TextStyle(
-                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
-              ),
-              onTap: () {},
-            ),
-            ListTile(
               leading: Icon(Icons.fiber_new),
               title: Text(
                 "Test Vocacional",
@@ -162,27 +152,6 @@ class _HomePageState extends State<HomePage> {
               ),
               onTap: () {
                 Navigator.pushNamed(context, 'test');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.keyboard_tab),
-              title: Text(
-                "Mas información",
-                style: TextStyle(
-                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
-              ),
-              onTap: () {
-                showAboutDialog(
-                  context: context,
-                  applicationVersion: "0.0.0",
-                  applicationLegalese: '-',
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Text('-'),
-                    ),
-                  ],
-                );
               },
             ),
             ListTile(
@@ -198,6 +167,17 @@ class _HomePageState extends State<HomePage> {
                 auth.signOutGoogle();
               },
             ),
+            SizedBox(
+              height: 160.0,
+            ),
+            Align(
+              alignment: FractionalOffset.bottomRight,
+              child: Text(
+                'Version: 1.0.0 (Beta).',
+                style: TextStyle(
+                    fontFamily: "MMedium", fontSize: 12.0, color: Colors.black),
+              ),
+            )
           ],
         ),
       ),

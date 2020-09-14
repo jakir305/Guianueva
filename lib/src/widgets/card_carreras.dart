@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/src/providers/universidades_info.dart';
 import 'package:guiae/src/widgets/showdialog_carreras.dart';
@@ -52,37 +53,39 @@ class ListCardsCarreras extends StatelessWidget {
                 .alerta(context);
           },
           child: Container(
-            height: 60.0,
-            child: Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      carreras,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: "MBold",
-                          fontSize: 16.0,
-                          color: colorFont),
-                    ),
+            height: 70.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: AutoSizeText(
+                    carreras,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: "MBold", color: colorFont),
+                    maxFontSize: 18.0,
+                    maxLines: 2,
+                    minFontSize: 14,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      facultad,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "MBlackitalic",
-                        fontSize: 12,
-                        color: color,
-                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: AutoSizeText(
+                    facultad,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "MBlackitalic",
+                      color: color,
                     ),
+                    maxFontSize: 15.0,
+                    minFontSize: 10,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

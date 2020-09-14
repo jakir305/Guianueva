@@ -26,7 +26,7 @@ final Map iconos = {
   "Escuela de Policia": "Asset/Policia.png",
   "Fundacion Potenciar": "Asset/Potenciar.png",
   "Séneca Instituto Terciario": "Asset/Seneca.png",
-  "Universidad Siglo 21": "Asset/Siglo21.jpg",
+  "Universidad Siglo 21": "Asset/Siglo21.png",
   "Instituto SI JOLIE": "Asset/Sijolie.png",
   "Universidad Catolica de Salta": "Asset/Ucasal.png",
   "Universidad De Flores": "Asset/Uflo.png",
@@ -35,7 +35,7 @@ final Map iconos = {
   "Instituto Superior en Cocina Internacional": "Asset/Isci.png",
   "Escuela de Psicología Social de la Patagonia": "Asset/Epsp.png",
   "Vínculo - Escuela de Psicología Social del Neuquén": "Asset/Vinculo.png",
-  "Universidades Virtuales": "Asset/Virtual.jpg",
+  "Universidades Virtuales": "Asset/Virtual.png",
 };
 
 class DataSearch extends SearchDelegate {

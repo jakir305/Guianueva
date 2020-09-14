@@ -1,9 +1,12 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class ListCardsCentrodeEstudio extends StatelessWidget {
   final String nombre;
   final String descripcion;
+  final double latitud;
+  final double longitud;
 
   final String url;
 
@@ -11,17 +14,19 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
     this.nombre,
     this.url,
     this.descripcion,
+    this.latitud,
+    this.longitud,
   });
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     final Color color = Color.fromRGBO(151, 203, 90, 1);
     final Color colorFont = Color.fromRGBO(87, 88, 90, 1);
-    final _screenSize = MediaQuery.of(context).size;
 
     return GestureDetector(
       onTap: () async {
-        launch(url);
+        MapsLauncher.launchQuery('Int. Pedro Linares 1520, Neuquén');
       },
       child: Container(
           margin: EdgeInsets.only(top: 5.0),
@@ -39,25 +44,25 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
             ],
           ),
           child: Container(
-            width: _screenSize.width*0.8,
-            height: 40,
+            width: _screenSize.width * 0.9,
+            height: _screenSize.height * 0.098,
             child: (Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                    child: Text(
+                    child: AutoSizeText(
                   nombre,
-                  style: TextStyle(
-                      fontFamily: 'MBold', fontSize: 15, color: colorFont),
+                  style: TextStyle(fontFamily: 'MBold', color: colorFont),
+                  maxLines: 1,
+                  maxFontSize: 15,
+                  minFontSize: 13,
                 )),
-                SizedBox(
-                  height: 2.0,
-                ),
                 Center(
-                    child: Text(
+                    child: AutoSizeText(
                   descripcion,
-                  style: TextStyle(
-                      fontFamily: 'MMedium', fontSize: 13, color: colorFont),
+                  style: TextStyle(fontFamily: 'MMedium', color: colorFont),
+                  maxFontSize: 13.0,
+                  minFontSize: 10.0,
                 )),
               ],
             )),

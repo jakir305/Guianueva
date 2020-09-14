@@ -18,7 +18,6 @@ class ColectivosPage extends StatelessWidget {
   }
 
   Widget _body(BuildContext context) {
-    
     CollectionReference users =
         FirebaseFirestore.instance.collection("Transporte");
     return StreamBuilder<QuerySnapshot>(

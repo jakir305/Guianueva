@@ -53,12 +53,13 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
                   child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Column(
-                    children: <Widget>[
-                      // nombre y apellido
-                      TextFormField(
+                Column(
+                  children: <Widget>[
+                    // nombre y apellido
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 50.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.text,
                         style: TextStyle(
@@ -91,13 +92,17 @@ class _RegisterState extends State<Register> {
                           setState(() => nombre = val);
                         },
                       ),
+                    ),
 
-                      SizedBox(
-                        height: 15.0,
-                      ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
 
-                      // Caja de correo
-                      TextFormField(
+                    // Caja de correo
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 50.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
@@ -130,13 +135,17 @@ class _RegisterState extends State<Register> {
                           setState(() => email = val);
                         },
                       ),
+                    ),
 
-                      SizedBox(
-                        height: 15.0,
-                      ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
 
-                      // Caja de contraseña
-                      TextFormField(
+                    // Caja de contraseña
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 50.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,
@@ -169,13 +178,17 @@ class _RegisterState extends State<Register> {
                           });
                         },
                       ),
+                    ),
 
-                      SizedBox(
-                        height: 15.0,
-                      ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
 
-                      // Caja de contraseña validacion
-                      TextFormField(
+                    // Caja de contraseña validacion
+                    Container(
+                      width: _screenSize.width * 0.9,
+                      height: 50.0,
+                      child: TextFormField(
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: color,
@@ -209,52 +222,53 @@ class _RegisterState extends State<Register> {
                           setState(() => password = val);
                         },
                       ),
+                    ),
 
-                      //Seleccion de icono
+                    //Seleccion de icono
 
-                      SizedBox(
-                        height: 15.0,
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    DropdownButton<String>(
+                      iconSize: 50.0,
+                      itemHeight: 150.0,
+                      hint: Text(
+                        'Icono',
+                        style: TextStyle(fontFamily: "MSemi", fontSize: 25.0),
                       ),
-                      DropdownButton<String>(
-                        itemHeight: 100.0,
-                        hint: Text(
-                          'Icono',
-                          style: TextStyle(fontFamily: "MMedium"),
-                        ),
-                        value: avatar,
-                        items: <String>[
-                          "Asset/avatar1.png",
-                          "Asset/avatar2.png",
-                          "Asset/avatar3.png",
-                          "Asset/avatar4.png",
-                        ].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Center(
-                              child: Container(
-                                padding: const EdgeInsets.only(bottom: 10.0),
-                                height: 80.0,
-                                width: 80.0,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    Image(image: AssetImage(value)),
-                                  ],
-                                ),
+                      value: avatar,
+                      items: <String>[
+                        "Asset/avatar1.png",
+                        "Asset/avatar2.png",
+                        "Asset/avatar3.png",
+                        "Asset/avatar4.png",
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Center(
+                            child: Container(
+                              padding: const EdgeInsets.only(bottom: 10.0),
+                              height: 80.0,
+                              width: 80.0,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Image(image: AssetImage(value)),
+                                ],
                               ),
                             ),
-                          );
-                        }).toList(),
-                        onChanged: (newvalue) {
-                          setState(() {
-                            avatar = newvalue;
-                            avatarAsset = AssetImage(newvalue);
-                          });
-                        },
-                      )
-                    ],
-                  ),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (newvalue) {
+                        setState(() {
+                          avatar = newvalue;
+                          avatarAsset = AssetImage(newvalue);
+                        });
+                      },
+                    )
+                  ],
                 ),
                 SizedBox(height: 15.0),
                 InkWell(
