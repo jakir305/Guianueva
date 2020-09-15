@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           sigmaX: 1.8,
           sigmaY: 1.8,
         ),
-        child: ListView(
+        child: Column(
           children: [
             UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
@@ -167,15 +167,16 @@ class _HomePageState extends State<HomePage> {
                 auth.signOutGoogle();
               },
             ),
-            SizedBox(
-              height: 160.0,
-            ),
+            Expanded(child: Container()),
             Align(
-              alignment: FractionalOffset.bottomRight,
+              alignment: Alignment.bottomRight,
               child: Text(
                 'Version: 1.0.0 (Beta).',
                 style: TextStyle(
-                    fontFamily: "MMedium", fontSize: 12.0, color: Colors.black),
+                  fontFamily: "MMedium",
+                  fontSize: 12.0,
+                  color: Colors.black,
+                ),
               ),
             )
           ],

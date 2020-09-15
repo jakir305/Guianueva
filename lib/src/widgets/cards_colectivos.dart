@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,19 +37,21 @@ class ListCardsColectivos extends StatelessWidget {
           child: Container(
             width: _screenSize.width * 0.9,
             height: 50,
-            child: (Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                    child: Text(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Center(
+                child: (AutoSizeText(
                   lugar,
+                  maxLines: 2,
+                  minFontSize: 16,
+                  maxFontSize: 25,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontFamily: 'MMedium',
-                      fontSize: 25,
-                      color: Colors.blueGrey[800]),
+                      fontFamily: 'MMedium', color: Colors.blueGrey[800]),
                 )),
-              ],
-            )),
+              ),
+            ),
           ) // child widget, replace with your own
           ),
     );
