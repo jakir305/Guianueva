@@ -48,7 +48,7 @@ class CentrosEstudio extends StatelessWidget {
 
   Widget _body(BuildContext context) {
     CollectionReference users =
-        FirebaseFirestore.instance.collection("Centrodeestudio");
+        FirebaseFirestore.instance.collection("Bibliotecas");
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
       builder: (BuildContext context, snapshot) {
@@ -65,9 +65,6 @@ class CentrosEstudio extends StatelessWidget {
               child: Container(
                 child: ListCardsCentrodeEstudio(
                   nombre: document.data()['Nombre'],
-                  descripcion: document.data()['Descripción'],
-                  latitud: document.data()['Latitud'],
-                  longitud: document.data()['Longitud'],
                 ),
               ),
             );

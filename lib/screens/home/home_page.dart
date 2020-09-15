@@ -170,12 +170,14 @@ class _HomePageState extends State<HomePage> {
             Expanded(child: Container()),
             Align(
               alignment: Alignment.bottomRight,
-              child: Text(
-                'Version: 1.0.0 (Beta).',
-                style: TextStyle(
-                  fontFamily: "MMedium",
-                  fontSize: 12.0,
-                  color: Colors.black,
+              child: Container(
+                child: Text(
+                  'Version: 1.0.0 (Beta).',
+                  style: TextStyle(
+                    fontFamily: "MMedium",
+                    fontSize: 12.0,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             )

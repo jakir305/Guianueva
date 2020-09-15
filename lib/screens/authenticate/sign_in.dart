@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                   children: <Widget>[
                     Container(
                       width: _screenSize.width * 0.9,
-                      height: 60.0,
+                      height: 70.0,
                       child: TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
@@ -101,49 +101,50 @@ class _SignInState extends State<SignIn> {
                     //Contraseña
                     Container(
                       width: _screenSize.width * 0.9,
-                      height: 50.0,
-                      child: TextFormField(
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontFamily: "MMedium",
-                          color: color,
-                          fontSize: 20.0,
-                        ),
-                        maxLines: 1,
-                        decoration: InputDecoration(
-                          errorStyle:
-                              TextStyle(fontSize: 16.0, fontFamily: "MMedium"),
-                          contentPadding: EdgeInsets.all(1),
-                          fillColor: Colors.white,
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Image.asset(
-                              'Asset/ICONOS INICIO-05.png',
-                              scale: 10,
+                      height: 70.0,
+                      child: Center(
+                        child: TextFormField(
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: "MMedium",
+                            color: color,
+                            fontSize: 20.0,
+                          ),
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 16.0, fontFamily: "MMedium"),
+                            fillColor: Colors.white,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: Image.asset(
+                                'Asset/ICONOS INICIO-05.png',
+                                scale: 10,
+                                color: color,
+                              ),
+                            ),
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: color,
+                                ),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: '    Contraseña',
+                            hintStyle: TextStyle(
+                              fontFamily: "MMedium",
+                              fontSize: 20.0,
                               color: color,
                             ),
                           ),
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                style: BorderStyle.solid,
-                                color: color,
-                              ),
-                              borderRadius: BorderRadius.circular(50)),
-                          hintText: '    Contraseña',
-                          hintStyle: TextStyle(
-                            fontFamily: "MMedium",
-                            fontSize: 20.0,
-                            color: color,
-                          ),
+                          obscureText: true,
+                          validator: (val) => val.length < 6
+                              ? 'Contraseña menor a 6 caracteres'
+                              : null,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          },
                         ),
-                        obscureText: true,
-                        validator: (val) => val.length < 6
-                            ? 'Contraseña menor a 6 caracteres'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                        },
                       ),
                     ),
                   ],

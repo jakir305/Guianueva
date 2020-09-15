@@ -57,13 +57,6 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
                   maxFontSize: 15,
                   minFontSize: 13,
                 )),
-                Center(
-                    child: AutoSizeText(
-                  descripcion,
-                  style: TextStyle(fontFamily: 'MMedium', color: colorFont),
-                  maxFontSize: 13.0,
-                  minFontSize: 10.0,
-                )),
               ],
             )),
           ) // child widget, replace with your own

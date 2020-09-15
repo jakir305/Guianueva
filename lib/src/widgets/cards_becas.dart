@@ -48,18 +48,6 @@ class ListCardsBecas extends StatelessWidget {
                   height: 10.0,
                 ),
                 AutoSizeText(
-                  nombre,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "MBold",
-                    fontWeight: FontWeight.w700,
-                    color: colorfont,
-                  ),
-                  minFontSize: 15.0,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                AutoSizeText(
                   institucion,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -67,10 +55,25 @@ class ListCardsBecas extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: colorfont2,
                   ),
-                  maxFontSize: 12.0,
-                  minFontSize: 10.0,
+                  minFontSize: 15.0,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: AutoSizeText(
+                    nombre,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "MBold",
+                      fontWeight: FontWeight.w700,
+                      color: colorfont,
+                    ),
+                    maxFontSize: 12.0,
+                    minFontSize: 10.0,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
