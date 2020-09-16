@@ -1,21 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:maps_launcher/maps_launcher.dart';
+import 'package:guiae/src/widgets/showdialog_centros_de_estudio.dart';
 
 class ListCardsCentrodeEstudio extends StatelessWidget {
   final String nombre;
   final String descripcion;
-  final double latitud;
-  final double longitud;
-
+  final String lugar;
   final String url;
 
   ListCardsCentrodeEstudio({
+    this.lugar,
     this.nombre,
     this.url,
     this.descripcion,
-    this.latitud,
-    this.longitud,
   });
 
   @override
@@ -26,7 +23,12 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
 
     return GestureDetector(
       onTap: () async {
-        MapsLauncher.launchQuery('Int. Pedro Linares 1520, Neuquén');
+        ShowDialogCentrosCarreras(
+          nombre: nombre,
+          url: url,
+          descripcion: descripcion,
+          lugar: lugar,
+        ).alerta(context);
       },
       child: Container(
           margin: EdgeInsets.only(top: 5.0),
@@ -49,14 +51,18 @@ class ListCardsCentrodeEstudio extends StatelessWidget {
             child: (Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                    child: AutoSizeText(
-                  nombre,
-                  style: TextStyle(fontFamily: 'MBold', color: colorFont),
-                  maxLines: 1,
-                  maxFontSize: 15,
-                  minFontSize: 13,
-                )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  child: AutoSizeText(
+                    nombre,
+                    style: TextStyle(fontFamily: 'MBold', color: colorFont),
+                    maxLines: 1,
+                    maxFontSize: 18,
+                    minFontSize: 15,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             )),
           ) // child widget, replace with your own

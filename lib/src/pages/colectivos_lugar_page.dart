@@ -44,10 +44,10 @@ class ColectivosPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     new ListCardsColectivos(
+                      descripcion: document.data()['Tipo'],
                       lugar: document.data()['Ciudad'],
                       url: document.data()['Url'],
                     ),
-                    
                   ],
                 ),
               );

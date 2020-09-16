@@ -36,22 +36,21 @@ class ListCardsCarreras extends StatelessWidget {
           )
         ],
       ),
-      child: Card(
-        margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-        color: Colors.white,
-        elevation: 10.0,
-        child: GestureDetector(
-          onTap: () {
-            ShowDialog(
-                    facultad: facultad,
-                    nombre: carreras,
-                    duracion: descripcion,
-                    icon:
-                        AssetImage("Asset/${universidadInfo.universidad}.png"),
-                    lugar: localidad,
-                    url: url)
-                .alerta(context);
-          },
+      child: GestureDetector(
+        onTap: () {
+          ShowDialogCarreras(
+                  facultad: facultad,
+                  nombre: carreras,
+                  duracion: descripcion,
+                  icon: AssetImage("Asset/${universidadInfo.universidad}.png"),
+                  lugar: localidad,
+                  url: url)
+              .alerta(context);
+        },
+        child: Card(
+          margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+          color: Colors.white,
+          elevation: 10.0,
           child: Container(
             height: 70.0,
             child: Column(

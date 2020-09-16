@@ -30,7 +30,8 @@ class ListCardsBecas extends StatelessWidget {
           )
         ],
       ),
-      height: _screenSize.width * 0.25,
+      height: _screenSize.width * 0.23,
+      width: double.infinity,
       child: Card(
         color: Colors.white,
         elevation: 20.0,
@@ -55,7 +56,8 @@ class ListCardsBecas extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: colorfont2,
                   ),
-                  minFontSize: 15.0,
+                  maxFontSize: 12.0,
+                  minFontSize: 10.0,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -70,7 +72,7 @@ class ListCardsBecas extends StatelessWidget {
                       color: colorfont,
                     ),
                     maxFontSize: 12.0,
-                    minFontSize: 10.0,
+                    minFontSize: 8.0,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),

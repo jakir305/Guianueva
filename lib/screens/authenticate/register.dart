@@ -53,13 +53,12 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
                   child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
-                Column(
-                  children: <Widget>[
-                    // nombre y apellido
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 50.0,
-                      child: TextFormField(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      // nombre y apellido
+                      TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.text,
                         style: TextStyle(
@@ -70,11 +69,13 @@ class _RegisterState extends State<Register> {
                         decoration: InputDecoration(
                             errorStyle: TextStyle(
                                 fontSize: 16.0, fontFamily: "MMedium"),
-                            prefixIcon: Icon(
-                              Icons.people,
-                              color: Colors.white,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: Icon(
+                                Icons.people,
+                                color: Colors.white,
+                              ),
                             ),
-                            contentPadding: EdgeInsets.all(1),
                             fillColor: color,
                             filled: true,
                             border: OutlineInputBorder(
@@ -83,7 +84,7 @@ class _RegisterState extends State<Register> {
                                   color: color,
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
-                            hintText: 'Nombre y Apellido',
+                            hintText: '      Nombre y Apellido',
                             hintStyle: TextStyle(
                                 color: Colors.white, fontFamily: "MMedium")),
                         validator: (val) =>
@@ -92,17 +93,13 @@ class _RegisterState extends State<Register> {
                           setState(() => nombre = val);
                         },
                       ),
-                    ),
 
-                    SizedBox(
-                      height: 15.0,
-                    ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
-                    // Caja de correo
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 50.0,
-                      child: TextFormField(
+                      // Caja de correo
+                      TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
@@ -113,7 +110,6 @@ class _RegisterState extends State<Register> {
                         decoration: InputDecoration(
                             errorStyle: TextStyle(
                                 fontSize: 16.0, fontFamily: "MMedium"),
-                            contentPadding: EdgeInsets.all(1),
                             prefixIcon: Image.asset(
                               'Asset/ICONOS INICIO-04.png',
                               scale: 9,
@@ -135,17 +131,13 @@ class _RegisterState extends State<Register> {
                           setState(() => email = val);
                         },
                       ),
-                    ),
 
-                    SizedBox(
-                      height: 15.0,
-                    ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
-                    // Caja de contraseña
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 50.0,
-                      child: TextFormField(
+                      // Caja de contraseña
+                      TextFormField(
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,
@@ -155,16 +147,18 @@ class _RegisterState extends State<Register> {
                         decoration: InputDecoration(
                             errorStyle: TextStyle(
                                 fontSize: 16.0, fontFamily: "MMedium"),
-                            contentPadding: EdgeInsets.all(1),
-                            prefixIcon: Image.asset(
-                              'Asset/ICONOS INICIO-05.png',
-                              scale: 9,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 14.0),
+                              child: Image.asset(
+                                'Asset/ICONOS INICIO-05.png',
+                                scale: 9,
+                              ),
                             ),
                             fillColor: color,
                             filled: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50)),
-                            hintText: 'Contraseña',
+                            hintText: '    Contraseña',
                             hintStyle: TextStyle(
                                 color: Colors.white, fontFamily: "MMedium")),
                         obscureText: true,
@@ -178,17 +172,13 @@ class _RegisterState extends State<Register> {
                           });
                         },
                       ),
-                    ),
 
-                    SizedBox(
-                      height: 15.0,
-                    ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
 
-                    // Caja de contraseña validacion
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 50.0,
-                      child: TextFormField(
+                      // Caja de contraseña validacion
+                      TextFormField(
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: color,
@@ -198,17 +188,19 @@ class _RegisterState extends State<Register> {
                         decoration: InputDecoration(
                             errorStyle: TextStyle(
                                 fontSize: 16.0, fontFamily: "MMedium"),
-                            contentPadding: EdgeInsets.all(1),
-                            prefixIcon: Image.asset(
-                              'Asset/ICONOS INICIO-05.png',
-                              color: color,
-                              scale: 9,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 14.0),
+                              child: Image.asset(
+                                'Asset/ICONOS INICIO-05.png',
+                                color: color,
+                                scale: 9,
+                              ),
                             ),
                             fillColor: Colors.white,
                             filled: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50)),
-                            hintText: 'Repita la Contraseña',
+                            hintText: '    Repita la Contraseña',
                             hintStyle:
                                 TextStyle(color: color, fontFamily: "MMedium")),
                         obscureText: true,
@@ -222,53 +214,53 @@ class _RegisterState extends State<Register> {
                           setState(() => password = val);
                         },
                       ),
-                    ),
 
-                    //Seleccion de icono
+                      //Seleccion de icono
 
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    DropdownButton<String>(
-                      iconSize: 50.0,
-                      itemHeight: 150.0,
-                      hint: Text(
-                        'Icono',
-                        style: TextStyle(fontFamily: "MSemi", fontSize: 25.0),
+                      SizedBox(
+                        height: 15.0,
                       ),
-                      value: avatar,
-                      items: <String>[
-                        "Asset/avatar1.png",
-                        "Asset/avatar2.png",
-                        "Asset/avatar3.png",
-                        "Asset/avatar4.png",
-                      ].map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Center(
-                            child: Container(
-                              padding: const EdgeInsets.only(bottom: 10.0),
-                              height: 80.0,
-                              width: 80.0,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Image(image: AssetImage(value)),
-                                ],
+                      DropdownButton<String>(
+                        iconSize: 50.0,
+                        itemHeight: 150.0,
+                        hint: Text(
+                          'Icono',
+                          style: TextStyle(fontFamily: "MSemi", fontSize: 25.0),
+                        ),
+                        value: avatar,
+                        items: <String>[
+                          "Asset/avatar1.png",
+                          "Asset/avatar2.png",
+                          "Asset/avatar3.png",
+                          "Asset/avatar4.png",
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                height: 80.0,
+                                width: 80.0,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Image(image: AssetImage(value)),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (newvalue) {
-                        setState(() {
-                          avatar = newvalue;
-                          avatarAsset = AssetImage(newvalue);
-                        });
-                      },
-                    )
-                  ],
+                          );
+                        }).toList(),
+                        onChanged: (newvalue) {
+                          setState(() {
+                            avatar = newvalue;
+                            avatarAsset = AssetImage(newvalue);
+                          });
+                        },
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: 15.0),
                 InkWell(

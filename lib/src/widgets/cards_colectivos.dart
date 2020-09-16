@@ -1,15 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:guiae/src/widgets/showdialog_ccolectivos.dart';
 
 class ListCardsColectivos extends StatelessWidget {
   final String lugar;
   final String url;
+  final String descripcion;
   final Color borderColor = Color(0xffb904795);
 
   ListCardsColectivos({
+    @required this.descripcion,
     @required this.lugar,
-    this.url,
+    @required this.url,
   });
 
   @override
@@ -17,7 +19,8 @@ class ListCardsColectivos extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () async {
-        launch(url);
+        ShowDialogTrasporte(nombre: lugar, descripcion: descripcion, url: url)
+            .alerta(context);
       },
       child: Container(
           margin: EdgeInsets.only(top: 5.0),

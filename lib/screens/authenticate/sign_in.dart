@@ -54,12 +54,11 @@ class _SignInState extends State<SignIn> {
                   padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
                   child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 70.0,
-                      child: TextFormField(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(
@@ -69,14 +68,15 @@ class _SignInState extends State<SignIn> {
                         ),
                         maxLines: 1,
                         decoration: InputDecoration(
-                          errorStyle:
-                              TextStyle(fontSize: 16.0, fontFamily: "MMedium"),
-                          contentPadding: EdgeInsets.all(1),
+                          errorStyle: TextStyle(
+                            fontSize: 15.0,
+                            fontFamily: "MMedium",
+                          ),
                           fillColor: color1,
                           filled: true,
                           prefixIcon: Image.asset(
                             'Asset/ICONOS INICIO-06.png',
-                            scale: 10,
+                            scale: 9,
                           ),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -96,58 +96,54 @@ class _SignInState extends State<SignIn> {
                           setState(() => email = val);
                         },
                       ),
-                    ),
-
-                    //Contraseña
-                    Container(
-                      width: _screenSize.width * 0.9,
-                      height: 70.0,
-                      child: Center(
-                        child: TextFormField(
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: "MMedium",
-                            color: color,
-                            fontSize: 20.0,
-                          ),
-                          maxLines: 1,
-                          decoration: InputDecoration(
-                            errorStyle: TextStyle(
-                                fontSize: 16.0, fontFamily: "MMedium"),
-                            fillColor: Colors.white,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.only(left: 12),
-                              child: Image.asset(
-                                'Asset/ICONOS INICIO-05.png',
-                                scale: 10,
-                                color: color,
-                              ),
-                            ),
-                            filled: true,
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  style: BorderStyle.solid,
-                                  color: color,
-                                ),
-                                borderRadius: BorderRadius.circular(50)),
-                            hintText: '    Contraseña',
-                            hintStyle: TextStyle(
-                              fontFamily: "MMedium",
-                              fontSize: 20.0,
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      //Contraseña
+                      TextFormField(
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: "MMedium",
+                          color: color,
+                          fontSize: 20.0,
+                        ),
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                          errorStyle:
+                              TextStyle(fontSize: 15.0, fontFamily: "MMedium"),
+                          fillColor: Colors.white,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Image.asset(
+                              'Asset/ICONOS INICIO-05.png',
+                              scale: 10,
                               color: color,
                             ),
                           ),
-                          obscureText: true,
-                          validator: (val) => val.length < 6
-                              ? 'Contraseña menor a 6 caracteres'
-                              : null,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          },
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                style: BorderStyle.solid,
+                                color: color,
+                              ),
+                              borderRadius: BorderRadius.circular(50)),
+                          hintText: '    Contraseña',
+                          hintStyle: TextStyle(
+                            fontFamily: "MMedium",
+                            fontSize: 20.0,
+                            color: color,
+                          ),
                         ),
+                        obscureText: true,
+                        validator: (val) => val.length < 6
+                            ? 'Contraseña menor a 6 caracteres'
+                            : null,
+                        onChanged: (val) {
+                          setState(() => password = val);
+                        },
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: 10.0),
                 Container(
@@ -157,7 +153,7 @@ class _SignInState extends State<SignIn> {
                     children: <Widget>[
                       //Boton de Inicio de sesion
                       Container(
-                        width: 130.0,
+                        width: _screenSize.width * 0.4,
                         child: RaisedButton(
                             highlightColor: Colors.tealAccent[700],
                             shape: RoundedRectangleBorder(
@@ -192,12 +188,12 @@ class _SignInState extends State<SignIn> {
                             }),
                       ),
                       SizedBox(
-                        width: 10.0,
+                        width: 5.0,
                       ),
 
                       //Boton de  Registro
                       Container(
-                        width: 130.0,
+                        width: _screenSize.width * 0.4,
                         child: RaisedButton(
                           highlightColor: Colors.tealAccent[700],
                           shape: RoundedRectangleBorder(

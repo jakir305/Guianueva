@@ -124,7 +124,7 @@ class DataSearch extends SearchDelegate {
 
               /* Text(listaSugerida[i].localidad), */
               onTap: () {
-                ShowDialog(
+                ShowDialogCarreras(
                         nombre: listaSugerida[i].nombre,
                         duracion: listaSugerida[i].duracion,
                         icon: AssetImage(iconos[listaSugerida[i].universidad]),
