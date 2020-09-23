@@ -39,27 +39,26 @@ class ListCardsBecas extends StatelessWidget {
           onTap: () async {
             launch(url);
           },
-          child: Container(
-            alignment: AlignmentDirectional.center,
+          child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
                   height: 10.0,
                 ),
-                AutoSizeText(
-                  institucion,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "MBold",
-                    fontWeight: FontWeight.w700,
-                    color: colorfont2,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: AutoSizeText(
+                    institucion,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "MBold",
+                      color: colorfont2,
+                    ),
+                    maxFontSize: 18.0,
+                    minFontSize: 15.0,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxFontSize: 12.0,
-                  minFontSize: 10.0,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -71,9 +70,9 @@ class ListCardsBecas extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: colorfont,
                     ),
-                    maxFontSize: 12.0,
-                    minFontSize: 8.0,
-                    maxLines: 3,
+                    maxFontSize: 14.0,
+                    minFontSize: 12.0,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
