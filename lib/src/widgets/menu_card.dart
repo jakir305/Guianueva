@@ -13,6 +13,8 @@ class CardMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color color = Color.fromRGBO(30, 16, 50, 0.55);
+
     final _screenSize = MediaQuery.of(context).size;
     return Expanded(
       child: GestureDetector(
@@ -23,8 +25,7 @@ class CardMenu extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    colorFilter:
-                        ColorFilter.mode(Colors.black38, BlendMode.hardLight),
+                    colorFilter: ColorFilter.mode(color, BlendMode.hardLight),
                     fit: BoxFit.cover,
                     image: AssetImage(
                       image,

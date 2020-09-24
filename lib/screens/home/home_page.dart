@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(prefs.imageUrl);
     final _screenSize = MediaQuery.of(context).size;
     var scaffold = Scaffold(
       key: _scaffoldKey,

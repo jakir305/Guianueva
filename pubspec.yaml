@@ -34,7 +34,7 @@ dependencies:
   font_awesome_flutter:
   shared_preferences: ^0.5.2
   rect_getter:
-  flutter_facebook_login:
+  flutter_facebook_login: ^3.0.0
   http:
   firebase_messaging:
   line_awesome_icons:

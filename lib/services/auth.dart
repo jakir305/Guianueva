@@ -30,7 +30,7 @@ class AuthService {
   Future<User> loginWithFacebook() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final result = await facebookLogin.logIn(['email']);
+    final result = await facebookLogin.logIn(['email', 'public_profile']);
 
     if (result.status != FacebookLoginStatus.loggedIn) {
       return null;
@@ -189,9 +189,9 @@ class AuthService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Limpio variables de sharedPreferences
     prefs.setString('email', "");
-      prefs.setString('imageAsset', "");
-      prefs.setString('name', "");
-      prefs.setString('imageUrl', "");
+    prefs.setString('imageAsset', "");
+    prefs.setString('name', "");
+    prefs.setString('imageUrl', "");
     try {
       return await _auth.signOut();
     } catch (error) {

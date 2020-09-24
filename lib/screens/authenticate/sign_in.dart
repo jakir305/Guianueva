@@ -42,119 +42,172 @@ class _SignInState extends State<SignIn> {
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: _screenSize.height * 0.05),
-                Container(
-                  height: _screenSize.height * 0.25,
-                  child: Image.asset('Asset/Logo1.png'),
-                ),
-                Container(
-                  height: _screenSize.height * 0.1,
-                  padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
-                  child: Image.asset('Asset/ICONOS INICIO.png'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        textAlign: TextAlign.left,
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(
-                          fontFamily: "MMedium",
-                          color: Colors.white,
-                          fontSize: 20.0,
-                        ),
-                        maxLines: 1,
-                        decoration: InputDecoration(
-                          errorStyle: TextStyle(
-                            fontSize: 15.0,
-                            fontFamily: "MMedium",
-                          ),
-                          fillColor: color1,
-                          filled: true,
-                          prefixIcon: Image.asset(
-                            'Asset/ICONOS INICIO-06.png',
-                            scale: 9,
-                          ),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                style: BorderStyle.solid,
-                                color: color,
-                              ),
-                              borderRadius: BorderRadius.circular(50)),
-                          hintText: 'Correo',
-                          hintStyle: TextStyle(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: _screenSize.height * 0.05),
+                  Center(
+                    child: Container(
+                      height: _screenSize.height * 0.25,
+                      child: Image.asset('Asset/Logo1.png'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: _screenSize.height * 0.1,
+                      padding: EdgeInsets.fromLTRB(20, 0, 0, 20),
+                      child: Image.asset('Asset/ICONOS INICIO.png'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextFormField(
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(
                               fontFamily: "MMedium",
                               color: Colors.white,
-                              fontSize: 20.0),
-                        ),
-                        validator: (val) =>
-                            val.isEmpty ? ('Ingrese Email valido') : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        },
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      //Contraseña
-                      TextFormField(
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontFamily: "MMedium",
-                          color: color,
-                          fontSize: 20.0,
-                        ),
-                        maxLines: 1,
-                        decoration: InputDecoration(
-                          errorStyle:
-                              TextStyle(fontSize: 15.0, fontFamily: "MMedium"),
-                          fillColor: Colors.white,
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(left: 12),
-                            child: Image.asset(
-                              'Asset/ICONOS INICIO-05.png',
-                              scale: 10,
-                              color: color,
+                              fontSize: 20.0,
                             ),
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                              errorStyle: TextStyle(
+                                fontSize: 15.0,
+                                fontFamily: "MMedium",
+                              ),
+                              fillColor: color1,
+                              filled: true,
+                              prefixIcon: Image.asset(
+                                'Asset/ICONOS INICIO-06.png',
+                                scale: 9,
+                              ),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    style: BorderStyle.solid,
+                                    color: color,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50)),
+                              hintText: 'Correo',
+                              hintStyle: TextStyle(
+                                  fontFamily: "MMedium",
+                                  color: Colors.white,
+                                  fontSize: 20.0),
+                            ),
+                            validator: (val) =>
+                                val.isEmpty ? ('Ingrese Email valido') : null,
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
                           ),
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                style: BorderStyle.solid,
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        //Contraseña
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextFormField(
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontFamily: "MMedium",
+                              color: color,
+                              fontSize: 20.0,
+                            ),
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                              errorStyle: TextStyle(
+                                  fontSize: 15.0, fontFamily: "MMedium"),
+                              fillColor: Colors.white,
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.only(left: 12),
+                                child: Image.asset(
+                                  'Asset/ICONOS INICIO-05.png',
+                                  scale: 10,
+                                  color: color,
+                                ),
+                              ),
+                              filled: true,
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    style: BorderStyle.solid,
+                                    color: color,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50)),
+                              hintText: '    Contraseña',
+                              hintStyle: TextStyle(
+                                fontFamily: "MMedium",
+                                fontSize: 20.0,
                                 color: color,
                               ),
-                              borderRadius: BorderRadius.circular(50)),
-                          hintText: '    Contraseña',
-                          hintStyle: TextStyle(
-                            fontFamily: "MMedium",
-                            fontSize: 20.0,
-                            color: color,
+                            ),
+                            obscureText: true,
+                            validator: (val) => val.length < 6
+                                ? 'Contraseña menor a 6 caracteres'
+                                : null,
+                            onChanged: (val) {
+                              setState(() => password = val);
+                            },
                           ),
                         ),
-                        obscureText: true,
-                        validator: (val) => val.length < 6
-                            ? 'Contraseña menor a 6 caracteres'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => password = val);
-                        },
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 10.0),
-                Container(
-                  height: _screenSize.height * 0.1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      //Boton de Inicio de sesion
-                      Container(
-                        width: _screenSize.width * 0.4,
-                        child: RaisedButton(
+                  SizedBox(height: 10.0),
+                  Container(
+                    height: _screenSize.height * 0.1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        //Boton de Inicio de sesion
+                        Container(
+                          width: _screenSize.width * 0.4,
+                          child: RaisedButton(
+                              highlightColor: Colors.tealAccent[700],
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    width: 1.5,
+                                    color: Colors.tealAccent[700],
+                                  ),
+                                  borderRadius: BorderRadius.circular(50.0)),
+                              elevation: 15.0,
+                              color: Colors.white,
+                              child: Text(
+                                'Iniciar sesion',
+                                style: TextStyle(
+                                    color: color,
+                                    fontFamily: "MExtra",
+                                    fontSize: 14.0),
+                              ),
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  dynamic result =
+                                      await _auth.signInWithEmailAndPassword(
+                                    email,
+                                    password,
+                                  );
+                                  if (result == null) {
+                                    setState(() {
+                                      error =
+                                          'No se pudo ingresar con esas Credenciales';
+                                    });
+                                  }
+                                }
+                              }),
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+
+                        //Boton de  Registro
+                        Container(
+                          width: _screenSize.width * 0.4,
+                          child: RaisedButton(
                             highlightColor: Colors.tealAccent[700],
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(
@@ -165,132 +218,93 @@ class _SignInState extends State<SignIn> {
                             elevation: 15.0,
                             color: Colors.white,
                             child: Text(
-                              'Iniciar sesion',
+                              'Registrarse',
                               style: TextStyle(
                                   color: color,
                                   fontFamily: "MExtra",
-                                  fontSize: 14.0),
+                                  fontSize: 14),
                             ),
-                            onPressed: () async {
-                              if (_formKey.currentState.validate()) {
-                                dynamic result =
-                                    await _auth.signInWithEmailAndPassword(
-                                  email,
-                                  password,
-                                );
-                                if (result == null) {
-                                  setState(() {
-                                    error =
-                                        'No se pudo ingresar con esas Credenciales';
-                                  });
-                                }
-                              }
-                            }),
-                      ),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-
-                      //Boton de  Registro
-                      Container(
-                        width: _screenSize.width * 0.4,
-                        child: RaisedButton(
-                          highlightColor: Colors.tealAccent[700],
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 1.5,
-                                color: Colors.tealAccent[700],
-                              ),
-                              borderRadius: BorderRadius.circular(50.0)),
-                          elevation: 15.0,
-                          color: Colors.white,
-                          child: Text(
-                            'Registrarse',
-                            style: TextStyle(
-                                color: color,
-                                fontFamily: "MExtra",
-                                fontSize: 14),
+                            onPressed: () => widget.toggleView(),
                           ),
-                          onPressed: () => widget.toggleView(),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  error,
-                  style: TextStyle(
-                    fontFamily: "MMedium",
-                    color: Colors.red,
-                    fontSize: 15.0,
+                  SizedBox(height: 10.0),
+                  Text(
+                    error,
+                    style: TextStyle(
+                      fontFamily: "MMedium",
+                      color: Colors.red,
+                      fontSize: 15.0,
+                    ),
                   ),
-                ),
-                Container(
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    children: [
-                      Container(
-                        width: _screenSize.width * 0.7,
-                        child: RaisedButton.icon(
-                          highlightColor: Colors.tealAccent[700],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          elevation: 15.0,
-                          color: Color.fromRGBO(59, 90, 153, 1),
-                          icon: Container(
-                              width: 25.0,
-                              height: 25.0,
-                              child: Container(
-                                  width: 25,
-                                  height: 25,
-                                  child: Image.asset(
-                                      'Asset/ICONOS INICIO-01.png'))),
-                          label: Text(
-                            'Continuar con Facebook',
-                            style: TextStyle(
-                              fontFamily: "MMedium",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                              color: Colors.white70,
-                            ),
-                          ),
-                          onPressed: () async {
-                            await _auth.loginWithFacebook();
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8.0,
-                      ),
-                      Container(
-                        width: _screenSize.width * 0.7,
-                        child: RaisedButton.icon(
+                  Container(
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      children: [
+                        Container(
+                          width: _screenSize.width * 0.7,
+                          child: RaisedButton.icon(
                             highlightColor: Colors.tealAccent[700],
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             elevation: 15.0,
-                            color: Colors.white,
+                            color: Color.fromRGBO(59, 90, 153, 1),
                             icon: Container(
                                 width: 25.0,
                                 height: 25.0,
-                                child:
-                                    Image.asset('Asset/ICONOS INICIO-02.png')),
+                                child: Container(
+                                    width: 25,
+                                    height: 25,
+                                    child: Image.asset(
+                                        'Asset/ICONOS INICIO-01.png'))),
                             label: Text(
-                              'Continuar con Google',
+                              'Continuar con Facebook',
                               style: TextStyle(
-                                fontSize: 15,
                                 fontFamily: "MMedium",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                                color: Colors.white70,
                               ),
                             ),
                             onPressed: () async {
-                              await _auth.signInWithGoogle();
-                            }),
-                      )
-                    ],
+                              await _auth.loginWithFacebook();
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8.0,
+                        ),
+                        Container(
+                          width: _screenSize.width * 0.7,
+                          child: RaisedButton.icon(
+                              highlightColor: Colors.tealAccent[700],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              elevation: 15.0,
+                              color: Colors.white,
+                              icon: Container(
+                                  width: 25.0,
+                                  height: 25.0,
+                                  child: Image.asset(
+                                      'Asset/ICONOS INICIO-02.png')),
+                              label: Text(
+                                'Continuar con Google',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: "MMedium",
+                                ),
+                              ),
+                              onPressed: () async {
+                                await _auth.signInWithGoogle();
+                              }),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
