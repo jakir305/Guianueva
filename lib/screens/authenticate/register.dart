@@ -54,7 +54,7 @@ class _RegisterState extends State<Register> {
                   child: Image.asset('Asset/ICONOS INICIO.png'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: <Widget>[
                       // nombre y apellido
@@ -239,11 +239,9 @@ class _RegisterState extends State<Register> {
                             child: Center(
                               child: Container(
                                 padding: const EdgeInsets.only(bottom: 10.0),
-                                height: 80.0,
-                                width: 80.0,
+                                height: 100.0,
+                                width: 100.0,
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     Image(image: AssetImage(value)),
                                   ],
@@ -262,7 +260,17 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                 ),
-                SizedBox(height: 15.0),
+                Text(
+                  error,
+                  style: TextStyle(
+                    fontFamily: "MMedium",
+                    color: Colors.red,
+                    fontSize: 15.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
                 InkWell(
                   child: Text(
                     "Ya tenes cuenta? Ingresa aca",
@@ -275,21 +283,10 @@ class _RegisterState extends State<Register> {
                           )
                         ],
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 18,
                         fontFamily: "MMedium"),
                   ),
                   onTap: () => widget.toggleView(),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Text(
-                  error,
-                  style: TextStyle(
-                    fontFamily: "MMedium",
-                    color: Colors.red,
-                    fontSize: 15.0,
-                  ),
                 ),
                 SizedBox(height: 15.0),
                 Row(
@@ -312,6 +309,9 @@ class _RegisterState extends State<Register> {
                               error = 'Seleccione un icono para su avatar';
                             });
                           } else {
+                            setState(() {
+                              error = '';
+                            });
                             if (_formKey.currentState.validate()) {
                               dynamic result =
                                   await _auth.registerWithEmailAndPassword(

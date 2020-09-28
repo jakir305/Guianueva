@@ -8,6 +8,7 @@ import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<Carrera> carreras;
 
@@ -73,7 +74,10 @@ class _HomePageState extends State<HomePage> {
                 foregroundColor: Colors.white,
                 elevation: 0.0,
                 onPressed: () {
-                  showSearch(context: context, delegate: DataSearch());
+                  showSearch(
+                    context: context,
+                    delegate: DataSearch(),
+                  );
                 },
                 heroTag: null,
                 child: Icon(Icons.search),
@@ -153,6 +157,82 @@ class _HomePageState extends State<HomePage> {
               ),
               onTap: () {
                 Navigator.pushNamed(context, 'test');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text(
+                "Contactanos",
+                style: TextStyle(
+                    fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
+              ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                    elevation: 10.0,
+                    backgroundColor: Colors.white,
+                    title: Text(
+                      'Contactanos a travez de nuestros canales',
+                      style: TextStyle(
+                          fontFamily: "Mmedium",
+                          color: colorfont1,
+                          fontSize: 20.0),
+                    ),
+                    content: Container(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          //Email
+
+                          RaisedButton(
+                            color: color,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            child: Container(
+                                width: 200.0,
+                                child: Center(
+                                    child: Text(
+                                  'Email',
+                                  style: TextStyle(
+                                      fontFamily: "Mmedium",
+                                      color: Colors.white,
+                                      fontSize: 15.0),
+                                ))),
+                            onPressed: () {
+                              urlLaunch(
+                                  'mailto:encontrarnosnosfortalece@gmail.com?subject=Comentario%20o%20Sugerencia');
+                            },
+                          ),
+                          //
+
+                          RaisedButton(
+                            color: color,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            child: Container(
+                                width: 200.0,
+                                child: Center(
+                                    child: Text(
+                                  'Pagina del ministerio',
+                                  style: TextStyle(
+                                      fontFamily: "Mmedium",
+                                      color: Colors.white,
+                                      fontSize: 15.0),
+                                ))),
+                            onPressed: () {
+                              urlLaunch('http://ministerionaj.gob.ar/');
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -238,5 +318,13 @@ class _HomePageState extends State<HomePage> {
         ],
       )),
     );
+  }
+
+  void urlLaunch(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print('Error');
+    }
   }
 }

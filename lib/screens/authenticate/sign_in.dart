@@ -65,95 +65,89 @@ class _SignInState extends State<SignIn> {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Column(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: TextFormField(
-                            textAlign: TextAlign.left,
-                            keyboardType: TextInputType.emailAddress,
-                            style: TextStyle(
-                              fontFamily: "MMedium",
-                              color: Colors.white,
-                              fontSize: 20.0,
-                            ),
-                            maxLines: 1,
-                            decoration: InputDecoration(
-                              errorStyle: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: "MMedium",
-                              ),
-                              fillColor: color1,
-                              filled: true,
-                              prefixIcon: Image.asset(
-                                'Asset/ICONOS INICIO-06.png',
-                                scale: 9,
-                              ),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.solid,
-                                    color: color,
-                                  ),
-                                  borderRadius: BorderRadius.circular(50)),
-                              hintText: 'Correo',
-                              hintStyle: TextStyle(
-                                  fontFamily: "MMedium",
-                                  color: Colors.white,
-                                  fontSize: 20.0),
-                            ),
-                            validator: (val) =>
-                                val.isEmpty ? ('Ingrese Email valido') : null,
-                            onChanged: (val) {
-                              setState(() => email = val);
-                            },
+                        TextFormField(
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(
+                            fontFamily: "MMedium",
+                            color: Colors.white,
+                            fontSize: 20.0,
                           ),
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 15.0,
+                              fontFamily: "MMedium",
+                            ),
+                            fillColor: color1,
+                            filled: true,
+                            prefixIcon: Image.asset(
+                              'Asset/ICONOS INICIO-06.png',
+                              scale: 9,
+                            ),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: color,
+                                ),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: 'Correo',
+                            hintStyle: TextStyle(
+                                fontFamily: "MMedium",
+                                color: Colors.white,
+                                fontSize: 20.0),
+                          ),
+                          validator: (val) =>
+                              val.isEmpty ? ('Ingrese Email valido') : null,
+                          onChanged: (val) {
+                            setState(() => email = val);
+                          },
                         ),
                         SizedBox(
                           height: 10.0,
                         ),
                         //Contraseña
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: TextFormField(
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: "MMedium",
-                              color: color,
-                              fontSize: 20.0,
-                            ),
-                            maxLines: 1,
-                            decoration: InputDecoration(
-                              errorStyle: TextStyle(
-                                  fontSize: 15.0, fontFamily: "MMedium"),
-                              fillColor: Colors.white,
-                              prefixIcon: Padding(
-                                padding: const EdgeInsets.only(left: 12),
-                                child: Image.asset(
-                                  'Asset/ICONOS INICIO-05.png',
-                                  scale: 10,
-                                  color: color,
-                                ),
-                              ),
-                              filled: true,
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.solid,
-                                    color: color,
-                                  ),
-                                  borderRadius: BorderRadius.circular(50)),
-                              hintText: '    Contraseña',
-                              hintStyle: TextStyle(
-                                fontFamily: "MMedium",
-                                fontSize: 20.0,
+                        TextFormField(
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: "MMedium",
+                            color: color,
+                            fontSize: 20.0,
+                          ),
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 15.0, fontFamily: "MMedium"),
+                            fillColor: Colors.white,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: Image.asset(
+                                'Asset/ICONOS INICIO-05.png',
+                                scale: 10,
                                 color: color,
                               ),
                             ),
-                            obscureText: true,
-                            validator: (val) => val.length < 6
-                                ? 'Contraseña menor a 6 caracteres'
-                                : null,
-                            onChanged: (val) {
-                              setState(() => password = val);
-                            },
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  style: BorderStyle.solid,
+                                  color: color,
+                                ),
+                                borderRadius: BorderRadius.circular(50)),
+                            hintText: '    Contraseña',
+                            hintStyle: TextStyle(
+                              fontFamily: "MMedium",
+                              fontSize: 20.0,
+                              color: color,
+                            ),
                           ),
+                          obscureText: true,
+                          validator: (val) => val.length < 6
+                              ? 'Contraseña menor a 6 caracteres'
+                              : null,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          },
                         ),
                       ],
                     ),

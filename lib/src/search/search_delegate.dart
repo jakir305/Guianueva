@@ -38,7 +38,15 @@ final Map iconos = {
   "Universidades Virtuales": "Asset/Virtual.png",
 };
 
-class DataSearch extends SearchDelegate {
+class DataSearch extends SearchDelegate<String> {
+  DataSearch({
+    String hintText = "Buscar",
+  }) : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
+
   String seleccion = '';
 
   List<Widget> buildActions(BuildContext context) {
@@ -55,6 +63,7 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     //Icono a la izquierda del appbar
+
     return IconButton(
         icon: AnimatedIcon(
           progress: transitionAnimation,
