@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guiae/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,7 +33,7 @@ class AuthService {
   Future<User> loginWithFacebook() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final result = await facebookLogin.logIn(['email', 'public_profile']);
+    final result = await facebookLogin.logIn(['email']);
 
     if (result.status != FacebookLoginStatus.loggedIn) {
       return null;
@@ -39,6 +42,11 @@ class AuthService {
     final AuthCredential credential =
         FacebookAuthProvider.credential(result.accessToken.token);
 
+    final token = result.accessToken.token;
+    final graphResponse = await http.get(
+        'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(200)&access_token=$token');
+    final profile = json.decode(graphResponse.body);
+    print(profile.toString());
     final UserCredential authResult =
         await _auth.signInWithCredential(credential);
     final User user = authResult.user;
@@ -49,7 +57,7 @@ class AuthService {
 
     name = user.displayName;
     email = user.email;
-    imageUrl = user.photoURL;
+    imageUrl = profile['picture']['data']['url'];
 
     prefs.setString('name', name);
     prefs.setString('email', email);
