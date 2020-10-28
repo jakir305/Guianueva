@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.bottomRight,
               child: Container(
                 child: Text(
-                  'Version: 1.0.0 (Beta).',
+                  'Version: 1.0.1',
                   style: TextStyle(
                     fontFamily: "MMedium",
                     fontSize: 12.0,
