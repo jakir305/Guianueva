@@ -26,7 +26,6 @@ class Becasvarias extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                stops: [0.6, 1],
                 colors: [Colors.white, color]),
           ),
           child: _becasCard()),
