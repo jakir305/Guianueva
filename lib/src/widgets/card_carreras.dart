@@ -72,7 +72,14 @@ class ListCardsCarreras extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: AutoSizeText(
-                    localidad,
+                    (() {
+                      //Verificacion de titulo
+                      if (localidad != null) {
+                        return localidad;
+                      } else {
+                        return "";
+                      }
+                    }()),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: "MBlackitalic",

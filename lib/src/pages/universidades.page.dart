@@ -216,9 +216,9 @@ class UniversidadesPage extends StatelessWidget {
         ),
         ListCardsUniversidades(
           alias: "CFP",
-          nombre: 'Cfp',
+          nombre: 'Cpf',
           nombreCompleto: 'Centro de Formación Profesional',
-          icon: AssetImage('Asset/Cfp.png'),
+          icon: AssetImage('Asset/Cpf.png'),
         ),
         ListCardsUniversidades(
           alias: "Virtual",
