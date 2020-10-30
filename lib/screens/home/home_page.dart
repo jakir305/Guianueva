@@ -148,10 +148,9 @@ class _HomePageState extends State<HomePage> {
                     fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
               ),
               onTap: () {
-                Share.share('Comparte la app',
-                        subject:
-                            'Guia Estudiantil: https://play.google.com/store/apps/details?id=com.lihuel305.guiae');
-
+                Share.share(
+                  'Guia Estudiantil: https://play.google.com/store/apps/details?id=com.lihuel305.guiae',
+                );
               },
             ),
             ListTile(
