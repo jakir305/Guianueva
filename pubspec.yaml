@@ -44,6 +44,7 @@ dependencies:
   gradient_app_bar: ^0.0.1
   maps_launcher: ^1.2.2+1
   auto_size_text: ^2.1.0
+  share:
   
 
 dev_dependencies:

@@ -8,6 +8,7 @@ import 'package:guiae/src/providers/provider.dart';
 import 'package:guiae/src/search/search_delegate.dart';
 import 'package:guiae/src/share_preferences/preferencias_usuario.dart';
 import 'package:guiae/src/widgets/menu_card.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<Carrera> carreras;
@@ -146,7 +147,12 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                     fontFamily: "Mmedium", color: colorfont1, fontSize: 15.0),
               ),
-              onTap: () {},
+              onTap: () {
+                Share.share('Comparte la app',
+                        subject:
+                            'Guia Estudiantil: https://play.google.com/store/apps/details?id=com.lihuel305.guiae');
+
+              },
             ),
             ListTile(
               leading: Icon(Icons.fiber_new),
