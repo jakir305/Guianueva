@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guiae/models/carreras_model.dart';
@@ -258,7 +257,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.bottomRight,
               child: Container(
                 child: Text(
-                  'Version: 1.0.1',
+                  'Version: 1.0.2',
                   style: TextStyle(
                     fontFamily: "MMedium",
                     fontSize: 12.0,
